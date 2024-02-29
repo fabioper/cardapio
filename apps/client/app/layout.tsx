@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import React, { PropsWithChildren } from 'react'
-import Header from '@/components/header'
 import { sans } from '@/app/assets/fonts'
 
 export const metadata: Metadata = {
@@ -12,10 +11,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="pt-br" className={sans.variable}>
-      <body>
-        <Header />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
