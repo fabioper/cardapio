@@ -13,6 +13,9 @@ const config: Config = {
             padding: '1rem',
         },
         extend: {
+            fontFamily: {
+                sans: ['var(--font-sans)']
+            }
         },
     },
     plugins: [],
