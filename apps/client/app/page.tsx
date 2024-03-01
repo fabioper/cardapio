@@ -1,19 +1,35 @@
-import ProductsListing from '@/app/products-listing'
 import ActionBar from '@/components/action-bar'
 import React from 'react'
 import Button from '@/components/button'
+import { formatCurrency } from '@/utils/formatter'
+import Link from 'next/link'
+import { getProducts } from '@/services/products.service'
 
-export default function Home() {
+export default async function Home() {
+  const products = await getProducts()
+
   return (
     <main className="my-5">
       <div className="container">
-        <h2 className="text-3xl font-bold mb-5">Produtos</h2>
+        <h2 className="text-2xl font-bold mb-5">Produtos</h2>
 
-        <ProductsListing />
+        <section className="flex flex-col gap-3">
+          {products.map(product => (
+            <div key={product.id}>
+              <div className="flex flex-col gap items-start">
+                <Link href={`/${product.id}`}>
+                  <h3 className="text-blue-600 underline">{product.title}</h3>
+                </Link>
+                <p className="text-sm">{product.description}</p>
+                <p>{formatCurrency(product.price)}</p>
+              </div>
+            </div>
+          ))}
+        </section>
 
         <ActionBar>
-          <div className="container py-3">
-            <Button>Conferir pedido (R$ 0,00)</Button>
+          <div className="container py-3.5">
+            <Button>Conferir pedido ({formatCurrency(20.0)})</Button>
           </div>
         </ActionBar>
       </div>
