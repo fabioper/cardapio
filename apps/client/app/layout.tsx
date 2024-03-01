@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import React, { PropsWithChildren } from 'react'
 import { sans } from '@/app/assets/fonts'
+import Header from '@/components/header'
+import { ActionBarWrapper } from '@/components/action-bar'
 
 export const metadata: Metadata = {
   title: 'Cardápio',
@@ -10,8 +12,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="pt-br" className={sans.variable}>
-      <body>{children}</body>
+    <html lang="pt-br" className={`${sans.variable} h-full`}>
+      <body className="bg-slate-100 h-full grid grid-rows-[auto_1fr_auto]">
+        <Header />
+        <div className="overflow-auto">{children}</div>
+        <ActionBarWrapper />
+      </body>
     </html>
   )
 }
