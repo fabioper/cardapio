@@ -3,7 +3,7 @@ import './globals.css'
 import React, { PropsWithChildren } from 'react'
 import { sans } from '@/app/assets/fonts'
 import Header from '@/components/header'
-import { ActionBarRoot } from '@/components/action-bar-root'
+import { ActionBarRoot } from '@/components/action-bar'
 
 export const metadata: Metadata = {
   title: 'Cardápio',

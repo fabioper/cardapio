@@ -1,4 +1,4 @@
-import { ActionBar } from '@/components/action-bar-root'
+import { ActionBar } from '@/components/action-bar'
 import React from 'react'
 import Button from '@/components/button'
 import { formatCurrency } from '@/utils/formatter'

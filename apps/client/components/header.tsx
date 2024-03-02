@@ -3,11 +3,9 @@ import Link from 'next/link'
 
 function Header() {
   return (
-    <header className="py-2 bg-white border-b border-b-slate-200 shadow shadow-stone-50">
+    <header className="py-4 bg-white border-b border-b-slate-200 shadow shadow-stone-50">
       <div className="container flex place-content-center">
-        <Link href="/" className="font-bold tracking-wider">
-          LOGO
-        </Link>
+        <Link href="/">Cardápio</Link>
       </div>
     </header>
   )
