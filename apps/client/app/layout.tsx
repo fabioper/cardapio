@@ -3,7 +3,7 @@ import './globals.css'
 import React, { PropsWithChildren } from 'react'
 import { sans } from '@/app/assets/fonts'
 import Header from '@/components/header'
-import { ActionBarWrapper } from '@/components/action-bar'
+import { ActionBarRoot } from '@/components/action-bar-root'
 
 export const metadata: Metadata = {
   title: 'Cardápio',
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body className="bg-slate-100 h-full grid grid-rows-[auto_1fr_auto]">
         <Header />
         <div className="overflow-auto">{children}</div>
-        <ActionBarWrapper />
+        <ActionBarRoot />
       </body>
     </html>
   )

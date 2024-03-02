@@ -1,4 +1,4 @@
-import ActionBar from '@/components/action-bar'
+import { ActionBar } from '@/components/action-bar-root'
 import React from 'react'
 import Button from '@/components/button'
 import { formatCurrency } from '@/utils/formatter'
@@ -28,9 +28,7 @@ export default async function Home() {
         </section>
 
         <ActionBar>
-          <div className="container py-3.5">
-            <Button>Conferir pedido ({formatCurrency(20.0)})</Button>
-          </div>
+          <Button>Conferir pedido</Button>
         </ActionBar>
       </div>
     </main>
