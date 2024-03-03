@@ -14,8 +14,8 @@ module.exports = {
         "trailingComma": "all",
         "arrowParens": "avoid",
         "semi": false,
-        "endOfLine": "auto"
-      }
+        "endOfLine": "auto",
+      },
     ]
   }
 }

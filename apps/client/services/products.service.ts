@@ -1,38 +1,66 @@
-const products = [
+export interface Product {
+  id: number
+  title: string
+  description: string
+  price: number
+  image?: { url: string; alt: string }
+}
+
+const products: Product[] = [
   {
     id: 1,
-    title: 'Product 1',
+    title: 'Hamburguer Especial da Casa com Calabresa',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur cumque.',
+      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 20,
+    image: {
+      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      alt: '',
+    },
   },
   {
     id: 2,
-    title: 'Product 2',
+    title: 'Hamburguer Especial da Casa com Calabresa',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur cumque.',
+      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 25,
+    image: {
+      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      alt: '',
+    },
   },
   {
     id: 3,
-    title: 'Product 3',
+    title: 'Hamburguer Especial da Casa com Calabresa',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur cumque.',
+      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 15.9,
+    image: {
+      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      alt: '',
+    },
   },
   {
     id: 4,
-    title: 'Product 4',
+    title: 'Hamburguer Especial da Casa com Calabresa',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur cumque.',
+      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 11.1,
+    image: {
+      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      alt: '',
+    },
   },
   {
     id: 5,
-    title: 'Product 5',
+    title: 'Hamburguer Especial da Casa com Calabresa',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur cumque.',
+      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 5.8,
+    image: {
+      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      alt: '',
+    },
   },
 ]
 

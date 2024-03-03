@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function Header() {
   return (
-    <header className="py-4 bg-white border-b border-b-slate-200 shadow shadow-stone-50">
+    <header className="py-3 bg-white border-b border-[#F0F0F0]">
       <div className="container flex place-content-center">
         <Link href="/">Cardápio</Link>
       </div>
