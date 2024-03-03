@@ -10,7 +10,7 @@ export default async function Home() {
   const products = await getProducts()
 
   return (
-    <main className="my-5">
+    <main>
       <h2 className="text-xl font-bold mb-3 container">Produtos</h2>
 
       <section className="flex flex-col">

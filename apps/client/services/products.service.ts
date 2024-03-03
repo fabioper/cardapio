@@ -67,3 +67,7 @@ const products: Product[] = [
 export async function getProducts() {
   return Promise.resolve(products)
 }
+
+export async function findProductById(id: number) {
+  return Promise.resolve(products.find(product => product.id === id))
+}
