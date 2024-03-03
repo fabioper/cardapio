@@ -29,13 +29,7 @@ export default async function Home() {
         </section>
 
         <ActionBar>
-          <Button
-            leftItem={<FaShoppingBag />}
-            rightItem="R$ 20,00"
-            variant="primary"
-            outlined
-            /*fill*/
-          >
+          <Button leftItem={<FaShoppingBag />} rightItem="R$ 20,00" fill>
             Conferir pedido
           </Button>
         </ActionBar>
