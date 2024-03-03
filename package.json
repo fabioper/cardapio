@@ -16,5 +16,9 @@
   "license": "ISC",
   "devDependencies": {
     "turbo": "^1.12.4"
+  },
+  "dependencies": {
+    "clsx": "^2.1.0",
+    "react-icons": "^5.0.1"
   }
 }

@@ -4,6 +4,7 @@ import Button from '@/components/button'
 import { formatCurrency } from '@/utils/formatter'
 import Link from 'next/link'
 import { getProducts } from '@/services/products.service'
+import { FaShoppingBag } from 'react-icons/fa'
 
 export default async function Home() {
   const products = await getProducts()
@@ -28,7 +29,15 @@ export default async function Home() {
         </section>
 
         <ActionBar>
-          <Button>Conferir pedido</Button>
+          <Button
+            leftItem={<FaShoppingBag />}
+            rightItem="R$ 20,00"
+            variant="primary"
+            outlined
+            /*fill*/
+          >
+            Conferir pedido
+          </Button>
         </ActionBar>
       </div>
     </main>

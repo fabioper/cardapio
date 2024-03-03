@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="pt-br" className={`${sans.variable} h-full`}>
-      <body className="bg-slate-100 h-full grid grid-rows-[auto_1fr_auto]">
+      <body className="bg-[#FAFAFA] h-full grid grid-rows-[auto_1fr_auto]">
         <Header />
         <div className="overflow-auto">{children}</div>
         <ActionBarRoot />
