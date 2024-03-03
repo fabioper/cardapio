@@ -11,10 +11,10 @@ export default function ProductCard({ product }: ProductCardProps) {
     <div className="container flex items-start gap-4 py-3">
       <div className="flex flex-col gap-2 items-start w-full">
         <div className="flex flex-col gap">
-          <h3 className="text-base text-black">{product.title}</h3>
-          <p className="text-xs text-[#5D5D5D]">{product.description}</p>
+          <h3 className="text-lg text-black">{product.title}</h3>
+          <p className="text-base text-[#5D5D5D]">{product.description}</p>
         </div>
-        <p className="text-sm">{formatCurrency(product.price)}</p>
+        <p className="text-base">{formatCurrency(product.price)}</p>
       </div>
 
       {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -2,7 +2,17 @@ import React, { ReactElement } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const button = tv({
-  base: 'text-sm flex items-center whitespace-nowrap gap-2 text-white',
+  base: 'text-base flex items-center whitespace-nowrap gap-2 text-white',
+  compoundVariants: [
+    {
+      size: 'regular',
+      className: 'text-base',
+    },
+    {
+      size: 'small',
+      className: 'text-sm',
+    },
+  ],
   variants: {
     variant: {
       primary: 'bg-[#F97B34]',
@@ -13,7 +23,7 @@ const button = tv({
       danger: 'bg-[#F93434]',
     },
     size: {
-      regular: 'py-3 px-5',
+      regular: 'py-4 px-5',
       small: 'py-1 px-2',
     },
     fill: {
