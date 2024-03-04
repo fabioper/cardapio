@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import React, { PropsWithChildren } from 'react'
-import { sans } from '@/app/assets/fonts'
+import { sans } from '@/assets/fonts'
 import Header from '@/components/header'
 import { ActionBarRoot } from '@/components/action-bar'
 
