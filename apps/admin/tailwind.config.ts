@@ -1,1 +1,1 @@
-export * from 'config/tailwind.config'
+export * from '@cardapio/config/tailwind.config'
