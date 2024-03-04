@@ -1,5 +1,5 @@
 {
-  "name": "orders",
+  "name": "@cardapio/orders",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,16 +16,16 @@
     "next": "14.1.0"
   },
   "devDependencies": {
+    "@cardapio/config": "*",
+    "@cardapio/eslint-config-custom": "*",
     "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
-    "config": "*",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "eslint": "^8",
-    "eslint-config-custom": "*",
     "eslint-config-next": "14.1.0"
   }
 }

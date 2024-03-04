@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-custom",
+  "name": "@cardapio/eslint-config-custom",
   "version": "1.0.0",
   "description": "",
   "private": true,
