@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react'
+import React, { PropsWithChildren, ReactElement } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const button = tv({
-  base: 'text-base flex items-center whitespace-nowrap gap-2 text-white',
+  base: 'text-base flex items-center whitespace-nowrap gap-2 text-white rounded-md',
   compoundVariants: [
     {
       size: 'regular',
@@ -15,20 +15,16 @@ const button = tv({
   ],
   variants: {
     variant: {
-      primary: 'bg-[#F97B34]',
-      secondary: 'bg-[#636363]',
-      success: 'bg-[#0EBA5D]',
-      info: 'bg-[#0696FE]',
-      warn: 'bg-[#DBAB00]',
-      danger: 'bg-[#F93434]',
+      primary: 'bg-primary',
+      secondary: 'bg-secondary',
+      success: 'bg-success',
+      info: 'bg-info',
+      warn: 'bg-warn',
+      danger: 'bg-danger',
     },
     size: {
       regular: 'py-4 px-5',
       small: 'py-1 px-2',
-    },
-    fill: {
-      true: 'w-full',
-      false: 'rounded-md',
     },
   },
   defaultVariants: {
@@ -52,33 +48,30 @@ const outlinedButton = tv({
   },
 })
 
-type ButtonProps = React.HTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof button> & {
-    leftItem?: ReactElement | string
-    rightItem?: ReactElement | string
+type ButtonProps = VariantProps<typeof button> &
+  PropsWithChildren & {
+    itemLeft?: ReactElement | string
+    itemRight?: ReactElement | string
     outlined?: boolean
+    className?: string
   }
 
 export default function Button({
   children,
   variant,
   size,
-  fill,
   outlined,
-  leftItem: LeftItem,
-  rightItem: RightItem,
-  ...props
+  className,
+  itemLeft: ItemLeft,
+  itemRight: ItemRight,
 }: ButtonProps) {
   const styles = outlined ? outlinedButton : button
 
   return (
-    <button
-      {...props}
-      className={styles({ size, variant, fill, className: props.className })}
-    >
-      {LeftItem}
-      <span className="w-full">{children}</span>
-      {RightItem}
+    <button className={styles({ size, variant, className })}>
+      {ItemLeft}
+      <span className="w-full font-semibold">{children}</span>
+      {ItemRight}
     </button>
   )
 }

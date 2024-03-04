@@ -19,7 +19,12 @@ export function ActionBar({ children }: PropsWithChildren) {
 
   if (!container) return <></>
 
-  return createPortal(children, container)
+  return createPortal(
+    <div className="w-full border-t border-t-slate-200 py-2">
+      <div className="container">{children}</div>
+    </div>,
+    container,
+  )
 }
 
 export default ActionBar

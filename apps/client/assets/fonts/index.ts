@@ -14,8 +14,18 @@ export const sans = localFont({
       style: 'italic',
     },
     {
-      path: './Barlow/Barlow-Bold.ttf',
+      path: './Barlow/Barlow-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './Barlow/Barlow-SemiBold.ttf',
       weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './Barlow/Barlow-Bold.ttf',
+      weight: '700',
       style: 'normal',
     },
   ],

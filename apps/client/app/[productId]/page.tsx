@@ -20,7 +20,7 @@ export default async function ProductPage({
       <div className="container">
         <Link href="/">
           <Button
-            leftItem={<FaAngleLeft />}
+            itemLeft={<FaAngleLeft />}
             size="small"
             outlined
             variant="secondary"
@@ -48,7 +48,7 @@ export default async function ProductPage({
               <label htmlFor="complement">Complemento:</label>
               <textarea
                 id="complement"
-                className="bg-white border border-[#D9D9D9] rounded p-2"
+                className="bg-white border border-surface rounded p-2"
               />
             </div>
           </div>
@@ -57,9 +57,9 @@ export default async function ProductPage({
 
       <ActionBar>
         <Button
-          leftItem={<FaShoppingBag />}
-          rightItem={`+ ${formatCurrency(product.price)}`}
-          fill
+          itemLeft={<FaShoppingBag />}
+          itemRight={`+ ${formatCurrency(product.price)}`}
+          className="w-full"
         >
           Adicionar ao pedido
         </Button>

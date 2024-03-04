@@ -18,7 +18,7 @@ export default async function Home() {
           <Link
             key={product.id}
             href={`/${product.id}`}
-            className="border-t last:border-b border-[#F0F0F0]"
+            className="border-t last:border-b border-border"
           >
             <ProductCard product={product} />
           </Link>
@@ -27,7 +27,11 @@ export default async function Home() {
 
       <ActionBar>
         <Link href="/pedido">
-          <Button leftItem={<FaShoppingBag />} rightItem="R$ 20,00" fill>
+          <Button
+            itemLeft={<FaShoppingBag />}
+            itemRight="R$ 20,00"
+            className="w-full"
+          >
             Conferir pedido
           </Button>
         </Link>
