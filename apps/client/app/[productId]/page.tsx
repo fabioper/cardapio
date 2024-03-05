@@ -18,12 +18,7 @@ export default async function ProductPage({
     <main className="flex flex-col gap-3 items-start">
       <div className="container">
         <Link href="/">
-          <Button
-            itemLeft={<FaAngleLeft />}
-            size="small"
-            outlined
-            variant="secondary"
-          >
+          <Button icon={<FaAngleLeft />} size="small" text variant="secondary">
             Voltar
           </Button>
         </Link>

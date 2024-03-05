@@ -4,20 +4,22 @@ import { HiOutlineShoppingBag } from 'react-icons/hi2'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { LiaUserCircle } from 'react-icons/lia'
 import { IoMenuOutline } from 'react-icons/io5'
+import Button from '@/components/button'
+import { MdOutlineFastfood } from 'react-icons/md'
 
 function Header() {
   return (
-    <header className="py-5 bg-white border-b border-border">
-      <div className="container flex place-content-between">
-        <Link href="/" className="font-bold">
-          Cardápio
+    <header className="py-3 bg-white border-b border-border">
+      <div className="container flex items-center justify-between">
+        <Link href="/" className="font-bold text-sm flex items-end gap-1">
+          <MdOutlineFastfood className="text-xl" /> Cardápio
         </Link>
 
-        <div className="flex place-content-center gap-5 text-2xl">
-          <AiOutlineSearch />
-          <LiaUserCircle />
-          <HiOutlineShoppingBag />
-          <IoMenuOutline />
+        <div className="flex items-center gap-2 text-2xl">
+          <Button icon={<AiOutlineSearch />} text variant="secondary" />
+          <Button icon={<LiaUserCircle />} text variant="secondary" />
+          <Button icon={<HiOutlineShoppingBag />} text variant="secondary" />
+          <Button icon={<IoMenuOutline />} text variant="secondary" />
         </div>
       </div>
     </header>

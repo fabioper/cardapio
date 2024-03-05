@@ -1,16 +1,32 @@
-import React, { PropsWithChildren, ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const button = tv({
   base: 'text-base flex items-center whitespace-nowrap gap-2 text-white rounded-md',
   compoundVariants: [
     {
+      iconOnly: false,
       size: 'regular',
       className: 'text-base',
     },
     {
+      iconOnly: false,
       size: 'small',
       className: 'text-sm',
+    },
+    {
+      iconOnly: true,
+      className: 'p-2',
+    },
+    {
+      iconOnly: true,
+      size: 'regular',
+      className: 'text-xl',
+    },
+    {
+      iconOnly: true,
+      size: 'small',
+      className: 'text-base',
     },
   ],
   variants: {
@@ -26,6 +42,9 @@ const button = tv({
       regular: 'py-4 px-5',
       small: 'py-1 px-2',
     },
+    iconOnly: {
+      true: 'aspect-square rounded-full',
+    },
   },
   defaultVariants: {
     variant: 'primary',
@@ -33,45 +52,42 @@ const button = tv({
   },
 })
 
-const outlinedButton = tv({
+const textButton = tv({
   extend: button,
-  base: 'bg-opacity-5 border',
+  base: 'hover:bg-opacity-5',
   variants: {
     variant: {
-      primary: 'border-[#F97B34] text-[#F97B34] bg-[#F97B34]',
-      secondary: 'border-[#E0E0E0] text-black bg-black',
-      success: 'border-[#0EBA5D] text-[#0EBA5D] bg-[#0EBA5D]',
-      info: 'border-[#0696FE] text-[#0696FE] bg-[#0696FE]',
-      warn: 'border-[#DBAB00] text-[#DBAB00] bg-[#DBAB00]',
-      danger: 'border-[#F93434] text-[#F93434] bg-[#F93434]',
+      primary: 'text-primary bg-transparent hover:bg-primary',
+      secondary: 'text-black bg-transparent hover:bg-secondary',
+      success: 'text-success bg-transparent hover:bg-success',
+      info: 'text-info bg-transparent hover:bg-info',
+      warn: 'text-warn bg-transparent hover:bg-warn',
+      danger: 'text-danger bg-transparent hover:bg-danger',
     },
   },
 })
 
-type ButtonProps = VariantProps<typeof button> &
-  PropsWithChildren & {
-    itemLeft?: ReactElement | string
-    itemRight?: ReactElement | string
-    outlined?: boolean
-    className?: string
-  }
+type ButtonProps = Omit<VariantProps<typeof button>, 'iconOnly'> & {
+  icon?: ReactElement | string
+  text?: boolean
+  className?: string
+  label?: string
+}
 
 export default function Button({
-  children,
+  label,
   variant,
   size,
-  outlined,
+  text,
   className,
-  itemLeft: ItemLeft,
-  itemRight: ItemRight,
+  icon: ItemLeft,
 }: ButtonProps) {
-  const styles = outlined ? outlinedButton : button
+  const styles = text ? textButton : button
 
   return (
-    <button className={styles({ size, variant, className })}>
+    <button className={styles({ size, variant, className, iconOnly: !label })}>
       {ItemLeft}
-      <span className="w-full font-semibold">{children}</span>
-      {ItemRight}
+      {label && <span className="w-full font-semibold">{label}</span>}
     </button>
   )
 }
