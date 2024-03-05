@@ -15,17 +15,19 @@ export default function ProductCard({ product }: ProductCardProps) {
     >
       <div className="flex items-start gap-2 py-3 lg:flex-row-reverse lg:gap-5">
         <div className="flex flex-col gap-2 items-start w-full">
-          <h3 className="leading-snug font-medium">{product.title}</h3>
-          <p className="text-sm">{product.description}</p>
+          <h3 className="leading-snug text-lg font-medium">{product.title}</h3>
+          <p>{product.description}</p>
           <p className="text-[#666]">{formatCurrency(product.price)}</p>
         </div>
 
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={product.image?.url}
-          alt={product.image?.alt}
-          className="w-1/3 lg:w-1/4 block aspect-square object-cover rounded"
-        />
+        {product.image && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={product.image.url}
+            alt={product.image.alt}
+            className="w-1/4 aspect-square object-cover rounded"
+          />
+        )}
       </div>
     </Link>
   )
