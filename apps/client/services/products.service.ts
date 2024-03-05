@@ -25,7 +25,7 @@ const products: Product[] = [
       'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 25,
     image: {
-      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      url: 'https://images.pexels.com/photos/6439486/pexels-photo-6439486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       alt: '',
     },
   },
@@ -36,7 +36,7 @@ const products: Product[] = [
       'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 15.9,
     image: {
-      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      url: 'https://images.pexels.com/photos/11224304/pexels-photo-11224304.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       alt: '',
     },
   },
@@ -47,7 +47,7 @@ const products: Product[] = [
       'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 11.1,
     image: {
-      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      url: 'https://images.pexels.com/photos/3220617/pexels-photo-3220617.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       alt: '',
     },
   },
@@ -58,7 +58,7 @@ const products: Product[] = [
       'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
     price: 5.8,
     image: {
-      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      url: 'https://images.pexels.com/photos/11022623/pexels-photo-11022623.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
       alt: '',
     },
   },
