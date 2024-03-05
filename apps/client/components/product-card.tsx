@@ -8,21 +8,20 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="container flex items-start gap-4 py-3">
-      <div className="flex flex-col gap-2 items-start w-full">
-        <div className="flex flex-col gap">
-          <h3 className="text-lg text-black">{product.title}</h3>
-          <p className="text-base text-[#5D5D5D]">{product.description}</p>
-        </div>
-        <p className="text-base">{formatCurrency(product.price)}</p>
-      </div>
-
+    <div className="flex flex-col items-start gap-2">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={product.image?.url}
         alt={product.image?.alt}
-        className="w-1/4 rounded-md block aspect-square object-cover"
+        className="w-full block aspect-square object-cover rounded"
       />
+
+      <div className="flex flex-col gap-2 items-start w-full">
+        <div className="flex flex-col gap">
+          <h3 className="leading-snug">{product.title}</h3>
+        </div>
+        <p className="text-sm text-[#666]">{formatCurrency(product.price)}</p>
+      </div>
     </div>
   )
 }

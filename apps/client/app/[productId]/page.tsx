@@ -1,9 +1,8 @@
 import { findProductById } from '@/services/products.service'
 import { notFound } from 'next/navigation'
 import Button from '@/components/button'
-import { FaAngleLeft, FaShoppingBag } from 'react-icons/fa'
+import { FaAngleLeft } from 'react-icons/fa'
 import { formatCurrency } from '@/utils/formatter'
-import ActionBar from '@/components/action-bar'
 import Link from 'next/link'
 
 export default async function ProductPage({
@@ -54,16 +53,6 @@ export default async function ProductPage({
           </div>
         </form>
       </section>
-
-      <ActionBar>
-        <Button
-          itemLeft={<FaShoppingBag />}
-          itemRight={`+ ${formatCurrency(product.price)}`}
-          className="w-full"
-        >
-          Adicionar ao pedido
-        </Button>
-      </ActionBar>
     </main>
   )
 }
