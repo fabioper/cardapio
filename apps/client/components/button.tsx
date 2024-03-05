@@ -1,17 +1,12 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
+import { IconType } from 'react-icons'
 
 const button = tv({
-  base: 'text-base flex items-center whitespace-nowrap gap-2 text-white rounded-md',
+  base: 'text-base flex items-center whitespace-nowrap gap-2 rounded text-foreground',
   compoundVariants: [
     {
       iconOnly: false,
-      size: 'regular',
-      className: 'text-base',
-    },
-    {
-      iconOnly: false,
-      size: 'small',
       className: 'text-sm',
     },
     {
@@ -39,7 +34,7 @@ const button = tv({
       danger: 'bg-danger',
     },
     size: {
-      regular: 'py-4 px-5',
+      regular: 'py-3 px-5',
       small: 'py-1 px-2',
     },
     iconOnly: {
@@ -72,7 +67,7 @@ const outlinedButton = tv({
   variants: {
     variant: {
       primary: 'text-primary bg-transparent border border-primary',
-      secondary: 'text-black bg-transparent border border-secondary',
+      secondary: 'text-foreground bg-transparent border border-secondary',
       success: 'text-success bg-transparent border border-success',
       info: 'text-info bg-transparent border border-info',
       warn: 'text-warn bg-transparent border border-warn',
@@ -82,7 +77,7 @@ const outlinedButton = tv({
 })
 
 type ButtonProps = Omit<VariantProps<typeof button>, 'iconOnly'> & {
-  icon?: ReactElement | string
+  icon?: IconType
   text?: boolean
   className?: string
   label?: string
@@ -102,7 +97,7 @@ export default function Button({
 
   return (
     <button className={styles({ size, variant, className, iconOnly: !label })}>
-      {ItemLeft}
+      {ItemLeft && <ItemLeft className="text-xl" />}
       {label && <span className="w-full font-semibold">{label}</span>}
     </button>
   )

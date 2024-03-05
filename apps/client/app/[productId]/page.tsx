@@ -4,6 +4,7 @@ import Button from '@/components/button'
 import { FaAngleLeft } from 'react-icons/fa'
 import { formatCurrency } from '@/utils/formatter'
 import Link from 'next/link'
+import { TbShoppingBagPlus } from 'react-icons/tb'
 
 export default async function ProductPage({
   params,
@@ -19,7 +20,7 @@ export default async function ProductPage({
       <div className="container">
         <Link href="/">
           <Button
-            icon={<FaAngleLeft />}
+            icon={FaAngleLeft}
             size="small"
             outlined
             variant="info"
@@ -43,14 +44,22 @@ export default async function ProductPage({
         <form className="w-full">
           <div className="container">
             <div className="flex flex-col gap">
-              <label htmlFor="complement">Complemento:</label>
+              <label htmlFor="complement">Observação:</label>
               <textarea
                 id="complement"
-                className="bg-white border border-surface rounded p-2"
+                className="bg-white border border-surface rounded p-2 focus:outline-2 focus:outline-primary"
               />
             </div>
           </div>
         </form>
+
+        <div className="container flex gap-5">
+          <Button
+            label="Adicionar ao pedido"
+            className="w-full"
+            icon={TbShoppingBagPlus}
+          />
+        </div>
       </section>
     </main>
   )
