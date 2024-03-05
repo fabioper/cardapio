@@ -1,6 +1,7 @@
 import { Product } from '@/services/products.service'
 import { formatCurrency } from '@/utils/formatter'
 import React from 'react'
+import Link from 'next/link'
 
 interface ProductCardProps {
   product: Product
@@ -8,20 +9,24 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="flex flex-col items-start gap-2">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={product.image?.url}
-        alt={product.image?.alt}
-        className="w-full block aspect-square object-cover rounded"
-      />
-
-      <div className="flex flex-col gap-2 items-start w-full">
-        <div className="flex flex-col gap">
+    <Link
+      href={`/${product.id}`}
+      className="border-b border-border last:border-b-0 lg:border-none"
+    >
+      <div className="flex items-start gap-2 py-3 lg:flex-row-reverse lg:gap-5">
+        <div className="flex flex-col gap-2 items-start w-full">
           <h3 className="leading-snug font-medium">{product.title}</h3>
+          <p className="text-sm">{product.description}</p>
+          <p className="text-[#666]">{formatCurrency(product.price)}</p>
         </div>
-        <p className="text-[#666]">{formatCurrency(product.price)}</p>
+
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={product.image?.url}
+          alt={product.image?.alt}
+          className="w-1/3 lg:w-1/4 block aspect-square object-cover rounded"
+        />
       </div>
-    </div>
+    </Link>
   )
 }

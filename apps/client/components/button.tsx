@@ -67,11 +67,26 @@ const textButton = tv({
   },
 })
 
+const outlinedButton = tv({
+  extend: button,
+  variants: {
+    variant: {
+      primary: 'text-primary bg-transparent border border-primary',
+      secondary: 'text-black bg-transparent border border-secondary',
+      success: 'text-success bg-transparent border border-success',
+      info: 'text-info bg-transparent border border-info',
+      warn: 'text-warn bg-transparent border border-warn',
+      danger: 'text-danger bg-transparent border border-danger',
+    },
+  },
+})
+
 type ButtonProps = Omit<VariantProps<typeof button>, 'iconOnly'> & {
   icon?: ReactElement | string
   text?: boolean
   className?: string
   label?: string
+  outlined?: boolean
 }
 
 export default function Button({
@@ -79,10 +94,11 @@ export default function Button({
   variant,
   size,
   text,
+  outlined,
   className,
   icon: ItemLeft,
 }: ButtonProps) {
-  const styles = text ? textButton : button
+  const styles = text ? textButton : outlined ? outlinedButton : button
 
   return (
     <button className={styles({ size, variant, className, iconOnly: !label })}>
