@@ -76,25 +76,28 @@ const outlinedButton = tv({
   },
 })
 
-type ButtonProps = Omit<VariantProps<typeof button>, 'iconOnly'> & {
+type ButtonProps<T extends (...args: any) => any> = Omit<
+  VariantProps<T>,
+  'iconOnly'
+> & {
   icon?: IconType
-  text?: boolean
   className?: string
   label?: string
-  outlined?: boolean
 }
 
-export default function Button({
+type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
+  ButtonProps<T> & {
+    styles: any
+  }
+
+function ButtonBase({
   label,
   variant,
   size,
-  text,
-  outlined,
   className,
+  styles,
   icon: ItemLeft,
-}: ButtonProps) {
-  const styles = text ? textButton : outlined ? outlinedButton : button
-
+}: ButtonBaseProps) {
   return (
     <button className={styles({ size, variant, className, iconOnly: !label })}>
       {ItemLeft && <ItemLeft className="text-xl" />}
@@ -102,3 +105,20 @@ export default function Button({
     </button>
   )
 }
+
+function Button(props: ButtonProps<typeof button>) {
+  return <ButtonBase {...props} styles={button} />
+}
+
+function ButtonText(props: ButtonProps<typeof textButton>) {
+  return <ButtonBase {...props} styles={textButton} />
+}
+
+function ButtonOutlined(props: ButtonProps<typeof outlinedButton>) {
+  return <ButtonBase {...props} styles={outlinedButton} />
+}
+
+Button.Text = ButtonText
+Button.Outlined = ButtonOutlined
+
+export default Button

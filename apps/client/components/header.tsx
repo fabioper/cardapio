@@ -14,8 +14,8 @@ function Header() {
         </Link>
 
         <div className="flex items-center gap-2 text-2xl">
-          <Button icon={AiOutlineSearch} text variant="secondary" />
-          <Button icon={HiOutlineShoppingBag} text variant="secondary" />
+          <Button.Text icon={AiOutlineSearch} variant="secondary" />
+          <Button.Text icon={HiOutlineShoppingBag} variant="secondary" />
         </div>
       </div>
     </header>

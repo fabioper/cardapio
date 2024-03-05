@@ -19,10 +19,9 @@ export default async function ProductPage({
     <main className="flex flex-col gap-3 items-start">
       <div className="container">
         <Link href="/">
-          <Button
+          <Button.Outlined
             icon={FaAngleLeft}
             size="small"
-            outlined
             variant="info"
             label="Voltar"
           />
