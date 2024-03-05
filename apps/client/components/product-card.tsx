@@ -18,9 +18,9 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       <div className="flex flex-col gap-2 items-start w-full">
         <div className="flex flex-col gap">
-          <h3 className="leading-snug">{product.title}</h3>
+          <h3 className="leading-snug font-medium">{product.title}</h3>
         </div>
-        <p className="text-sm text-[#666]">{formatCurrency(product.price)}</p>
+        <p className="text-[#666]">{formatCurrency(product.price)}</p>
       </div>
     </div>
   )

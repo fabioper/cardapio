@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
-import { TbSearch, TbShoppingBag } from 'react-icons/tb'
-import { HiMiniBars3 } from 'react-icons/hi2'
-import { MdOutlineAccountCircle } from 'react-icons/md'
+import { HiOutlineShoppingBag } from 'react-icons/hi2'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { LiaUserCircle } from 'react-icons/lia'
+import { IoMenuOutline } from 'react-icons/io5'
 
 function Header() {
   return (
@@ -13,10 +14,10 @@ function Header() {
         </Link>
 
         <div className="flex place-content-center gap-5 text-2xl">
-          <TbSearch />
-          <MdOutlineAccountCircle />
-          <TbShoppingBag />
-          <HiMiniBars3 />
+          <AiOutlineSearch />
+          <LiaUserCircle />
+          <HiOutlineShoppingBag />
+          <IoMenuOutline />
         </div>
       </div>
     </header>
