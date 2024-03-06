@@ -16,6 +16,9 @@ const config: Config = {
             fontFamily: {
                 sans: ['var(--font-sans)']
             },
+            dropShadow: {
+              'top': '0 0px 6px #e5e7eb'
+            },
             colors: {
                 primary: '#ffb438',
                 secondary: '#636363',
@@ -26,6 +29,8 @@ const config: Config = {
                 'surface-a': '#f9f9f8',
                 'surface-b': '#e1e1e1',
                 'surface-c': '#D9D9D9',
+                'surface-d': '#999',
+                'surface-e': '#666',
                 foreground: '#000000'
             },
             gridTemplateColumns: {

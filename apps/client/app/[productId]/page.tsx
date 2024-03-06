@@ -16,22 +16,25 @@ export default async function ProductPage({
   if (!product) return notFound()
 
   return (
-    <main className="flex flex-col gap-3 items-start pb-3">
+    <main className="flex flex-col gap-3 items-start pb-3 lg:flex-row lg:py-10 lg:container">
       {product.image && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={product.image.url}
           alt={product.image.alt}
-          className="w-full max-h-96 object-cover"
+          className="w-full max-h-96 object-cover shadow-lg"
         />
       )}
 
       <section className="flex flex-col gap-5 container">
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl font-extrabold">{product.title}</h1>
-          <p className="text-[#666] text-sm">{product.description}</p>
-          <span className="text-xl">{formatCurrency(product.price)}</span>
+          <p className="text-[#666] text-sm leading-relaxed">
+            {product.description}
+          </p>
         </div>
+
+        <span className="text-xl">{formatCurrency(product.price)}</span>
 
         <form className="w-full">
           <div className="flex flex-col gap">

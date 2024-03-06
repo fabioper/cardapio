@@ -2,9 +2,9 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { HiOutlineShoppingBag, HiOutlineUserCircle } from 'react-icons/hi2'
 import Button from '@/components/button'
 import { CgMenuHotdog } from 'react-icons/cg'
+import { TbSearch, TbShoppingBag } from 'react-icons/tb'
 
 function Header() {
   return (
@@ -15,8 +15,8 @@ function Header() {
         </Link>
 
         <div className="flex items-center gap-2 text-2xl">
-          <Button.Text icon={HiOutlineUserCircle} variant="secondary" />
-          <Button.Text icon={HiOutlineShoppingBag} variant="secondary" />
+          <Button.Text icon={TbSearch} variant="secondary" />
+          <Button.Text icon={TbShoppingBag} variant="secondary" />
         </div>
       </div>
     </header>

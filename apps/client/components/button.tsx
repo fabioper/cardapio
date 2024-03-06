@@ -2,6 +2,20 @@ import React from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { IconType } from 'react-icons'
 
+type ButtonProps<T extends (...args: any) => any> = Omit<
+  VariantProps<T>,
+  'iconOnly'
+> & {
+  icon?: IconType
+  className?: string
+  label?: string
+}
+
+type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
+  ButtonProps<T> & {
+    styles: any
+  }
+
 const button = tv({
   base: 'text-base flex items-center whitespace-nowrap gap-2 rounded text-foreground',
   compoundVariants: [
@@ -75,20 +89,6 @@ const outlinedButton = tv({
     },
   },
 })
-
-type ButtonProps<T extends (...args: any) => any> = Omit<
-  VariantProps<T>,
-  'iconOnly'
-> & {
-  icon?: IconType
-  className?: string
-  label?: string
-}
-
-type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
-  ButtonProps<T> & {
-    styles: any
-  }
 
 function ButtonBase({
   label,
