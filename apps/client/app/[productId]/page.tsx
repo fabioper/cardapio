@@ -29,7 +29,7 @@ export default async function ProductPage({
       <section className="flex flex-col gap-5 container">
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl font-extrabold">{product.title}</h1>
-          <p className="text-[#666]">{product.description}</p>
+          <p className="text-[#666] text-sm">{product.description}</p>
           <span className="text-xl">{formatCurrency(product.price)}</span>
         </div>
 
