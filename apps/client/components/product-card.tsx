@@ -11,11 +11,13 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={`/${product.id}`}
-      className="border-b border-border last:border-b-0 lg:border-none"
+      className="border-b border-surface-b last:border-b-0 lg:border-none"
     >
       <div className="flex items-start gap-2 py-3 lg:flex-col-reverse lg:gap-5 lg:bg-white lg:rounded-lg lg:p-5 lg:shadow-lg lg:shadow-stone-100">
         <div className="flex flex-col gap-2 items-start w-full lg:justify-center lg:items-center">
-          <h3 className="leading-snug text-base font-bold">{product.title}</h3>
+          <h3 className="leading-snug text-base font-semibold">
+            {product.title}
+          </h3>
           <p className="text-sm text-[#999]">{product.description}</p>
           <p>{formatCurrency(product.price)}</p>
         </div>

@@ -23,8 +23,9 @@ const config: Config = {
                 info: '#0696FE',
                 warn: '#DBAB00',
                 danger: '#F93434',
-                border: '#F0F0F0',
-                surface: '#D9D9D9',
+                'surface-a': '#f9f9f8',
+                'surface-b': '#e1e1e1',
+                'surface-c': '#D9D9D9',
                 foreground: '#000000'
             },
             gridTemplateColumns: {

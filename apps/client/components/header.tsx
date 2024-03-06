@@ -2,19 +2,20 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { HiOutlineShoppingBag } from 'react-icons/hi2'
+import { HiOutlineShoppingBag, HiOutlineUserCircle } from 'react-icons/hi2'
 import Button from '@/components/button'
-import { PiBowlFoodDuotone } from 'react-icons/pi'
+import { CgMenuHotdog } from 'react-icons/cg'
 
 function Header() {
   return (
-    <header className="py-3 border-b border-border">
+    <header className="py-3 border-b border-surface-b">
       <div className="container flex items-center justify-between">
         <Link href="/" className="font-bold flex items-end gap-1">
-          <PiBowlFoodDuotone className="text-3xl" />
+          <CgMenuHotdog className="text-4xl" />
         </Link>
 
         <div className="flex items-center gap-2 text-2xl">
+          <Button.Text icon={HiOutlineUserCircle} variant="secondary" />
           <Button.Text icon={HiOutlineShoppingBag} variant="secondary" />
         </div>
       </div>

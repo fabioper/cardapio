@@ -44,7 +44,7 @@ export default async function ProductPage({
         </form>
 
         <ActionBar>
-          <div className="container">
+          <div className="container flex gap-5 items-center">
             <Button
               label="Adicionar ao pedido"
               className="w-full"

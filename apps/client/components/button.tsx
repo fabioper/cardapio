@@ -7,7 +7,7 @@ const button = tv({
   compoundVariants: [
     {
       iconOnly: false,
-      className: 'text-xs lg:text-sm',
+      className: 'text-sm',
     },
     {
       iconOnly: true,

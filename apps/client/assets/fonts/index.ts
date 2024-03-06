@@ -1,42 +1,8 @@
-import localFont from 'next/font/local'
+import { Poppins as FontFamily } from 'next/font/google'
 
-export const sans = localFont({
+export const sans = FontFamily({
   variable: '--font-sans',
-  src: [
-    {
-      path: './Urbanist/Urbanist-Regular.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './Urbanist/Urbanist-Italic.ttf',
-      weight: '400',
-      style: 'italic',
-    },
-    {
-      path: './Urbanist/Urbanist-Medium.ttf',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: './Urbanist/Urbanist-SemiBold.ttf',
-      weight: '600',
-      style: 'normal',
-    },
-    {
-      path: './Urbanist/Urbanist-Bold.ttf',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: './Urbanist/Urbanist-ExtraBold.ttf',
-      weight: '800',
-      style: 'normal',
-    },
-    {
-      path: './Urbanist/Urbanist-Black.ttf',
-      weight: '900',
-      style: 'normal',
-    },
-  ],
+  weight: ['400', '500', '700'],
+  adjustFontFallback: true,
+  subsets: ['latin'],
 })
