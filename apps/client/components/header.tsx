@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import { HiOutlineShoppingBag } from 'react-icons/hi2'
@@ -20,4 +22,4 @@ function Header() {
   )
 }
 
-export default React.memo(Header)
+export default Header

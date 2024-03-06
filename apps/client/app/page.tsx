@@ -6,7 +6,7 @@ export default async function Home() {
   const products = await getProducts()
 
   return (
-    <main>
+    <main className="py-3">
       <h2 className="text-xl font-bold mb-3 container">Produtos</h2>
 
       <section className="container flex flex-col lg:grid lg:grid-cols-3 lg:gap-4">
