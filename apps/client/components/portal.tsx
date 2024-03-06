@@ -1,5 +1,4 @@
 import { PropsWithChildren, useEffect, useState } from 'react'
-import { usePortal } from '@/hooks/usePortal'
 import { createPortal } from 'react-dom'
 
 type PortalProps = PropsWithChildren<{ elementId: string }>
