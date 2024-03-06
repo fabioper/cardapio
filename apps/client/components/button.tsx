@@ -7,7 +7,7 @@ const button = tv({
   compoundVariants: [
     {
       iconOnly: false,
-      className: 'text-sm',
+      className: 'text-xs lg:text-sm',
     },
     {
       iconOnly: true,
@@ -101,7 +101,7 @@ function ButtonBase({
   return (
     <button className={styles({ size, variant, className, iconOnly: !label })}>
       {ItemLeft && <ItemLeft className="text-2xl" />}
-      {label && <span className="w-full font-semibold">{label}</span>}
+      {label && <span className="w-full font-black uppercase">{label}</span>}
     </button>
   )
 }

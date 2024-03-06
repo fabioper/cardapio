@@ -4,28 +4,38 @@ export const sans = localFont({
   variable: '--font-sans',
   src: [
     {
-      path: './Barlow/Barlow-Regular.ttf',
+      path: './Urbanist/Urbanist-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './Barlow/Barlow-Italic.ttf',
+      path: './Urbanist/Urbanist-Italic.ttf',
       weight: '400',
       style: 'italic',
     },
     {
-      path: './Barlow/Barlow-Medium.ttf',
+      path: './Urbanist/Urbanist-Medium.ttf',
       weight: '500',
       style: 'normal',
     },
     {
-      path: './Barlow/Barlow-SemiBold.ttf',
+      path: './Urbanist/Urbanist-SemiBold.ttf',
       weight: '600',
       style: 'normal',
     },
     {
-      path: './Barlow/Barlow-Bold.ttf',
+      path: './Urbanist/Urbanist-Bold.ttf',
       weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './Urbanist/Urbanist-ExtraBold.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: './Urbanist/Urbanist-Black.ttf',
+      weight: '900',
       style: 'normal',
     },
   ],

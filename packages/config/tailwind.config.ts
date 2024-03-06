@@ -25,7 +25,7 @@ const config: Config = {
                 danger: '#F93434',
                 border: '#F0F0F0',
                 surface: '#D9D9D9',
-                foreground: '#1a1a1a'
+                foreground: '#000000'
             },
             gridTemplateColumns: {
                 auto: 'repeat(auto-fit, minmax(100px, 1fr))'

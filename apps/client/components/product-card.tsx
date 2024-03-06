@@ -15,9 +15,9 @@ export default function ProductCard({ product }: ProductCardProps) {
     >
       <div className="flex items-start gap-2 py-3 lg:flex-row-reverse lg:gap-5">
         <div className="flex flex-col gap-2 items-start w-full">
-          <h3 className="leading-snug text-lg font-medium">{product.title}</h3>
-          <p>{product.description}</p>
-          <p className="text-[#666]">{formatCurrency(product.price)}</p>
+          <h3 className="leading-snug text-base font-bold">{product.title}</h3>
+          <p className="text-sm text-[#999]">{product.description}</p>
+          <p>{formatCurrency(product.price)}</p>
         </div>
 
         {product.image && (
@@ -25,7 +25,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <img
             src={product.image.url}
             alt={product.image.alt}
-            className="w-1/4 aspect-square object-cover rounded"
+            className="w-1/4 aspect-square object-cover rounded shadow-lg"
           />
         )}
       </div>

@@ -8,7 +8,7 @@ import { PiBowlFoodDuotone } from 'react-icons/pi'
 
 function Header() {
   return (
-    <header className="py-3 bg-white border-b border-border">
+    <header className="py-3 border-b border-border">
       <div className="container flex items-center justify-between">
         <Link href="/" className="font-bold flex items-end gap-1">
           <PiBowlFoodDuotone className="text-3xl" />
