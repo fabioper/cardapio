@@ -4,6 +4,7 @@ import Button from '@/components/button'
 import { formatCurrency } from '@/utils/formatter'
 import { TbShoppingBagPlus } from 'react-icons/tb'
 import React from 'react'
+import Textarea from '@/components/textarea/textarea'
 
 export default async function ProductPage({
   params,
@@ -38,10 +39,7 @@ export default async function ProductPage({
         <form className="w-full">
           <div className="flex flex-col gap">
             <label htmlFor="complement">Observação:</label>
-            <textarea
-              id="complement"
-              className="bg-white border border-surface rounded p-2 focus:outline-2 focus:outline-primary"
-            />
+            <Textarea />
           </div>
         </form>
 
