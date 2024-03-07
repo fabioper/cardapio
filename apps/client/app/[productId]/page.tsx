@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import Button from '@/components/button'
 import { formatCurrency } from '@/utils/formatter'
 import { TbShoppingBagPlus } from 'react-icons/tb'
-import ActionBar from '@/components/action-bar'
 import React from 'react'
 
 export default async function ProductPage({
@@ -22,7 +21,7 @@ export default async function ProductPage({
         <img
           src={product.image.url}
           alt={product.image.alt}
-          className="w-full max-h-96 object-cover shadow-lg"
+          className="w-full max-h-96 object-cover shadow-lg lg:rounded-2xl"
         />
       )}
 
@@ -46,15 +45,11 @@ export default async function ProductPage({
           </div>
         </form>
 
-        <ActionBar>
-          <div className="container flex gap-5 items-center">
-            <Button
-              label="Adicionar ao pedido"
-              className="w-full"
-              icon={TbShoppingBagPlus}
-            />
-          </div>
-        </ActionBar>
+        <Button
+          label="Adicionar ao pedido"
+          className="w-full"
+          icon={TbShoppingBagPlus}
+        />
       </section>
     </main>
   )

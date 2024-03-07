@@ -7,11 +7,11 @@ export default async function Home() {
 
   return (
     <main className="py-5 lg:py-10">
-      <h2 className="text-2xl lg:text-4xl font-extrabold mb-3 container">
+      <h2 className="text-2xl lg:text-3xl font-extrabold mb-3 lg:mb-5 container">
         Produtos
       </h2>
 
-      <section className="container flex flex-col lg:grid lg:grid-cols-4 lg:gap-4">
+      <section className="container divide-y md:divide-none flex flex-col md:grid md:grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] md:gap-4">
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
