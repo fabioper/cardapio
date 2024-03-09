@@ -32,7 +32,7 @@ const button = tv({
   compoundVariants: [
     {
       iconOnly: true,
-      className: 'p-1 sm:p-2 lg:p-2 text-xl sm:text-xl md:text-xl',
+      className: 'p-2 sm:p-2 lg:p-2 text-xl sm:text-xl md:text-xl',
     },
     {
       iconOnly: true,

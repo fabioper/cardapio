@@ -54,6 +54,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         onClick={decrease}
         disabled={!value || reachedMinimum}
         icon={FiMinus}
+        className="text-base"
       />
 
       <input
@@ -64,7 +65,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         type="text"
         role="spinbutton"
         inputMode="numeric"
-        className="p-1 w-7 sm:w-8 text-center"
+        className="p-1 w-6 text-sm sm:w-8 text-center"
       />
 
       <Button.Text
@@ -72,6 +73,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         onClick={increase}
         disabled={reachedMaximum}
         icon={FiPlus}
+        className="text-base"
       />
     </div>
   )
