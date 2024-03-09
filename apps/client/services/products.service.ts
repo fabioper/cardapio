@@ -52,10 +52,54 @@ const products: Product[] = [
     id: 5,
     title: 'Batata Frita Individual',
     description:
-      'Temperada com sal e páprica. Devido a logística do delivery, nossa batata não é entregue 100% em temperatura e crocância (aprox. 150g).\n',
+      'Temperada com sal e páprica. Devido a logística do delivery, nossa batata não é entregue 100% em temperatura e crocância (aprox. 150g).',
     price: 15.9,
     image: {
       url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/202ab855-fc06-4feb-8dda-e40e7b46d02a/202305121601_QP15_i.jpg',
+      alt: '',
+    },
+  },
+  {
+    id: 6,
+    title: 'Chewbacca',
+    description:
+      'Pão Brioche da casa tostado na chapa, 180g de blend de carne bovina, cheddar cremoso, cebola ao shoyo.+ Acompanhamento + Bebida da sua preferencia.',
+    price: 49.99,
+    image: {
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/97e2a546-4802-421f-8a5f-9889e0236de2/202307041148_P468_i.jpg',
+      alt: '',
+    },
+  },
+  {
+    id: 7,
+    title: 'Freed krueger (combo)\n',
+    description:
+      'Pão da Casa (Tipo Brioche) Tostado na Chapa, 170g de blend de carne bovina, queijo prato, bacon Fatiado, cebola ao shoyo e por fim uma maionese temperada da casa+ Acompanhamento+ Bebida de sua preferencia.',
+    price: 52.99,
+    image: {
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/97e2a546-4802-421f-8a5f-9889e0236de2/202207281452_67OW_i.jpg',
+      alt: '',
+    },
+  },
+  {
+    id: 8,
+    title: 'Ragnar ( Combo)',
+    description:
+      'Pão da casa tipo brioche, 110g de blend Bovino, cheddar cremoso, bacon em cubos. + Acompanhamento + Bebida.',
+    price: 46.99,
+    image: {
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/97e2a546-4802-421f-8a5f-9889e0236de2/202207281439_FJ55_i.jpg',
+      alt: '',
+    },
+  },
+  {
+    id: 9,
+    title: 'Jack sparrow (combo)\n',
+    description:
+      'Pão Brioche da casa tostado na chapa, 180g de Costela Bovina, queijo prato, 3 Anéis de Cebola empanada, maionese e molho barbecue. + Acompanhamento + Bebida da sua preferencia.',
+    price: 52.9,
+    image: {
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/97e2a546-4802-421f-8a5f-9889e0236de2/202307041146_W03K_i.jpg',
       alt: '',
     },
   },
