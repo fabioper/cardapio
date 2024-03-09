@@ -63,7 +63,11 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         onKeyDown={handleKeyDown}
         type="text"
         role="spinbutton"
-        className="border border-surface-c p-1 w-10 text-center appearance-none focus:outline-primary"
+        className={`
+          border border-surface-c rounded p-1 w-10
+          text-center appearance-none focus:outline-primary
+          disabled:bg-surface-b disabled:text-surface-e
+        `}
       />
 
       <Button

@@ -39,15 +39,13 @@ export default async function ProductPage({
           <span className="text-xl">{formatCurrency(product.price)}</span>
         </div>
 
-        <form className="w-full">
-          <div className="flex flex-col gap">
-            <label htmlFor="complement">Observação:</label>
-            <Textarea />
-          </div>
-        </form>
+        <div className="flex flex-col gap">
+          <label htmlFor="complement">Observação:</label>
+          <Textarea />
+        </div>
 
         <div className="flex items-center justify-between gap-5">
-          <Counter />
+          <Counter defaultValue={1} />
           <Button
             label="Adicionar ao pedido"
             className="w-full"

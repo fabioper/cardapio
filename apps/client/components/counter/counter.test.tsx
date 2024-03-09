@@ -135,4 +135,14 @@ describe('Component: Counter', () => {
 
     expect(inputNumber.value).toBe('123')
   })
+
+  it('should not accept changes when disabled is set', async () => {
+    render(<CounterWrapper defaultValue={5} disabled />)
+
+    const inputNumber = screen.getByRole('spinbutton') as HTMLInputElement
+
+    await user.type(inputNumber, '8')
+
+    expect(inputNumber.value).toBe('5')
+  })
 })
