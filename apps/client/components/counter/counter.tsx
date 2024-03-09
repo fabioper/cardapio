@@ -63,6 +63,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         onKeyDown={handleKeyDown}
         type="text"
         role="spinbutton"
+        inputMode="numeric"
         className={`
           border border-surface-c rounded p-1 w-10
           text-center appearance-none focus:outline-primary
@@ -75,7 +76,6 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         onClick={increase}
         disabled={reachedMaximum}
         icon={FiPlus}
-        inputMode="numeric"
         size="small"
       />
     </div>
