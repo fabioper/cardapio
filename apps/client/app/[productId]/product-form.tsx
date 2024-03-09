@@ -13,13 +13,17 @@ export default function ProductForm() {
   const isSmallScreen = useMediaQuery('(max-width: 500px)')
 
   const buttons = (
-    <div className="flex items-center justify-between gap-2 sm:gap-5">
+    <div className="flex items-center justify-between gap-2 sm:gap-5 lg:justify-end">
       <Counter
         value={quantity}
         onChange={value => setQuantity(value)}
         min={1}
       />
-      <Button label="Adicionar" className="grow" icon={TbShoppingBagPlus} />
+      <Button
+        label="Adicionar"
+        className="grow lg:grow-0"
+        icon={TbShoppingBagPlus}
+      />
     </div>
   )
 

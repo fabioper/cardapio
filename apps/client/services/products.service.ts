@@ -9,56 +9,53 @@ export interface Product {
 const products: Product[] = [
   {
     id: 1,
-    title: 'Hamburguer Especial da Casa com Calabresa',
+    title: 'Mesh Cheese',
     description:
-      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
+      'Smash 80g, queijo cheddar, molho Mesh. Não acompanha molho à parte.',
     price: 20,
     image: {
-      url: 'https://images.pexels.com/photos/2119758/pexels-photo-2119758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/d367de79-2a0a-45ce-9703-a6194ee96eca/202308242025_ACD4_i.jpg',
       alt: '',
     },
   },
   {
     id: 2,
-    title: 'Hamburguer Especial da Casa com Calabresa',
-    description:
-      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
-    price: 25,
+    title: 'Combo Mesh Salad Bacon',
+    description: 'Mesh Salad Bacon + Batata Palito + Bebida',
+    price: 43.9,
     image: {
-      url: 'https://images.pexels.com/photos/6439486/pexels-photo-6439486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/d367de79-2a0a-45ce-9703-a6194ee96eca/202205241207_PIB1_i.jpg',
       alt: '',
     },
   },
   {
     id: 3,
-    title: 'Hamburguer Especial da Casa com Calabresa',
-    description:
-      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
-    price: 15.9,
+    title: 'Combo Cheddar Mesh Melt',
+    description: 'Cheddar Mesh Melt + Batata palito + Bebida',
+    price: 41.9,
     image: {
-      url: 'https://images.pexels.com/photos/11224304/pexels-photo-11224304.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/45b13915-5481-42db-9ef0-f0fa794d9e06/202205081216_48I2_i.jpg',
       alt: '',
     },
   },
   {
     id: 4,
-    title: 'Hamburguer Especial da Casa com Calabresa',
-    description:
-      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
+    title: 'Nuggets',
+    description: '8 unidades acompanhadas de catchup.',
     price: 11.1,
     image: {
-      url: 'https://images.pexels.com/photos/3220617/pexels-photo-3220617.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/202ab855-fc06-4feb-8dda-e40e7b46d02a/202305121602_HQ55_i.jpg',
       alt: '',
     },
   },
   {
     id: 5,
-    title: 'Hamburguer Especial da Casa com Calabresa',
+    title: 'Batata Frita Individual',
     description:
-      'Pão, carne, calabresa, ketchup, maionese, billy jack, molho verde, alface',
-    price: 5.8,
+      'Temperada com sal e páprica. Devido a logística do delivery, nossa batata não é entregue 100% em temperatura e crocância (aprox. 150g).\n',
+    price: 15.9,
     image: {
-      url: 'https://images.pexels.com/photos/11022623/pexels-photo-11022623.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+      url: 'https://static.ifood-static.com.br/image/upload/t_medium/pratos/202ab855-fc06-4feb-8dda-e40e7b46d02a/202305121601_QP15_i.jpg',
       alt: '',
     },
   },

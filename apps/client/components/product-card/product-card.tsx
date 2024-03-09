@@ -10,8 +10,8 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/${product.id}`}>
-      <div className="flex items-start gap-2 py-3 md:flex-col-reverse md:gap-5 md:bg-surface-b md:rounded-lg md:p-5 md:shadow-lg">
-        <div className="flex flex-col gap-2 items-start md:items-center md:text-center">
+      <div className="flex items-start h-full justify-end gap-2 py-3 md:flex-col-reverse md:gap-5 md:bg-surface-b md:rounded-lg md:p-5 md:shadow-lg">
+        <div className="flex flex-col w-full gap-2 items-start md:items-center md:text-center">
           <h3 className="leading-snug font-semibold">{product.title}</h3>
           <p className="text-sm text-foreground opacity-75">
             {product.description}
