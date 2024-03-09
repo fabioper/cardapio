@@ -17,7 +17,7 @@ type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
   }
 
 const button = tv({
-  base: 'text-base flex items-center whitespace-nowrap gap-2 rounded text-foreground',
+  base: 'text-base flex items-center whitespace-nowrap gap-2 rounded text-foreground disabled:text-surface-d disabled:bg-surface-c',
   compoundVariants: [
     {
       iconOnly: false,

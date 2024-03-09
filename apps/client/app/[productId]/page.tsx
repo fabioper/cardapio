@@ -47,7 +47,7 @@ export default async function ProductPage({
         </form>
 
         <div className="flex items-center justify-between gap-5">
-          <Counter defaultValue={4} />
+          <Counter />
           <Button
             label="Adicionar ao pedido"
             className="w-full"

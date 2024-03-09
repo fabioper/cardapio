@@ -40,7 +40,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
       <Button
         data-testid="decreaseButton"
         onClick={decrease}
-        disabled={value === 0 || reachedMinimum}
+        disabled={!value || reachedMinimum}
         icon={FiMinus}
         size="small"
       />
@@ -73,6 +73,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         onClick={increase}
         disabled={reachedMaximum}
         icon={FiPlus}
+        inputMode="numeric"
         size="small"
       />
     </div>
