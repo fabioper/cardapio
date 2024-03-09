@@ -32,6 +32,11 @@ const button = tv({
       iconOnly: true,
       className: 'p-2 sm:p-2 lg:p-2 text-xl sm:text-xl md:text-xl',
     },
+    {
+      iconOnly: true,
+      size: 'small',
+      className: 'text-xs sm:text-sm md:text-sm',
+    },
   ],
   variants: {
     variant: {

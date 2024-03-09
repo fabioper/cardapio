@@ -1,11 +1,8 @@
 import { findProductById } from '@/services/products.service'
 import { notFound } from 'next/navigation'
-import Button from '@/components/button'
 import { formatCurrency } from '@/utils/formatter'
-import { TbShoppingBagPlus } from 'react-icons/tb'
 import React from 'react'
-import Textarea from '@/components/textarea/textarea'
-import Counter from '@/components/counter'
+import ProductForm from '@/app/[productId]/product-form'
 
 export default async function ProductPage({
   params,
@@ -39,21 +36,7 @@ export default async function ProductPage({
           {product.description}
         </p>
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor="complement" className="text-sm">
-            Observação:
-          </label>
-          <Textarea id="complement" />
-        </div>
-
-        <div className="flex items-center justify-between gap-2 sm:gap-5">
-          <Counter defaultValue={1} />
-          <Button
-            label="Adicionar ao pedido"
-            className="w-full"
-            icon={TbShoppingBagPlus}
-          />
-        </div>
+        <ProductForm />
       </section>
     </main>
   )
