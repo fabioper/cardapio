@@ -20,7 +20,7 @@ type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
 
 const button = tv({
   base: `
-    text-xs sm:text-sm md:text-base
+    text-xs sm:text-base
     text-surface-a
     flex
     items-center
