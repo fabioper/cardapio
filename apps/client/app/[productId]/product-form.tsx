@@ -39,7 +39,10 @@ export default function ProductForm({ price }: ProductFormProps) {
         <label htmlFor="complement" className="text-sm">
           Observação:
         </label>
-        <Textarea id="complement" />
+        <Textarea
+          id="complement"
+          placeholder="Ex: tirar a cebola, maionese à parte, etc."
+        />
       </div>
 
       {isSmallScreen ? (
