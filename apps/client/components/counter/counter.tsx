@@ -54,6 +54,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         onClick={decrease}
         disabled={!value || reachedMinimum}
         icon={FiMinus}
+        className="text-lg"
       />
 
       <input
@@ -72,6 +73,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         onClick={increase}
         disabled={reachedMaximum}
         icon={FiPlus}
+        className="text-lg"
       />
     </div>
   )
