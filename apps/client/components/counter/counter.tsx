@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ChangeEvent, useCallback } from 'react'
+import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import Button from '@/components/button'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 
@@ -25,6 +25,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
 
   const decrease = useCallback(() => {
     if (reachedMinimum) return
+
     onChange?.((value || 0) - 1)
   }, [onChange, reachedMinimum, value])
 
@@ -34,6 +35,16 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
     },
     [onChange],
   )
+
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
+    if (
+      event.key !== 'Backspace' &&
+      !(event.shiftKey || event.altKey || event.ctrlKey || event.metaKey) &&
+      !/[0-9]/i.test(event.key)
+    ) {
+      event.preventDefault()
+    }
+  }, [])
 
   return (
     <div className="flex items-center gap-2">
@@ -49,23 +60,10 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         {...props}
         value={value}
         onChange={handleChange}
-        onKeyDown={event => {
-          if (
-            event.key !== 'Backspace' &&
-            !(
-              event.shiftKey ||
-              event.altKey ||
-              event.ctrlKey ||
-              event.metaKey
-            ) &&
-            !/[0-9]/i.test(event.key)
-          ) {
-            event.preventDefault()
-          }
-        }}
+        onKeyDown={handleKeyDown}
         type="text"
         role="spinbutton"
-        className="border border-surface-c p-2 w-12 text-center appearance-none focus:outline-primary"
+        className="border border-surface-c p-1 w-10 text-center appearance-none focus:outline-primary"
       />
 
       <Button

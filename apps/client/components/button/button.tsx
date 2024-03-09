@@ -40,7 +40,7 @@ const button = tv({
   ],
   variants: {
     variant: {
-      primary: 'bg-primary',
+      primary: 'bg-primary hover:bg-primary-hover',
       secondary: 'bg-secondary',
       success: 'bg-success',
       info: 'bg-info',
@@ -63,7 +63,7 @@ const button = tv({
 
 const textButton = tv({
   extend: button,
-  base: 'hover:bg-opacity-5',
+  base: 'hover:bg-opacity-5 disabled:bg-surface-b',
   variants: {
     variant: {
       primary: 'text-primary bg-transparent hover:bg-primary',

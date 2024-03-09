@@ -20,17 +20,22 @@ const config: Config = {
               'top': '0 0px 6px #e5e7eb'
             },
             colors: {
-                primary: '#ffb438',
+                primary: {
+                    DEFAULT: '#ffb438',
+                    hover: '#ffa71d',
+                },
                 secondary: '#636363',
                 success: '#0EBA5D',
                 info: '#0696FE',
                 warn: '#DBAB00',
                 danger: '#F93434',
-                'surface-a': '#f9f9f8',
-                'surface-b': '#e1e1e1',
-                'surface-c': '#D9D9D9',
-                'surface-d': '#999',
-                'surface-e': '#666',
+                surface: {
+                    a: '#f9f9f8',
+                    b: '#e1e1e1',
+                    c: '#D9D9D9',
+                    d: '#999',
+                    e: '#666',
+                },
                 foreground: '#000000'
             },
             gridTemplateColumns: {
