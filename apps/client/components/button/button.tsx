@@ -1,7 +1,6 @@
 import React from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { IconType } from 'react-icons'
-import clsx from 'clsx'
 
 type ButtonProps<T extends (...args: any) => any> = Omit<
   VariantProps<T>,
@@ -15,12 +14,11 @@ type ButtonProps<T extends (...args: any) => any> = Omit<
 
 type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
   ButtonProps<T> & {
-    styles: any
+    styles: typeof button | typeof textButton
   }
 
 const button = tv({
   base: `
-    text-xs sm:text-base
     text-surface-a
     flex
     items-center
@@ -29,15 +27,18 @@ const button = tv({
     rounded
     disabled:text-surface-d disabled:bg-surface-c
   `,
+  slots: {
+    label: 'font-bold',
+    icon: '',
+    rightItem: 'font-medium',
+  },
   compoundVariants: [
     {
       iconOnly: true,
-      className: 'p-2 sm:p-2 lg:p-2 text-xl sm:text-xl md:text-xl',
-    },
-    {
-      iconOnly: true,
-      size: 'small',
-      className: 'text-xs sm:text-sm md:text-sm',
+      size: 'regular',
+      className: {
+        base: 'p-3',
+      },
     },
   ],
   variants: {
@@ -50,8 +51,14 @@ const button = tv({
       danger: 'bg-danger hover:bg-danger-hover',
     },
     size: {
-      regular: 'p-2 p-2 sm:py-3 sm:px-5',
-      small: 'py-1 px-2',
+      regular: {
+        base: 'px-5 py-3',
+        icon: 'text-xl',
+      },
+      small: {
+        base: 'py-1 px-2',
+        icon: 'text-base',
+      },
     },
     iconOnly: {
       true: 'aspect-square rounded-full',
@@ -90,18 +97,18 @@ function ButtonBase({
 }: ButtonBaseProps) {
   const iconOnly = !label
 
+  const {
+    base,
+    icon,
+    label: labelStyles,
+    rightItem,
+  } = styles({ size, variant, className, iconOnly })
+
   return (
-    <button
-      {...props}
-      className={styles({ size, variant, className, iconOnly })}
-    >
-      {Icon && (
-        <Icon
-          className={clsx('shrink-0', { 'text-xl sm:text-2xl': !iconOnly })}
-        />
-      )}
-      {label && <span className="w-full font-bold uppercase">{label}</span>}
-      {itemRight && <span className="font-semibold">{itemRight}</span>}
+    <button {...props} className={base()}>
+      {Icon && <Icon className={icon()} />}
+      {label && <span className={labelStyles()}>{label}</span>}
+      {itemRight && <span className={rightItem()}>{itemRight}</span>}
     </button>
   )
 }
