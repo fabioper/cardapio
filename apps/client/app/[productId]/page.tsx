@@ -28,20 +28,20 @@ export default async function ProductPage({
       )}
 
       <section className="flex flex-col gap-5 container">
-        <div className="flex flex-col gap-2">
+        <header className="flex flex-col gap-2">
           <h1 className="text-2xl font-extrabold">{product.title}</h1>
-          <p className="text-[#666] text-sm leading-relaxed">
-            {product.description}
-          </p>
-        </div>
+          <p className="text-xl">{formatCurrency(product.price)}</p>
+        </header>
 
-        <div className="flex items-center justify-between">
-          <span className="text-xl">{formatCurrency(product.price)}</span>
-        </div>
+        <p className="text-[#666] text-sm leading-relaxed">
+          {product.description}
+        </p>
 
-        <div className="flex flex-col gap">
-          <label htmlFor="complement">Observação:</label>
-          <Textarea />
+        <div className="flex flex-col gap-1">
+          <label htmlFor="complement" className="text-sm">
+            Observação:
+          </label>
+          <Textarea id="complement" />
         </div>
 
         <div className="flex items-center justify-between gap-5">
