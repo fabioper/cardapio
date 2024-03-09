@@ -17,12 +17,17 @@ type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
   }
 
 const button = tv({
-  base: 'text-base flex items-center whitespace-nowrap gap-2 rounded text-foreground disabled:text-surface-d disabled:bg-surface-c',
+  base: `
+    text-xs sm:text-sm
+    flex
+    items-center
+    whitespace-nowrap
+    gap-2
+    rounded
+    text-foreground
+    disabled:text-surface-d disabled:bg-surface-c
+  `,
   compoundVariants: [
-    {
-      iconOnly: false,
-      className: 'text-sm',
-    },
     {
       iconOnly: true,
       className: 'p-2',
@@ -32,23 +37,18 @@ const button = tv({
       size: 'regular',
       className: 'text-xl',
     },
-    {
-      iconOnly: true,
-      size: 'small',
-      className: 'text-sm',
-    },
   ],
   variants: {
     variant: {
       primary: 'bg-primary hover:bg-primary-hover',
-      secondary: 'bg-secondary',
-      success: 'bg-success',
-      info: 'bg-info',
-      warn: 'bg-warn',
-      danger: 'bg-danger',
+      secondary: 'bg-secondary hover:bg-secondary-hover',
+      success: 'bg-success hover:bg-success-hover',
+      info: 'bg-info hover:bg-info-hover',
+      warn: 'bg-warn hover:bg-warn-hover',
+      danger: 'bg-danger hover:bg-danger-hover',
     },
     size: {
-      regular: 'py-3 px-5',
+      regular: 'py-2 px-2 sm:py-3 sm:px-5',
       small: 'py-1 px-2',
     },
     iconOnly: {

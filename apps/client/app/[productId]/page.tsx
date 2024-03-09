@@ -44,7 +44,7 @@ export default async function ProductPage({
           <Textarea id="complement" />
         </div>
 
-        <div className="flex items-center justify-between gap-5">
+        <div className="flex items-center justify-between gap-2 sm:gap-5">
           <Counter defaultValue={1} />
           <Button
             label="Adicionar ao pedido"

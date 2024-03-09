@@ -24,11 +24,26 @@ const config: Config = {
                     DEFAULT: '#ffb438',
                     hover: '#ffa71d',
                 },
-                secondary: '#636363',
-                success: '#0EBA5D',
-                info: '#0696FE',
-                warn: '#DBAB00',
-                danger: '#F93434',
+                secondary: {
+                    DEFAULT: '#636363',
+                    hover: '#636363'
+                },
+                success: {
+                    DEFAULT: '#0EBA5D',
+                    hover: '#0EBA5D',
+                },
+                info: {
+                    DEFAULT: '#0696FE',
+                    hover: '#0696FE'
+                },
+                warn: {
+                    DEFAULT: '#DBAB00',
+                    hover: '#DBAB00'
+                },
+                danger: {
+                    DEFAULT: '#F93434',
+                    hover: '#F93434'
+                },
                 surface: {
                     a: '#f9f9f8',
                     b: '#e1e1e1',
