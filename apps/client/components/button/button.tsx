@@ -95,13 +95,9 @@ function ButtonBase({
       {...props}
       className={styles({ size, variant, className, iconOnly })}
     >
-      {Icon && (
-        <Icon
-          className={clsx('shrink-0', { 'text-xl sm:text-2xl': !iconOnly })}
-        />
-      )}
+      {Icon && <Icon className={clsx('shrink-0', { 'text-2xl': !iconOnly })} />}
       {label && <span className="w-full font-bold uppercase">{label}</span>}
-      {itemRight && <span className="font-medium sm:text-sm">{itemRight}</span>}
+      {itemRight && <span className="font-semibold">{itemRight}</span>}
     </button>
   )
 }
