@@ -48,7 +48,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
   }, [])
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
       <Button.Text
         data-testid="decreaseButton"
         onClick={decrease}
@@ -64,7 +64,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         type="text"
         role="spinbutton"
         inputMode="numeric"
-        className="p-1 w-8 text-center"
+        className="p-1 w-7 sm:w-8 text-center"
       />
 
       <Button.Text

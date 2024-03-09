@@ -38,7 +38,7 @@ export default async function ProductPage({
           {product.description}
         </p>
 
-        <ProductForm />
+        <ProductForm price={product.price} />
       </section>
     </main>
   )

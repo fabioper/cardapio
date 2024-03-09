@@ -1,6 +1,7 @@
 import React from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { IconType } from 'react-icons'
+import clsx from 'clsx'
 
 type ButtonProps<T extends (...args: any) => any> = Omit<
   VariantProps<T>,
@@ -9,6 +10,7 @@ type ButtonProps<T extends (...args: any) => any> = Omit<
   icon?: IconType
   label?: string
   type?: 'submit' | 'reset' | 'button' | undefined
+  itemRight?: React.ReactNode
 } & Omit<React.HTMLProps<HTMLButtonElement>, 'size' | 'type' | 'children'>
 
 type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
@@ -30,7 +32,7 @@ const button = tv({
   compoundVariants: [
     {
       iconOnly: true,
-      className: 'p-2 sm:p-2 lg:p-2 text-xl sm:text-xl md:text-xl',
+      className: 'p-1 sm:p-2 lg:p-2 text-xl sm:text-xl md:text-xl',
     },
     {
       iconOnly: true,
@@ -82,16 +84,24 @@ function ButtonBase({
   size,
   className,
   styles,
-  icon: ItemLeft,
+  icon: Icon,
+  itemRight,
   ...props
 }: ButtonBaseProps) {
+  const iconOnly = !label
+
   return (
     <button
       {...props}
-      className={styles({ size, variant, className, iconOnly: !label })}
+      className={styles({ size, variant, className, iconOnly })}
     >
-      {ItemLeft && <ItemLeft className={label && 'text-2xl'} />}
+      {Icon && (
+        <Icon
+          className={clsx('shrink-0', { 'text-xl sm:text-2xl': !iconOnly })}
+        />
+      )}
       {label && <span className="w-full font-bold uppercase">{label}</span>}
+      {itemRight && <span className="font-medium sm:text-sm">{itemRight}</span>}
     </button>
   )
 }

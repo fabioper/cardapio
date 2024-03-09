@@ -7,22 +7,28 @@ import { TbShoppingBagPlus } from 'react-icons/tb'
 import React, { useState } from 'react'
 import ActionBar from '@/components/action-bar'
 import { useMediaQuery } from 'usehooks-ts'
+import { formatCurrency } from '@/utils/formatter'
 
-export default function ProductForm() {
-  const [quantity, setQuantity] = useState<number | undefined>(1)
+interface ProductFormProps {
+  price: number
+}
+
+export default function ProductForm({ price }: ProductFormProps) {
+  const [quantity, setQuantity] = useState<number>(1)
   const isSmallScreen = useMediaQuery('(max-width: 500px)')
 
   const buttons = (
     <div className="flex items-center justify-between gap-2 sm:gap-5 lg:justify-end">
       <Counter
         value={quantity}
-        onChange={value => setQuantity(value)}
+        onChange={value => setQuantity(value || 1)}
         min={1}
       />
       <Button
         label="Adicionar"
         className="grow lg:grow-0"
         icon={TbShoppingBagPlus}
+        itemRight={'+ ' + formatCurrency(price * quantity)}
       />
     </div>
   )
