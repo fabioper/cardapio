@@ -12,7 +12,7 @@ function Header() {
       <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center gap-1">
           <PiHamburgerDuotone className="text-2xl text-primary" />
-          <span className="text-xs font-bold">Cardápio</span>
+          <span className="text-sm font-bold">Cardápio</span>
         </Link>
 
         <div className="flex items-center gap-2 text-2xl">
