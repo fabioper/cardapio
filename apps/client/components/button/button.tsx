@@ -63,7 +63,7 @@ const button = tv({
 
 const textButton = tv({
   extend: button,
-  base: 'hover:bg-opacity-5 disabled:bg-transparent',
+  base: 'hover:bg-opacity-5 disabled:bg-transparent active:scale-110',
   variants: {
     variant: {
       primary: 'text-primary bg-transparent hover:bg-primary',
@@ -72,20 +72,6 @@ const textButton = tv({
       info: 'text-info bg-transparent hover:bg-info',
       warn: 'text-warn bg-transparent hover:bg-warn',
       danger: 'text-danger bg-transparent hover:bg-danger',
-    },
-  },
-})
-
-const outlinedButton = tv({
-  extend: button,
-  variants: {
-    variant: {
-      primary: 'text-primary bg-transparent border border-primary',
-      secondary: 'text-foreground bg-transparent border border-secondary',
-      success: 'text-success bg-transparent border border-success',
-      info: 'text-info bg-transparent border border-info',
-      warn: 'text-warn bg-transparent border border-warn',
-      danger: 'text-danger bg-transparent border border-danger',
     },
   },
 })
@@ -118,11 +104,6 @@ function ButtonText(props: ButtonProps<typeof textButton>) {
   return <ButtonBase {...props} styles={textButton} />
 }
 
-function ButtonOutlined(props: ButtonProps<typeof outlinedButton>) {
-  return <ButtonBase {...props} styles={outlinedButton} />
-}
-
 Button.Text = ButtonText
-Button.Outlined = ButtonOutlined
 
 export default Button

@@ -64,17 +64,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         type="text"
         role="spinbutton"
         inputMode="numeric"
-        className={`
-          bg-surface-c
-          rounded
-          focus:outline-2
-          focus:outline
-          focus:outline-primary
-          p-1
-          w-8
-          text-center
-          disabled:bg-surface-b disabled:text-surface-e
-        `}
+        className="p-1 w-8 text-center"
       />
 
       <Button.Text
