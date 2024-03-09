@@ -1,8 +1,8 @@
 import { findProductById } from '@/services/products.service'
 import { notFound } from 'next/navigation'
-import { formatCurrency } from '@/utils/formatter'
 import React from 'react'
 import ProductForm from '@/app/[productId]/product-form'
+import { formatCurrency } from '@/utils/formatter'
 
 export default async function ProductPage({
   params,
@@ -26,7 +26,7 @@ export default async function ProductPage({
 
       <section className="flex flex-col gap-5 container">
         <header className="flex flex-col gap-2">
-          <h1 className="text-2xl lg:text-4xl font-extrabold">
+          <h1 className="text-2xl lg:text-4xl font-extrabold leading-snug">
             {product.title}
           </h1>
           <p className="text-xl text-primary font-bold">

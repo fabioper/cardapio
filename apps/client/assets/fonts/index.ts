@@ -1,4 +1,4 @@
-import { Poppins as FontFamily } from 'next/font/google'
+import { Outfit as FontFamily } from 'next/font/google'
 
 export const sans = FontFamily({
   variable: '--font-sans',
