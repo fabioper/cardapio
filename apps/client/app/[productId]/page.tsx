@@ -5,6 +5,7 @@ import { formatCurrency } from '@/utils/formatter'
 import { TbShoppingBagPlus } from 'react-icons/tb'
 import React from 'react'
 import Textarea from '@/components/textarea/textarea'
+import Counter from '@/components/counter'
 
 export default async function ProductPage({
   params,
@@ -34,7 +35,9 @@ export default async function ProductPage({
           </p>
         </div>
 
-        <span className="text-xl">{formatCurrency(product.price)}</span>
+        <div className="flex items-center justify-between">
+          <span className="text-xl">{formatCurrency(product.price)}</span>
+        </div>
 
         <form className="w-full">
           <div className="flex flex-col gap">
@@ -43,11 +46,14 @@ export default async function ProductPage({
           </div>
         </form>
 
-        <Button
-          label="Adicionar ao pedido"
-          className="w-full"
-          icon={TbShoppingBagPlus}
-        />
+        <div className="flex items-center justify-between gap-5">
+          <Counter defaultValue={4} />
+          <Button
+            label="Adicionar ao pedido"
+            className="w-full"
+            icon={TbShoppingBagPlus}
+          />
+        </div>
       </section>
     </main>
   )

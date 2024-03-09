@@ -7,9 +7,9 @@ type ButtonProps<T extends (...args: any) => any> = Omit<
   'iconOnly'
 > & {
   icon?: IconType
-  className?: string
   label?: string
-}
+  type?: 'submit' | 'reset' | 'button' | undefined
+} & Omit<React.HTMLProps<HTMLButtonElement>, 'size' | 'type' | 'children'>
 
 type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
   ButtonProps<T> & {
@@ -35,7 +35,7 @@ const button = tv({
     {
       iconOnly: true,
       size: 'small',
-      className: 'text-base',
+      className: 'text-sm',
     },
   ],
   variants: {
@@ -97,10 +97,14 @@ function ButtonBase({
   className,
   styles,
   icon: ItemLeft,
+  ...props
 }: ButtonBaseProps) {
   return (
-    <button className={styles({ size, variant, className, iconOnly: !label })}>
-      {ItemLeft && <ItemLeft className="text-2xl" />}
+    <button
+      {...props}
+      className={styles({ size, variant, className, iconOnly: !label })}
+    >
+      {ItemLeft && <ItemLeft className={label && 'text-2xl'} />}
       {label && <span className="w-full font-black uppercase">{label}</span>}
     </button>
   )
