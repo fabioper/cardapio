@@ -11,7 +11,7 @@ export default async function Home() {
         Produtos
       </h2>
 
-      <section className="container divide-y md:divide-none flex flex-col md:grid md:grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] md:gap-4">
+      <section className="container divide-surface-b divide-y md:divide-none flex flex-col md:grid md:grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] md:gap-4">
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}

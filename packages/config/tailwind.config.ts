@@ -21,7 +21,7 @@ const config: Config = {
             },
             colors: {
                 primary: {
-                    DEFAULT: '#ffb438',
+                    DEFAULT: '#FCBA28',
                     hover: '#ffa71d',
                 },
                 secondary: {
@@ -45,13 +45,13 @@ const config: Config = {
                     hover: '#F93434'
                 },
                 surface: {
-                    a: '#f9f9f8',
-                    b: '#e1e1e1',
-                    c: '#D9D9D9',
-                    d: '#999',
-                    e: '#666',
+                    a: '#0F0D0E',
+                    b: '#1e1a1c',
+                    c: '#231F20',
+                    d: '#524e49',
+                    e: '#6b6560',
                 },
-                foreground: '#000000'
+                foreground: '#F9F4DA'
             },
             gridTemplateColumns: {
                 auto: 'repeat(auto-fit, minmax(100px, 1fr))'

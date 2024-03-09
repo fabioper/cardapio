@@ -3,15 +3,16 @@
 import React from 'react'
 import Link from 'next/link'
 import Button from '@/components/button'
-import { CgMenuHotdog } from 'react-icons/cg'
 import { TbSearch, TbShoppingBag } from 'react-icons/tb'
+import { PiHamburgerDuotone } from 'react-icons/pi'
 
 function Header() {
   return (
     <header className="py-3 border-b border-surface-b">
       <div className="container flex items-center justify-between">
-        <Link href="/" className="font-bold flex items-end gap-1">
-          <CgMenuHotdog className="text-4xl" />
+        <Link href="/" className="flex items-center gap-1">
+          <PiHamburgerDuotone className="text-2xl text-primary" />
+          <span className="text-xs font-bold">Cardápio</span>
         </Link>
 
         <div className="flex items-center gap-2 text-2xl">

@@ -19,12 +19,12 @@ export default function ProductForm() {
       </div>
 
       <div className="flex items-center justify-between gap-2 sm:gap-5">
-        <Counter value={quantity} onChange={value => setQuantity(value)} />
-        <Button
-          label="Adicionar ao pedido"
-          className="w-full"
-          icon={TbShoppingBagPlus}
+        <Counter
+          value={quantity}
+          onChange={value => setQuantity(value)}
+          min={1}
         />
+        <Button label="Adicionar" className="grow" icon={TbShoppingBagPlus} />
       </div>
     </React.Fragment>
   )

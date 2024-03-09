@@ -20,7 +20,7 @@ export default async function ProductPage({
         <img
           src={product.image.url}
           alt={product.image.alt}
-          className="w-full max-h-96 object-cover shadow-lg lg:rounded-2xl"
+          className="w-full max-h-96 object-cover shadow-lg lg:rounded-xl"
         />
       )}
 
@@ -29,10 +29,12 @@ export default async function ProductPage({
           <h1 className="text-2xl lg:text-4xl font-extrabold">
             {product.title}
           </h1>
-          <p className="text-xl">{formatCurrency(product.price)}</p>
+          <p className="text-xl text-primary font-bold">
+            {formatCurrency(product.price)}
+          </p>
         </header>
 
-        <p className="text-[#666] text-sm leading-relaxed">
+        <p className="text-foreground opacity-75 text-sm leading-relaxed">
           {product.description}
         </p>
 

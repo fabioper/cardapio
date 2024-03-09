@@ -39,6 +39,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (
       event.key !== 'Backspace' &&
+      event.key !== 'Tab' &&
       !(event.shiftKey || event.altKey || event.ctrlKey || event.metaKey) &&
       !/[0-9]/i.test(event.key)
     ) {
@@ -48,12 +49,11 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
 
   return (
     <div className="flex items-center gap-2">
-      <Button
+      <Button.Text
         data-testid="decreaseButton"
         onClick={decrease}
         disabled={!value || reachedMinimum}
         icon={FiMinus}
-        size="small"
       />
 
       <input
@@ -65,18 +65,23 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         role="spinbutton"
         inputMode="numeric"
         className={`
-          border border-surface-c rounded p-1 w-10
-          text-center appearance-none focus:outline-primary
+          bg-surface-c
+          rounded
+          focus:outline-2
+          focus:outline
+          focus:outline-primary
+          p-1
+          w-8
+          text-center
           disabled:bg-surface-b disabled:text-surface-e
         `}
       />
 
-      <Button
+      <Button.Text
         data-testid="increaseButton"
         onClick={increase}
         disabled={reachedMaximum}
         icon={FiPlus}
-        size="small"
       />
     </div>
   )

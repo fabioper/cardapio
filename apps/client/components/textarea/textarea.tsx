@@ -8,7 +8,14 @@ export default function Textarea(props: TextareaProps) {
     <textarea
       {...props}
       className={clsx(
-        'bg-white border border-surface rounded p-2 focus:outline-2 focus:outline-primary',
+        `
+          bg-surface-c
+          rounded
+          p-2
+          focus:outline-2
+          focus:outline
+          focus:outline-primary
+        `,
         props.className,
       )}
     />

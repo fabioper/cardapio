@@ -19,12 +19,12 @@ type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
 const button = tv({
   base: `
     text-xs sm:text-sm md:text-base
+    text-surface-a
     flex
     items-center
     whitespace-nowrap
     gap-2
     rounded
-    text-foreground
     disabled:text-surface-d disabled:bg-surface-c
   `,
   compoundVariants: [
@@ -63,11 +63,11 @@ const button = tv({
 
 const textButton = tv({
   extend: button,
-  base: 'hover:bg-opacity-5 disabled:bg-surface-b',
+  base: 'hover:bg-opacity-5 disabled:bg-transparent',
   variants: {
     variant: {
       primary: 'text-primary bg-transparent hover:bg-primary',
-      secondary: 'text-black bg-transparent hover:bg-secondary',
+      secondary: 'text-foreground bg-transparent hover:bg-secondary',
       success: 'text-success bg-transparent hover:bg-success',
       info: 'text-info bg-transparent hover:bg-info',
       warn: 'text-warn bg-transparent hover:bg-warn',
@@ -105,7 +105,7 @@ function ButtonBase({
       className={styles({ size, variant, className, iconOnly: !label })}
     >
       {ItemLeft && <ItemLeft className={label && 'text-2xl'} />}
-      {label && <span className="w-full font-black uppercase">{label}</span>}
+      {label && <span className="w-full font-bold uppercase">{label}</span>}
     </button>
   )
 }
