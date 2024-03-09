@@ -13,7 +13,7 @@ export default function ProductForm() {
   const isSmallScreen = useMediaQuery('(max-width: 500px)')
 
   const buttons = (
-    <div className="container flex items-center justify-between gap-2 sm:gap-5">
+    <div className="flex items-center justify-between gap-2 sm:gap-5">
       <Counter
         value={quantity}
         onChange={value => setQuantity(value)}
@@ -32,7 +32,13 @@ export default function ProductForm() {
         <Textarea id="complement" />
       </div>
 
-      {isSmallScreen ? <ActionBar>{buttons}</ActionBar> : buttons}
+      {isSmallScreen ? (
+        <ActionBar>
+          <div className="container">{buttons}</div>
+        </ActionBar>
+      ) : (
+        buttons
+      )}
     </React.Fragment>
   )
 }
