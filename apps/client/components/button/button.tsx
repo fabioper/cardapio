@@ -18,7 +18,7 @@ type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
 
 const button = tv({
   base: `
-    text-xs sm:text-sm
+    text-xs sm:text-sm md:text-base
     flex
     items-center
     whitespace-nowrap
@@ -30,12 +30,7 @@ const button = tv({
   compoundVariants: [
     {
       iconOnly: true,
-      className: 'p-2',
-    },
-    {
-      iconOnly: true,
-      size: 'regular',
-      className: 'text-xl',
+      className: 'p-2 sm:p-2 lg:p-2 text-xl sm:text-xl md:text-xl',
     },
   ],
   variants: {
@@ -48,7 +43,7 @@ const button = tv({
       danger: 'bg-danger hover:bg-danger-hover',
     },
     size: {
-      regular: 'py-2 px-2 sm:py-3 sm:px-5',
+      regular: 'p-2 p-2 sm:py-3 sm:px-5',
       small: 'py-1 px-2',
     },
     iconOnly: {
