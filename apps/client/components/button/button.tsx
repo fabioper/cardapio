@@ -73,6 +73,13 @@ const button = tv({
 const textButton = tv({
   extend: button,
   base: 'hover:bg-opacity-5 disabled:bg-transparent active:scale-110',
+  compoundVariants: [
+    {
+      iconOnly: true,
+      size: 'small',
+      className: 'p-0 hover:bg-transparent',
+    },
+  ],
   variants: {
     variant: {
       primary: 'text-primary bg-transparent hover:bg-primary',

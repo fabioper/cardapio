@@ -1,6 +1,8 @@
 import Title from '@/components/title'
 import { Item } from '@/stores/cart'
 import CartItem from '@/components/cart-item'
+import Button from '@/components/button'
+import { TbPlus } from 'react-icons/tb'
 
 const items: Item[] = [
   {
@@ -59,10 +61,19 @@ export default function CartPage() {
       <div className="container">
         <Title>Pedido</Title>
 
-        <div className="flex flex-col divide-y divide-surface-b">
-          {items.map(item => (
-            <CartItem key={item.id} cartItem={item} />
-          ))}
+        <div className="flex flex-col gap-5 items-center w-full max-w-2xl">
+          <div className="flex flex-col divide-y divide-surface-b w-full">
+            {items.map(item => (
+              <CartItem key={item.id} cartItem={item} />
+            ))}
+          </div>
+
+          <Button.Text
+            icon={TbPlus}
+            label="Adicionar mais itens"
+            variant="info"
+            size="small"
+          />
         </div>
       </div>
     </main>

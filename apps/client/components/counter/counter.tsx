@@ -3,17 +3,24 @@
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import Button from '@/components/button'
 import { FiMinus, FiPlus } from 'react-icons/fi'
+import clsx from 'clsx'
 
 interface CounterProps
   extends Omit<
     React.HTMLProps<HTMLInputElement>,
-    'type' | 'onChange' | 'value'
+    'type' | 'onChange' | 'value' | 'size'
   > {
   value?: number
   onChange?: (value?: number) => void
+  size?: React.ComponentProps<typeof Button>['size']
 }
 
-export default function Counter({ value, onChange, ...props }: CounterProps) {
+export default function Counter({
+  value,
+  onChange,
+  size = 'regular',
+  ...props
+}: CounterProps) {
   const reachedMinimum = props.min !== undefined && value === props.min
   const reachedMaximum = props.max !== undefined && value === props.max
 
@@ -48,13 +55,18 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
   }, [])
 
   return (
-    <div className="flex items-center gap-1">
+    <div
+      className={clsx('flex items-center gap-1', {
+        'gap-2': size === 'small',
+      })}
+    >
       <Button.Text
         data-testid="decreaseButton"
         onClick={decrease}
         disabled={!value || reachedMinimum}
         icon={FiMinus}
         className="text-lg"
+        size={size}
       />
 
       <input
@@ -74,6 +86,7 @@ export default function Counter({ value, onChange, ...props }: CounterProps) {
         disabled={reachedMaximum}
         icon={FiPlus}
         className="text-lg"
+        size={size}
       />
     </div>
   )
