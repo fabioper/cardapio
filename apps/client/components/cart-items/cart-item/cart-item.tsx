@@ -20,12 +20,16 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
       )}
 
       <div className="grow flex flex-col gap-5">
-        <div className="flex flex-col">
-          <h3 className="flex items-center gap-2 font-semibold leading-snug">
-            {cartItem.product.title}{' '}
-          </h3>
+        <div className="flex items-start justify-between">
+          <div className="flex flex-col">
+            <h3 className="flex items-center gap-2 font-semibold leading-snug">
+              {cartItem.product.title}{' '}
+            </h3>
 
-          <p className="">{formatCurrency(cartItem.product.price)}</p>
+            <p className="">{formatCurrency(cartItem.product.price)}</p>
+          </div>
+
+          <Counter value={cartItem.quantity} size="small" />
         </div>
 
         {cartItem.complement && (
@@ -37,8 +41,6 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
           </div>
         )}
       </div>
-
-      <Counter value={cartItem.quantity} size="small" />
     </div>
   )
 }

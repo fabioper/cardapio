@@ -1,7 +1,6 @@
 'use client'
 
 import { Item } from '@/stores/cart'
-import CartItem from '@/components/cart-item'
 import Link from 'next/link'
 import Button from '@/components/button'
 import { TbPlus, TbShoppingBagCheck } from 'react-icons/tb'
@@ -10,6 +9,7 @@ import { formatCurrency } from '@/utils/formatter'
 import React from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import clsx from 'clsx'
+import CartItem from '@/components/cart-items/cart-item'
 
 interface CartItemsProps {
   items: Item[]
@@ -30,6 +30,7 @@ export default function CartItems({ items }: CartItemsProps) {
       itemRight={formatCurrency(total)}
     />
   )
+
   return (
     <React.Fragment>
       <div className="flex flex-col gap-5 items-center w-full max-w-2xl">
