@@ -2,6 +2,7 @@ import { Product } from '@/services/products.service'
 import { formatCurrency } from '@/utils/formatter'
 import React from 'react'
 import Link from 'next/link'
+import Badge from '@/components/badge'
 
 interface ProductCardProps {
   product: Product
@@ -12,7 +13,10 @@ export default function ProductCard({ product }: ProductCardProps) {
     <Link href={`/${product.id}`}>
       <div className="flex items-start h-full justify-end gap-2 py-3 md:flex-col-reverse md:gap-5 md:bg-surface-b md:rounded-lg md:p-5 md:shadow-lg">
         <div className="flex flex-col w-full gap-2 items-start md:items-center md:text-center">
-          <h3 className="leading-snug font-semibold">{product.title}</h3>
+          <div className="flex items-center gap-3">
+            <h3 className="leading-snug font-semibold">{product.title}</h3>
+            {product.combo && <Badge label="Combo" variant="info" />}
+          </div>
           <p className="text-sm text-foreground opacity-75">
             {product.description}
           </p>

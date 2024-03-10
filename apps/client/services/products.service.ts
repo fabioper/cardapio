@@ -4,6 +4,7 @@ export interface Product {
   description: string
   price: number
   image?: { url: string; alt: string }
+  combo?: boolean
 }
 
 const products: Product[] = [
@@ -72,7 +73,8 @@ const products: Product[] = [
   },
   {
     id: 7,
-    title: 'Freed krueger (combo)\n',
+    title: 'Freed krueger',
+    combo: true,
     description:
       'Pão da Casa (Tipo Brioche) Tostado na Chapa, 170g de blend de carne bovina, queijo prato, bacon Fatiado, cebola ao shoyo e por fim uma maionese temperada da casa+ Acompanhamento+ Bebida de sua preferencia.',
     price: 52.99,
@@ -83,7 +85,8 @@ const products: Product[] = [
   },
   {
     id: 8,
-    title: 'Ragnar ( Combo)',
+    title: 'Ragnar',
+    combo: true,
     description:
       'Pão da casa tipo brioche, 110g de blend Bovino, cheddar cremoso, bacon em cubos. + Acompanhamento + Bebida.',
     price: 46.99,
@@ -94,7 +97,8 @@ const products: Product[] = [
   },
   {
     id: 9,
-    title: 'Jack sparrow (combo)\n',
+    title: 'Jack Sparrow',
+    combo: true,
     description:
       'Pão Brioche da casa tostado na chapa, 180g de Costela Bovina, queijo prato, 3 Anéis de Cebola empanada, maionese e molho barbecue. + Acompanhamento + Bebida da sua preferencia.',
     price: 52.9,

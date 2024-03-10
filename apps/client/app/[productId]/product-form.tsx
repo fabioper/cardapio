@@ -18,7 +18,7 @@ export default function ProductForm({ price }: ProductFormProps) {
   const isSmallScreen = useMediaQuery('(max-width: 500px)')
 
   const buttons = (
-    <div className="flex items-center justify-between gap-2 sm:gap-5 lg:justify-end">
+    <div className="flex items-center justify-between gap-2 sm:gap-5">
       <Counter
         value={quantity}
         onChange={value => setQuantity(value || 1)}
