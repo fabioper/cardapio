@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { Product } from '@/services/products.service'
 
-interface CartItem {
+export interface Item {
   id: string
   quantity: number
   product: Product
@@ -9,10 +9,10 @@ interface CartItem {
 }
 
 interface CartState {
-  items: CartItem[]
-  addItem: (item: CartItem) => void
-  removeItem: (item: CartItem) => void
-  updateItem: (item: CartItem) => void
+  items: Item[]
+  addItem: (item: Item) => void
+  removeItem: (item: Item) => void
+  updateItem: (item: Item) => void
 }
 
 const useCart = create<CartState>(set => ({
