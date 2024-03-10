@@ -28,7 +28,7 @@ const button = tv({
     disabled:text-surface-d disabled:bg-surface-c
   `,
   slots: {
-    label: 'font-bold',
+    label: 'font-bold grow',
     icon: '',
     rightItem: 'font-medium',
   },
@@ -112,7 +112,7 @@ function ButtonBase({
   } = styles({ size, variant, className, iconOnly })
 
   return (
-    <button {...props} className={base()}>
+    <button {...props} className={base({ className })}>
       {Icon && <Icon className={icon()} />}
       {label && <span className={labelStyles()}>{label}</span>}
       {itemRight && <span className={rightItem()}>{itemRight}</span>}

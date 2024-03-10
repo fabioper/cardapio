@@ -2,7 +2,10 @@ import Title from '@/components/title'
 import { Item } from '@/stores/cart'
 import CartItem from '@/components/cart-item'
 import Button from '@/components/button'
-import { TbPlus } from 'react-icons/tb'
+import { TbPlus, TbShoppingBagCheck } from 'react-icons/tb'
+import ActionBar from '@/components/action-bar'
+import { formatCurrency } from '@/utils/formatter'
+import Link from 'next/link'
 
 const items: Item[] = [
   {
@@ -56,6 +59,10 @@ const items: Item[] = [
 ]
 
 export default function CartPage() {
+  const total = items.reduce((a, b) => {
+    return a + b.product.price * b.quantity
+  }, 0)
+
   return (
     <main className="py-5 lg:py-10">
       <div className="container">
@@ -68,14 +75,27 @@ export default function CartPage() {
             ))}
           </div>
 
-          <Button.Text
-            icon={TbPlus}
-            label="Adicionar mais itens"
-            variant="info"
-            size="small"
-          />
+          <Link href="/">
+            <Button.Text
+              icon={TbPlus}
+              label="Adicionar mais itens"
+              variant="info"
+              size="small"
+            />
+          </Link>
         </div>
       </div>
+
+      <ActionBar>
+        <div className="container">
+          <Button
+            label="Finalizar pedido"
+            icon={TbShoppingBagCheck}
+            className="w-full"
+            itemRight={formatCurrency(total)}
+          />
+        </div>
+      </ActionBar>
     </main>
   )
 }

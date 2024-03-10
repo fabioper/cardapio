@@ -23,7 +23,6 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
         <div className="flex flex-col">
           <h3 className="flex items-center gap-2 font-semibold leading-snug">
             {cartItem.product.title}{' '}
-            {/*<Button.Text icon={TbEdit} size="small" variant="info" />*/}
           </h3>
 
           <p className="">{formatCurrency(cartItem.product.price)}</p>
