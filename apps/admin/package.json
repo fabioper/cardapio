@@ -11,9 +11,6 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@cardapio/admin": "file:",
-    "@cardapio/client": "file:../client",
-    "@cardapio/orders": "file:../orders",
     "lodash": "^4.17.21",
     "next": "14.1.0",
     "react": "^18",
