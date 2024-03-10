@@ -1,16 +1,23 @@
 import { findProductById } from '@/services/products.service'
 import { notFound } from 'next/navigation'
 import React from 'react'
-import ProductForm from '@/app/[productId]/product-form'
 import { formatCurrency } from '@/utils/formatter'
 import Badge from '@/components/badge'
 import Title from '@/components/title'
+import ProductForm from '@/components/product-form'
+import { Metadata } from 'next'
+import { PropsWithParams } from '@/utils/types'
 
-export default async function ProductPage({
+type Params = { productId: string }
+
+export async function generateMetadata({
   params,
-}: {
-  params: { productId: string }
-}) {
+}: PropsWithParams<Params>): Promise<Metadata> {
+  const product = await findProductById(Number(params.productId))
+  return { title: product?.title }
+}
+
+export default async function ProductPage({ params }: PropsWithParams<Params>) {
   const product = await findProductById(Number(params.productId))
 
   if (!product) return notFound()

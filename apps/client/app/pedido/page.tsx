@@ -1,6 +1,7 @@
 import Title from '@/components/title'
 import { Item } from '@/stores/cart'
-import CartItems from '@/app/pedido/cart-items'
+import CartItems from '@/components/cart-items'
+import { Metadata } from 'next'
 
 const items: Item[] = [
   {
@@ -52,6 +53,8 @@ const items: Item[] = [
     quantity: 1,
   },
 ]
+
+export const metadata: Metadata = { title: 'Pedido' }
 
 export default function CartPage() {
   return (
