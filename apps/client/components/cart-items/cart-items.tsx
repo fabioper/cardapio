@@ -1,9 +1,9 @@
 'use client'
 
-import { Item } from '@/stores/cart'
+import useCart from '@/stores/cart'
 import Link from 'next/link'
 import Button from '@/components/button'
-import { TbPlus, TbShoppingBagCheck } from 'react-icons/tb'
+import { TbPlus, TbShoppingBagCheck, TbShoppingBagX } from 'react-icons/tb'
 import ActionBar from '@/components/action-bar'
 import { formatCurrency } from '@/utils/formatter'
 import React from 'react'
@@ -11,16 +11,11 @@ import { useMediaQuery } from 'usehooks-ts'
 import clsx from 'clsx'
 import CartItem from '@/components/cart-items/cart-item'
 
-interface CartItemsProps {
-  items: Item[]
-}
-
-export default function CartItems({ items }: CartItemsProps) {
+export default function CartItems() {
   const isSmallScreen = useMediaQuery('(max-width: 500px)')
+  const { items } = useCart()
 
-  const total = items.reduce((a, b) => {
-    return a + b.product.price * b.quantity
-  }, 0)
+  const total = items.reduce((a, b) => a + b.product.price * b.quantity, 0)
 
   const buttons = (
     <Button
@@ -30,6 +25,16 @@ export default function CartItems({ items }: CartItemsProps) {
       itemRight={formatCurrency(total)}
     />
   )
+
+  if (items.length === 0) {
+    return (
+      <div className="p-10 w-full max-w-2xl border-2 bg-surface-b bg-opacity-5 border-dashed border-surface-b rounded flex flex-col gap-5 items-center justify-center text-surface-e">
+        <TbShoppingBagX className="text-4xl opacity-30" />
+
+        <p className="text-sm">Seu carrinho está vazio :(</p>
+      </div>
+    )
+  }
 
   return (
     <React.Fragment>
