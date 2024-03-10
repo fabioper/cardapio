@@ -10,6 +10,7 @@ const badge = tv({
   variants: {
     variant: {
       primary: 'bg-primary border-primary text-primary',
+      secondary: 'bg-secondary border-secondary text-secondary',
       success: 'bg-success border-success text-success',
       info: 'bg-info border-info text-info',
       warn: 'bg-warn border-warn text-warn',

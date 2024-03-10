@@ -15,7 +15,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="flex flex-col w-full gap-2 items-start md:items-center md:text-center">
           <div className="flex items-center gap-3">
             <h3 className="leading-snug font-semibold">{product.title}</h3>
-            {product.combo && <Badge label="Combo" variant="info" />}
+            {product.combo && <Badge label="Combo" variant="secondary" />}
           </div>
           <p className="text-sm text-foreground opacity-75">
             {product.description}

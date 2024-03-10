@@ -25,8 +25,8 @@ const config: Config = {
                     hover: '#ffa71d',
                 },
                 secondary: {
-                    DEFAULT: '#636363',
-                    hover: '#636363'
+                    DEFAULT: '#00efab',
+                    hover: '#00efab'
                 },
                 success: {
                     DEFAULT: '#0EBA5D',
