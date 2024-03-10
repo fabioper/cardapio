@@ -4,21 +4,36 @@ import Textarea from '@/components/textarea/textarea'
 import Counter from '@/components/counter'
 import Button from '@/components/button'
 import { TbShoppingBagPlus } from 'react-icons/tb'
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useCallback, useState } from 'react'
 import ActionBar from '@/components/action-bar'
 import { useMediaQuery } from 'usehooks-ts'
 import { formatCurrency } from '@/utils/formatter'
 import { Product } from '@/services/products.service'
+import useCart from '@/stores/cart'
+import { uniqueId } from 'lodash'
+import { useRouter } from 'next/navigation'
 
 interface ProductFormProps {
   product: Product
 }
 
 export default function ProductForm({ product }: ProductFormProps) {
+  const { addItem } = useCart()
+  const router = useRouter()
   const [quantity, setQuantity] = useState<number>(1)
   const [complement, setComplement] = useState<string>('')
 
   const isSmallScreen = useMediaQuery('(max-width: 500px)')
+
+  const addItemToCart = useCallback(() => {
+    addItem({
+      id: uniqueId(),
+      quantity,
+      complement,
+      product,
+    })
+    router.push('/pedido')
+  }, [addItem, complement, product, quantity, router])
 
   const buttons = (
     <div className="flex items-center justify-between gap-2 sm:gap-5">
@@ -33,6 +48,7 @@ export default function ProductForm({ product }: ProductFormProps) {
         className="grow lg:grow-0"
         icon={TbShoppingBagPlus}
         itemRight={'+ ' + formatCurrency(product.price * quantity)}
+        onClick={addItemToCart}
       />
     </div>
   )
