@@ -7,15 +7,17 @@ export default async function Home() {
 
   return (
     <main className="py-5 lg:py-10">
-      <h2 className="text-2xl lg:text-3xl font-extrabold mb-3 lg:mb-5 container">
-        Produtos
-      </h2>
+      <div className="container">
+        <h2 className="text-2xl lg:text-3xl font-extrabold mb-3 lg:mb-5">
+          Produtos
+        </h2>
 
-      <section className="container divide-surface-b divide-y md:divide-none flex flex-col md:grid md:grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] md:gap-4">
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </section>
+        <section className="divide-surface-b divide-y md:divide-none flex flex-col md:grid md:grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] md:gap-4">
+          {products.map(product => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </section>
+      </div>
     </main>
   )
 }

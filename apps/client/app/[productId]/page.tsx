@@ -21,7 +21,7 @@ export default async function ProductPage({
         <img
           src={product.image.url}
           alt={product.image.alt}
-          className="w-full max-h-96 md:w-auto object-cover object-center shadow-lg lg:rounded-xl"
+          className="w-full max-h-96 lg:w-auto object-cover object-center shadow-lg lg:rounded-xl"
         />
       )}
 
@@ -42,7 +42,7 @@ export default async function ProductPage({
           {product.description}
         </p>
 
-        <ProductForm price={product.price} />
+        <ProductForm product={product} />
       </section>
     </main>
   )

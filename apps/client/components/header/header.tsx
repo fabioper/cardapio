@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import Link from 'next/link'
 import Button from '@/components/button'
@@ -16,8 +14,13 @@ function Header() {
         </Link>
 
         <div className="flex items-center gap-3 text-2xl">
-          <Button.Text icon={TbSearch} variant="secondary" />
-          <Button.Text icon={TbShoppingBag} variant="secondary" />
+          <Link href="/buscar">
+            <Button.Text icon={TbSearch} variant="secondary" />
+          </Link>
+
+          <Link href="/pedido">
+            <Button.Text icon={TbShoppingBag} variant="secondary" />
+          </Link>
         </div>
       </div>
     </header>

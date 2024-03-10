@@ -4,17 +4,20 @@ import Textarea from '@/components/textarea/textarea'
 import Counter from '@/components/counter'
 import Button from '@/components/button'
 import { TbShoppingBagPlus } from 'react-icons/tb'
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import ActionBar from '@/components/action-bar'
 import { useMediaQuery } from 'usehooks-ts'
 import { formatCurrency } from '@/utils/formatter'
+import { Product } from '@/services/products.service'
 
 interface ProductFormProps {
-  price: number
+  product: Product
 }
 
-export default function ProductForm({ price }: ProductFormProps) {
+export default function ProductForm({ product }: ProductFormProps) {
   const [quantity, setQuantity] = useState<number>(1)
+  const [complement, setComplement] = useState<string>('')
+
   const isSmallScreen = useMediaQuery('(max-width: 500px)')
 
   const buttons = (
@@ -24,11 +27,12 @@ export default function ProductForm({ price }: ProductFormProps) {
         onChange={value => setQuantity(value || 1)}
         min={1}
       />
+
       <Button
         label="Adicionar"
         className="grow lg:grow-0"
         icon={TbShoppingBagPlus}
-        itemRight={'+ ' + formatCurrency(price * quantity)}
+        itemRight={'+ ' + formatCurrency(product.price * quantity)}
       />
     </div>
   )
@@ -42,6 +46,10 @@ export default function ProductForm({ price }: ProductFormProps) {
         <Textarea
           id="complement"
           placeholder="Ex: tirar a cebola, maionese à parte, etc."
+          value={complement}
+          onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
+            setComplement(event.target.value)
+          }
         />
       </div>
 
