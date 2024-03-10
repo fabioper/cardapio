@@ -76,7 +76,7 @@ const textButton = tv({
   variants: {
     variant: {
       primary: 'text-primary bg-transparent hover:bg-primary',
-      secondary: 'text-foreground bg-transparent hover:bg-secondary',
+      secondary: 'text-foreground bg-transparent hover:bg-foreground',
       success: 'text-success bg-transparent hover:bg-success',
       info: 'text-info bg-transparent hover:bg-info',
       warn: 'text-warn bg-transparent hover:bg-warn',
