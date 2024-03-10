@@ -4,6 +4,7 @@ import React from 'react'
 import ProductForm from '@/app/[productId]/product-form'
 import { formatCurrency } from '@/utils/formatter'
 import Badge from '@/components/badge'
+import Title from '@/components/title'
 
 export default async function ProductPage({
   params,
@@ -28,10 +29,8 @@ export default async function ProductPage({
       <section className="flex flex-col gap-5 container">
         <header className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl lg:text-4xl font-extrabold leading-snug">
-              {product.title}
-            </h1>
-            {product.combo && <Badge label="Combo" variant="info" />}
+            <Title>{product.title}</Title>
+            {product.combo && <Badge label="Combo" variant="secondary" />}
           </div>
           <p className="text-xl text-primary font-bold">
             {formatCurrency(product.price)}
