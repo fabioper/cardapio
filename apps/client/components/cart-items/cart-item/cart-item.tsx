@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useCallback } from 'react'
 import { Item } from '@/stores/cart'
 import { formatCurrency } from '@/utils/formatter'
 import Counter from '@/components/counter'
@@ -8,6 +10,10 @@ interface CartItemProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export default function CartItem({ cartItem, ...props }: CartItemProps) {
+  const handleRemove = useCallback(() => {
+    console.log(cartItem)
+  }, [cartItem])
+
   return (
     <div {...props} className="flex items-start gap-5 py-5">
       {cartItem.product.image && (
@@ -29,7 +35,12 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
             <p className="">{formatCurrency(cartItem.product.price)}</p>
           </div>
 
-          <Counter value={cartItem.quantity} size="small" />
+          <Counter
+            value={cartItem.quantity}
+            size="small"
+            removable
+            onRemove={handleRemove}
+          />
         </div>
 
         {cartItem.complement && (

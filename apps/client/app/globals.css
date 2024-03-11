@@ -8,5 +8,5 @@ body {
 
 input,
 textarea {
-    @apply bg-surface-c rounded p-2 focus:outline-1 focus:outline focus:outline-primary placeholder-surface-e;
+    @apply bg-surface-c rounded p-2 focus:outline-1 focus:outline focus:outline-primary placeholder-surface-e hover:border hover:border-primary;
 }

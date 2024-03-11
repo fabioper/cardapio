@@ -2,16 +2,17 @@
 
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import Button from '@/components/button'
-import { FiMinus, FiPlus } from 'react-icons/fi'
+import { FiMinus, FiPlus, FiTrash2 } from 'react-icons/fi'
 import clsx from 'clsx'
 
-interface CounterProps
-  extends Omit<
-    React.HTMLProps<HTMLInputElement>,
-    'type' | 'onChange' | 'value' | 'size'
-  > {
+type CounterProps = Omit<
+  React.HTMLProps<HTMLInputElement>,
+  'type' | 'onChange' | 'value' | 'size'
+> & {
   value?: number
   onChange?: (value?: number) => void
+  onRemove?: () => void
+  removable?: boolean
   size?: React.ComponentProps<typeof Button>['size']
 }
 
@@ -19,6 +20,8 @@ export default function Counter({
   value,
   onChange,
   size = 'regular',
+  removable = false,
+  onRemove,
   ...props
 }: CounterProps) {
   const reachedMinimum = props.min !== undefined && value === props.min
@@ -60,14 +63,22 @@ export default function Counter({
         'gap-2': size === 'small',
       })}
     >
-      <Button.Text
-        data-testid="decreaseButton"
-        onClick={decrease}
-        disabled={!value || reachedMinimum}
-        icon={FiMinus}
-        className="text-lg"
-        size={size}
-      />
+      {!removable || (value !== undefined && value !== 1) ? (
+        <Button.Text
+          data-testid="decreaseButton"
+          onClick={decrease}
+          disabled={!value || reachedMinimum}
+          icon={FiMinus}
+          size={size}
+        />
+      ) : (
+        <Button.Text
+          data-testid="removeButton"
+          onClick={onRemove}
+          icon={FiTrash2}
+          size={size}
+        />
+      )}
 
       <input
         {...props}
@@ -77,7 +88,7 @@ export default function Counter({
         type="text"
         role="spinbutton"
         inputMode="numeric"
-        className="p-1 w-6 text-sm sm:w-8 text-center"
+        className="p-1 w-6 text-base sm:w-8 text-center"
       />
 
       <Button.Text
@@ -85,7 +96,6 @@ export default function Counter({
         onClick={increase}
         disabled={reachedMaximum}
         icon={FiPlus}
-        className="text-lg"
         size={size}
       />
     </div>

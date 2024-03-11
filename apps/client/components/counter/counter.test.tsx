@@ -145,4 +145,30 @@ describe('Component: Counter', () => {
 
     expect(inputNumber.value).toBe('5')
   })
+
+  it('should show remove button when value is 1 and removable is true', async () => {
+    render(<CounterWrapper value={3} removable />)
+
+    const inputNumber = screen.getByRole('spinbutton') as HTMLInputElement
+
+    const decreaseButton = screen.getByTestId('decreaseButton')
+
+    await user.click(decreaseButton)
+    await user.click(decreaseButton)
+
+    expect(inputNumber.value).toBe('1')
+    expect(screen.queryByTestId('decreaseButton')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('removeButton')).toBeInTheDocument()
+  })
+
+  it('should show remove button when value is 1 and removable is true', async () => {
+    const callback = jest.fn()
+    render(<CounterWrapper value={1} removable onRemove={callback} />)
+
+    const removeButton = screen.getByTestId('removeButton')
+
+    await user.click(removeButton)
+
+    expect(callback).toHaveBeenCalled()
+  })
 })
