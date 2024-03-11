@@ -30,10 +30,14 @@ const useCart = create<CartState>((set, get) => ({
 
     if (productAlreadyOnCart) {
       return set(state => ({
-        items: state.items.map(item => ({
-          ...newItem,
-          quantity: item.quantity + newItem.quantity,
-        })),
+        items: state.items.map(item => {
+          if (item.id !== productAlreadyOnCart.id) return item
+
+          return {
+            ...newItem,
+            quantity: item.quantity + newItem.quantity,
+          }
+        }),
       }))
     }
 
