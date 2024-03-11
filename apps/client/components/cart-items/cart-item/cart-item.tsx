@@ -4,6 +4,9 @@ import React, { useCallback } from 'react'
 import useCart, { Item } from '@/stores/cart'
 import { formatCurrency } from '@/utils/formatter'
 import Counter from '@/components/counter'
+import Button from '@/components/button'
+import { TbEdit } from 'react-icons/tb'
+import Link from 'next/link'
 
 interface CartItemProps extends React.HTMLProps<HTMLDivElement> {
   cartItem: Item
@@ -39,6 +42,10 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
           <div className="flex flex-col">
             <h3 className="flex items-center gap-2 font-semibold leading-snug">
               {cartItem.product.title}
+
+              <Link href={`/pedido/${cartItem.id}`}>
+                <Button.Text icon={TbEdit} size="small" variant="primary" />
+              </Link>
             </h3>
 
             <p className="">{formatCurrency(cartItem.product.price)}</p>
