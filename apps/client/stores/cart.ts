@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { Product } from '@/services/products.service'
+import _ from 'lodash'
 
 export interface Item {
   id: string
@@ -15,9 +16,29 @@ interface CartState {
   updateItem: (item: Item) => void
 }
 
-const useCart = create<CartState>(set => ({
+const useCart = create<CartState>((set, get) => ({
   items: [],
-  addItem: newItem => set(state => ({ items: [...state.items, newItem] })),
+  addItem: newItem => {
+    const items = get().items
+
+    const productAlreadyOnCart = items.find(item =>
+      _.isEqual(
+        _.omit(item, ['quantity', 'id']),
+        _.omit(newItem, ['quantity', 'id']),
+      ),
+    )
+
+    if (productAlreadyOnCart) {
+      return set(state => ({
+        items: state.items.map(item => ({
+          ...newItem,
+          quantity: item.quantity + newItem.quantity,
+        })),
+      }))
+    }
+
+    set(state => ({ items: [...state.items, newItem] }))
+  },
   removeItem: removedItem => {
     set(state => ({
       items: state.items.filter(({ id }) => id !== removedItem.id),
