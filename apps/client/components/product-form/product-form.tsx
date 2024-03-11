@@ -12,6 +12,7 @@ import { Product } from '@/services/products.service'
 import useCart, { Item } from '@/stores/cart'
 import { useRouter } from 'next/navigation'
 import { v4 as uuid } from 'uuid'
+import _ from 'lodash'
 
 interface ProductFormProps {
   product: Product
@@ -19,7 +20,7 @@ interface ProductFormProps {
 }
 
 export default function ProductForm({ product, cartItem }: ProductFormProps) {
-  const { addItem, updateItem } = useCart()
+  const cart = useCart()
   const router = useRouter()
   const isSmallScreen = useMediaQuery('(max-width: 500px)')
 
@@ -28,24 +29,44 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
     cartItem?.complement ?? '',
   )
 
-  const addItemToCart = useCallback(() => {
+  const saveCartItem = useCallback(() => {
     if (cartItem) {
-      updateItem({
+      return cart.updateItem({
         ...cartItem,
         quantity,
         complement,
         product,
       })
-    } else {
-      addItem({
-        id: uuid(),
-        quantity,
-        complement,
-        product,
+    }
+
+    const newItem: Item = {
+      id: uuid(),
+      quantity,
+      complement,
+      product,
+    }
+
+    const existingItem = cart.items.find(item =>
+      _.isEqual(
+        _.omit(item, ['quantity', 'id']),
+        _.omit(newItem, ['quantity', 'id']),
+      ),
+    )
+
+    if (existingItem) {
+      return cart.updateItem({
+        ...existingItem,
+        quantity: existingItem.quantity + newItem.quantity,
       })
     }
+
+    cart.addItem(newItem)
+  }, [cart, cartItem, complement, product, quantity])
+
+  const addItemToCart = useCallback(() => {
+    saveCartItem()
     router.push('/pedido')
-  }, [addItem, cartItem, complement, product, quantity, router, updateItem])
+  }, [saveCartItem, router])
 
   const buttons = (
     <div className="flex items-center justify-between gap-2 sm:gap-5">
