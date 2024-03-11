@@ -13,17 +13,17 @@ interface CartItemProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export default function CartItem({ cartItem, ...props }: CartItemProps) {
-  const { removeItem, updateItem } = useCart()
+  const { remove, update } = useCart()
 
   const handleRemove = useCallback(() => {
-    removeItem(cartItem)
-  }, [cartItem, removeItem])
+    remove(cartItem.id)
+  }, [cartItem, remove])
 
   const handleQuantityChange = useCallback(
     (quantity = 1) => {
-      updateItem({ ...cartItem, quantity })
+      update({ ...cartItem, quantity })
     },
-    [cartItem, updateItem],
+    [cartItem, update],
   )
 
   return (

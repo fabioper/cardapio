@@ -13,12 +13,12 @@ type Params = { productId: string }
 export async function generateMetadata({
   params,
 }: PropsWithParams<Params>): Promise<Metadata> {
-  const product = await findProductById(Number(params.productId))
+  const product = await findProductById(params.productId)
   return { title: product?.title }
 }
 
 export default async function ProductPage({ params }: PropsWithParams<Params>) {
-  const product = await findProductById(Number(params.productId))
+  const product = await findProductById(params.productId)
 
   if (!product) return notFound()
 

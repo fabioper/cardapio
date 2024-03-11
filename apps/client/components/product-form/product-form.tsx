@@ -29,44 +29,43 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
     cartItem?.complement ?? '',
   )
 
-  const saveCartItem = useCallback(() => {
-    if (cartItem) {
-      return cart.updateItem({
-        ...cartItem,
-        quantity,
-        complement,
-        product,
-      })
-    }
+  const itemExistOnCart = useCallback(
+    (newItem: Item) =>
+      cart.items.find(item => {
+        return _.isEqual(
+          _.omit(item, ['quantity', 'id']),
+          _.omit(newItem, ['quantity', 'id']),
+        )
+      }),
+    [cart.items],
+  )
 
-    const newItem: Item = {
-      id: uuid(),
-      quantity,
-      complement,
-      product,
-    }
-
-    const existingItem = cart.items.find(item =>
-      _.isEqual(
-        _.omit(item, ['quantity', 'id']),
-        _.omit(newItem, ['quantity', 'id']),
-      ),
-    )
-
-    if (existingItem) {
-      return cart.updateItem({
-        ...existingItem,
-        quantity: existingItem.quantity + newItem.quantity,
-      })
-    }
-
-    cart.addItem(newItem)
-  }, [cart, cartItem, complement, product, quantity])
-
-  const addItemToCart = useCallback(() => {
-    saveCartItem()
+  const updateItem = useCallback(() => {
+    if (!cartItem) return
+    const item: Item = { ...cartItem, quantity, complement, product }
+    cart.update(item)
     router.push('/pedido')
-  }, [saveCartItem, router])
+  }, [cart, cartItem, complement, product, quantity, router])
+
+  const addItem = useCallback(() => {
+    if (cartItem) return
+
+    const item: Item = { id: uuid(), quantity, complement, product }
+
+    const existing = itemExistOnCart(item)
+
+    if (existing) {
+      return cart.update({
+        ...existing,
+        quantity: existing.quantity + item.quantity,
+      })
+    }
+
+    cart.add(item)
+    router.push('/pedido')
+  }, [cart, cartItem, complement, itemExistOnCart, product, quantity, router])
+
+  const saveCartItem = cartItem ? updateItem : addItem
 
   const buttons = (
     <div className="flex items-center justify-between gap-2 sm:gap-5">
@@ -82,7 +81,7 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
           className="grow lg:grow-0"
           icon={TbShoppingBagPlus}
           itemRight={'+ ' + formatCurrency(product.price * quantity)}
-          onClick={addItemToCart}
+          onClick={saveCartItem}
         />
       ) : (
         <Button
@@ -90,7 +89,7 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
           className="grow lg:grow-0"
           icon={TbShoppingBagEdit}
           itemRight={'+ ' + formatCurrency(product.price * quantity)}
-          onClick={addItemToCart}
+          onClick={saveCartItem}
           variant="success"
         />
       )}

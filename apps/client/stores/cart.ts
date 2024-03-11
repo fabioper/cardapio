@@ -10,22 +10,22 @@ export interface Item {
 
 interface CartState {
   items: Item[]
-  addItem: (item: Item) => void
-  removeItem: (item: Item) => void
-  updateItem: (item: Item) => void
+  add: (item: Item) => void
+  remove: (itemId: string) => void
+  update: (item: Item) => void
 }
 
 const useCart = create<CartState>((set, get) => ({
   items: [],
-  addItem: newItem => {
+  add: newItem => {
     set(state => ({ items: [...state.items, newItem] }))
   },
-  removeItem: removedItem => {
+  remove: itemId => {
     set(state => ({
-      items: state.items.filter(({ id }) => id !== removedItem.id),
+      items: state.items.filter(({ id }) => id !== itemId),
     }))
   },
-  updateItem: updatedItem => {
+  update: updatedItem => {
     set(state => ({
       items: state.items.map(item =>
         item.id === updatedItem.id ? updatedItem : item,

@@ -1,5 +1,5 @@
 export interface Product {
-  id: number
+  id: string
   title: string
   description: string
   price: number
@@ -9,7 +9,7 @@ export interface Product {
 
 const products: Product[] = [
   {
-    id: 1,
+    id: '1',
     title: 'Mesh Cheese',
     description:
       'Smash 80g, queijo cheddar, molho Mesh. Não acompanha molho à parte.',
@@ -20,7 +20,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 2,
+    id: '2',
     title: 'Combo Mesh Salad Bacon',
     description: 'Mesh Salad Bacon + Batata Palito + Bebida',
     price: 43.9,
@@ -30,7 +30,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 3,
+    id: '3',
     title: 'Combo Cheddar Mesh Melt',
     description: 'Cheddar Mesh Melt + Batata palito + Bebida',
     price: 41.9,
@@ -40,7 +40,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 4,
+    id: '4',
     title: 'Nuggets',
     description: '8 unidades acompanhadas de catchup.',
     price: 11.1,
@@ -50,7 +50,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 5,
+    id: '5',
     title: 'Batata Frita Individual',
     description:
       'Temperada com sal e páprica. Devido a logística do delivery, nossa batata não é entregue 100% em temperatura e crocância (aprox. 150g).',
@@ -61,7 +61,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 6,
+    id: '6',
     title: 'Chewbacca',
     description:
       'Pão Brioche da casa tostado na chapa, 180g de blend de carne bovina, cheddar cremoso, cebola ao shoyo.+ Acompanhamento + Bebida da sua preferencia.',
@@ -72,7 +72,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 7,
+    id: '7',
     title: 'Freed krueger',
     combo: true,
     description:
@@ -84,7 +84,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 8,
+    id: '8',
     title: 'Ragnar',
     combo: true,
     description:
@@ -96,7 +96,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 9,
+    id: '9',
     title: 'Jack Sparrow',
     combo: true,
     description:
@@ -113,6 +113,6 @@ export async function getProducts() {
   return Promise.resolve(products)
 }
 
-export async function findProductById(id: number) {
+export async function findProductById(id: string) {
   return Promise.resolve(products.find(product => product.id === id))
 }

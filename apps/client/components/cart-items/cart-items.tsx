@@ -28,10 +28,10 @@ export default function CartItems() {
 
   if (items.length === 0) {
     return (
-      <div className="p-10 w-full max-w-2xl border-2 bg-surface-b bg-opacity-5 border-dashed border-surface-b rounded flex flex-col gap-5 items-center justify-center text-surface-e">
+      <div className="p-10 w-full max-w-xl border-2 border-dashed border-surface-b rounded flex flex-col gap-5 items-center justify-center text-surface-e">
         <TbShoppingBagX className="text-4xl opacity-30" />
 
-        <p className="text-sm">Seu carrinho está vazio :(</p>
+        <p className="text-sm">Sua sacola está vazia</p>
       </div>
     )
   }
