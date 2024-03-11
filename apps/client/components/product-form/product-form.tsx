@@ -43,9 +43,22 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
   const updateItem = useCallback(() => {
     if (!cartItem) return
     const item: Item = { ...cartItem, quantity, complement, product }
-    cart.update(item)
+
+    const existing = itemExistOnCart(item)
+
+    if (existing) {
+      cart.update({
+        ...item,
+        quantity: existing.quantity + item.quantity,
+      })
+
+      existing.id !== item.id && cart.remove(existing.id)
+    } else {
+      cart.update(item)
+    }
+
     router.push('/pedido')
-  }, [cart, cartItem, complement, product, quantity, router])
+  }, [cart, cartItem, complement, itemExistOnCart, product, quantity, router])
 
   const addItem = useCallback(() => {
     if (cartItem) return
@@ -55,13 +68,13 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
     const existing = itemExistOnCart(item)
 
     if (existing) {
-      return cart.update({
+      cart.update({
         ...existing,
         quantity: existing.quantity + item.quantity,
       })
+    } else {
+      cart.add(item)
     }
-
-    cart.add(item)
     router.push('/pedido')
   }, [cart, cartItem, complement, itemExistOnCart, product, quantity, router])
 
