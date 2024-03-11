@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback } from 'react'
-import { Item } from '@/stores/cart'
+import useCart, { Item } from '@/stores/cart'
 import { formatCurrency } from '@/utils/formatter'
 import Counter from '@/components/counter'
 
@@ -10,9 +10,18 @@ interface CartItemProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export default function CartItem({ cartItem, ...props }: CartItemProps) {
+  const { removeItem, updateItem } = useCart()
+
   const handleRemove = useCallback(() => {
-    console.log(cartItem)
-  }, [cartItem])
+    removeItem(cartItem)
+  }, [cartItem, removeItem])
+
+  const handleQuantityChange = useCallback(
+    (quantity = 1) => {
+      updateItem({ ...cartItem, quantity })
+    },
+    [cartItem, updateItem],
+  )
 
   return (
     <div {...props} className="flex items-start gap-5 py-5">
@@ -29,7 +38,7 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col">
             <h3 className="flex items-center gap-2 font-semibold leading-snug">
-              {cartItem.product.title}{' '}
+              {cartItem.product.title}
             </h3>
 
             <p className="">{formatCurrency(cartItem.product.price)}</p>
@@ -40,6 +49,7 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
             size="small"
             removable
             onRemove={handleRemove}
+            onChange={handleQuantityChange}
           />
         </div>
 
