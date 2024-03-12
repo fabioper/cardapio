@@ -30,13 +30,17 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
   )
 
   const itemExistOnCart = useCallback(
-    (newItem: Item) =>
-      cart.items.find(item => {
-        return _.isEqual(
-          _.omit(item, ['quantity', 'id']),
-          _.omit(newItem, ['quantity', 'id']),
+    (newItem: Item) => {
+      return cart.items.find(item => {
+        return (
+          item.id !== newItem.id &&
+          _.isEqual(
+            _.omit(item, ['quantity', 'id']),
+            _.omit(newItem, ['quantity', 'id']),
+          )
         )
-      }),
+      })
+    },
     [cart.items],
   )
 
@@ -51,8 +55,7 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
         ...item,
         quantity: existing.quantity + item.quantity,
       })
-
-      existing.id !== item.id && cart.remove(existing.id)
+      cart.remove(existing.id)
     } else {
       cart.update(item)
     }

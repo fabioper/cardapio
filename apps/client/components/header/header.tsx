@@ -1,8 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import Button from '@/components/button'
-import { TbSearch, TbShoppingBag } from 'react-icons/tb'
 import { PiHamburgerDuotone } from 'react-icons/pi'
+import CartButton from '@/components/header/cart-button'
 
 function Header() {
   return (
@@ -14,13 +13,7 @@ function Header() {
         </Link>
 
         <div className="flex items-center gap-3 text-2xl">
-          <Link href="/buscar">
-            <Button.Text icon={TbSearch} variant="secondary" />
-          </Link>
-
-          <Link href="/pedido">
-            <Button.Text icon={TbShoppingBag} variant="secondary" />
-          </Link>
+          <CartButton />
         </div>
       </div>
     </header>

@@ -24,7 +24,6 @@ const button = tv({
     items-center
     whitespace-nowrap
     gap-2
-    rounded
     disabled:text-surface-d disabled:bg-surface-c
   `,
   slots: {
@@ -39,6 +38,10 @@ const button = tv({
       className: {
         base: 'p-3',
       },
+    },
+    {
+      iconOnly: true,
+      className: 'rounded-full',
     },
   ],
   variants: {
@@ -58,10 +61,15 @@ const button = tv({
       small: {
         base: 'py-1 px-2',
         icon: 'text-base',
+        label: 'text-sm',
       },
     },
     iconOnly: {
       true: 'aspect-square rounded-full',
+    },
+    rounded: {
+      true: 'rounded-full',
+      false: 'rounded',
     },
   },
   defaultVariants: {
@@ -73,13 +81,6 @@ const button = tv({
 const textButton = tv({
   extend: button,
   base: 'hover:bg-opacity-5 disabled:bg-transparent active:scale-110',
-  compoundVariants: [
-    {
-      iconOnly: true,
-      size: 'small',
-      className: 'p-0 hover:bg-transparent',
-    },
-  ],
   variants: {
     variant: {
       primary: 'text-primary bg-transparent hover:bg-primary',
@@ -100,6 +101,7 @@ function ButtonBase({
   styles,
   icon: Icon,
   itemRight,
+  rounded,
   ...props
 }: ButtonBaseProps) {
   const iconOnly = !label
@@ -109,7 +111,7 @@ function ButtonBase({
     icon,
     label: labelStyles,
     rightItem,
-  } = styles({ size, variant, className, iconOnly })
+  } = styles({ size, variant, className, iconOnly, rounded })
 
   return (
     <button {...props} className={base({ className })}>

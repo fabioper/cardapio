@@ -48,7 +48,7 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
               </Link>
             </h3>
 
-            <p className="">{formatCurrency(cartItem.product.price)}</p>
+            <p>{formatCurrency(cartItem.product.price * cartItem.quantity)}</p>
           </div>
 
           <Counter
