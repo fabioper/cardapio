@@ -1,21 +1,20 @@
-'use client'
-
-import useCart from '@/stores/cart'
-import { notFound } from 'next/navigation'
+import { Product } from '@/services/products.service'
+import { Item } from '@/stores/cart'
 import Title from '@/components/title'
 import Badge from '@/components/badge'
 import { formatCurrency } from '@/utils/formatter'
 import ProductForm from '@/components/product-form'
 import React from 'react'
 
-export default function EditCartItem({ itemId }: { itemId: string }) {
-  const items = useCart(state => state.items)
-  const item = items.find(item => item.id === itemId)
+interface ProductDetailsProps {
+  product: Product
+  cartItem?: Omit<Item, 'product'>
+}
 
-  if (!item) return notFound()
-
-  const { product } = item
-
+export default function ProductDetails({
+  product,
+  cartItem,
+}: ProductDetailsProps) {
   return (
     <main className="flex flex-col gap-3 items-start pb-3 lg:flex-row lg:py-10 lg:container">
       {product.image && (
@@ -42,7 +41,7 @@ export default function EditCartItem({ itemId }: { itemId: string }) {
           {product.description}
         </p>
 
-        <ProductForm product={product} cartItem={item} />
+        <ProductForm product={product} cartItem={cartItem} />
       </section>
     </main>
   )

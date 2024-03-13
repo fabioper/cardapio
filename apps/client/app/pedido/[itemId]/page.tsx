@@ -1,5 +1,5 @@
 import { PropsWithParams } from '@/utils/types'
-import EditCartItem from '@/app/pedido/[itemId]/edit-cart-item'
+import EditCartItem from '../../../components/edit-cart-item'
 
 export default function EditCartItemPage({
   params,
