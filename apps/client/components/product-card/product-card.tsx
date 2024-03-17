@@ -2,7 +2,7 @@ import { Product } from '@/services/products.service'
 import { formatCurrency } from '@/utils/formatter'
 import React from 'react'
 import Link from 'next/link'
-import Badge from '@/components/badge'
+import { Badge } from '@cardapio/ui/components'
 
 interface ProductCardProps {
   product: Product
