@@ -16,6 +16,7 @@ const config: Config = {
   clearMocks: true,
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
+  testPathIgnorePatterns: ['/node_modules/', '/e2e/'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
   },
