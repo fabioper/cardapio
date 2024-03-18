@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import Textarea from '@/components/textarea/textarea'
 import userEvent, { UserEvent } from '@testing-library/user-event'
+import Textarea from './textarea'
 
 describe('Component: Textarea', () => {
   let user: UserEvent

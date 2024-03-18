@@ -1,3 +1,6 @@
 export { default as Badge } from './badge'
 export { default as Button } from './button'
 export { default as Counter } from './counter'
+export { default as Portal } from './portal'
+export { default as ActionBar } from './action-bar'
+export { default as Textarea } from './textarea'

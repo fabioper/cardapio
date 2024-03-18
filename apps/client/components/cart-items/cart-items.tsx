@@ -3,7 +3,7 @@
 import useCart from '@/stores/cart'
 import Link from 'next/link'
 import { TbPlus, TbShoppingBagCheck, TbShoppingBagX } from 'react-icons/tb'
-import ActionBar from '@/components/action-bar'
+import ActionBar from '../../../../packages/ui/src/components/action-bar'
 import { formatCurrency } from '@/utils/formatter'
 import React from 'react'
 import { useMediaQuery } from 'usehooks-ts'

@@ -1,4 +1,4 @@
-import Title from '@/components/title'
+import Title from '../../../../packages/ui/src/components/title'
 
 export default function SearchPage() {
   return (
