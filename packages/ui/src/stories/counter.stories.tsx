@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Counter } from '@/components'
+import { Counter } from '../components'
 
 const meta = {
   title: 'Cardápio/Counter',

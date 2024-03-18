@@ -3,7 +3,7 @@
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import { FiMinus, FiPlus, FiTrash2 } from 'react-icons/fi'
 import clsx from 'clsx'
-import { Button } from '@/components'
+import Button from '../button'
 
 type CounterProps = Omit<
   React.HTMLProps<HTMLInputElement>,
