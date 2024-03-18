@@ -1,8 +1,15 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import React, { PropsWithChildren } from 'react'
-import { sans } from '@/assets/fonts'
 import Header from '@/components/header'
+import { Outfit as FontFamily } from 'next/font/google'
+
+const sans = FontFamily({
+  variable: '--font-sans',
+  weight: ['400', '500', '700'],
+  adjustFontFallback: true,
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: {
