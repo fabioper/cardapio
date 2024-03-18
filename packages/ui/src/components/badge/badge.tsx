@@ -3,7 +3,7 @@ import { IconType } from 'react-icons'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const badge = tv({
-  base: 'border rounded-xl px-2 h-5 bg-opacity-5 flex items-center justify-between gap-1 text-4xl',
+  base: 'border rounded-xl px-2 h-5 bg-opacity-5 flex items-center justify-between gap-1',
   slots: {
     icon: '',
     label: 'text-xs sm:text-sm lowercase block grow',

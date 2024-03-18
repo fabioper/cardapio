@@ -1,4 +1,5 @@
 import type {Config} from 'tailwindcss'
+import * as path from "path";
 
 const config: Config = {
     content: [
@@ -7,6 +8,7 @@ const config: Config = {
         './app/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './src/**/*.{js,ts,jsx,tsx,mdx}',
+        path.join(path.dirname(require.resolve('@cardapio/ui/components')), '**/*.{js,ts,jsx,tsx,mdx}'),
     ],
     theme: {
         container: {
