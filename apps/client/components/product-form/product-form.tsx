@@ -1,7 +1,6 @@
 'use client'
 
 import Textarea from '@/components/textarea/textarea'
-import Counter from '@/components/counter'
 import { TbShoppingBagEdit, TbShoppingBagPlus } from 'react-icons/tb'
 import React, { ChangeEvent, useCallback, useState } from 'react'
 import ActionBar from '@/components/action-bar'
@@ -12,7 +11,7 @@ import useCart, { Item } from '@/stores/cart'
 import { useRouter } from 'next/navigation'
 import { v4 as uuid } from 'uuid'
 import _ from 'lodash'
-import { Button } from '@cardapio/ui/components'
+import { Button, Counter } from '@cardapio/ui/components'
 
 interface ProductFormProps {
   product: Product

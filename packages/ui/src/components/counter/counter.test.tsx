@@ -1,7 +1,7 @@
 import userEvent, { UserEvent } from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
-import Counter from '@/components/counter/counter'
 import { ComponentProps, useCallback, useState } from 'react'
+import { Counter } from '@/components'
 
 function CounterWrapper(props: ComponentProps<typeof Counter>) {
   const [value, setValue] = useState(props.value)
