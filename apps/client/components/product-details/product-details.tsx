@@ -4,7 +4,7 @@ import { formatCurrency } from '@/utils/formatter'
 import ProductForm from '@/components/product-form'
 import React from 'react'
 import { Badge } from '@cardapio/ui/components'
-import Title from '@/components/title'
+import Title from '../../../../packages/ui/src/components/title'
 
 interface ProductDetailsProps {
   product: Product

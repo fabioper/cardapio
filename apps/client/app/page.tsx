@@ -1,7 +1,7 @@
 import React from 'react'
 import { getProducts } from '@/services/products.service'
 import ProductsList from '@/components/products-list'
-import Title from '@/components/title'
+import { Title } from '@cardapio/ui/components'
 
 export default async function Home() {
   const products = await getProducts()
