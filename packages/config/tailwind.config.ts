@@ -1,5 +1,6 @@
 import type {Config} from 'tailwindcss'
 import * as path from "path";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
     content: [
@@ -61,6 +62,18 @@ const config: Config = {
             }
         },
     },
-    plugins: [],
+    plugins: [plugin(function({addBase}) {
+        addBase({
+            'body': {
+                '@apply font-sans bg-surface-a text-foreground': {},
+            },
+            'input,textarea': {
+                '@apply bg-surface-c rounded p-2 focus:outline-1 focus:outline focus:outline-primary placeholder-surface-e hover:border hover:border-primary': {}
+            },
+            'button, input, optgroup, select, textarea': {
+                '@apply text-base': {}
+            }
+        })
+    })],
 }
 export default config
