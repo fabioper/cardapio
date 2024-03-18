@@ -1,4 +1,4 @@
-import Title from '../../../../packages/ui/src/components/title'
+import { Title } from '@cardapio/ui/components'
 
 export default function SearchPage() {
   return (

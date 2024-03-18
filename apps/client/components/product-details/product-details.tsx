@@ -3,8 +3,7 @@ import { Item } from '@/stores/cart'
 import { formatCurrency } from '@/utils/formatter'
 import ProductForm from '@/components/product-form'
 import React from 'react'
-import { Badge } from '@cardapio/ui/components'
-import Title from '../../../../packages/ui/src/components/title'
+import { Badge, Title } from '@cardapio/ui/components'
 
 interface ProductDetailsProps {
   product: Product

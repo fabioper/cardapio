@@ -3,13 +3,12 @@
 import useCart from '@/stores/cart'
 import Link from 'next/link'
 import { TbPlus, TbShoppingBagCheck, TbShoppingBagX } from 'react-icons/tb'
-import ActionBar from '../../../../packages/ui/src/components/action-bar'
 import { formatCurrency } from '@/utils/formatter'
 import React from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import clsx from 'clsx'
 import CartItem from '@/components/cart-items/cart-item'
-import { Button } from '@cardapio/ui/components'
+import { ActionBar, Button } from '@cardapio/ui/components'
 
 function EmptyCart() {
   return (
