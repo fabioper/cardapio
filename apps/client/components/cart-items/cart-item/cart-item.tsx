@@ -3,10 +3,9 @@
 import React, { useCallback } from 'react'
 import useCart, { Item } from '@/stores/cart'
 import { formatCurrency } from '@/utils/formatter'
-import Counter from '@/components/counter'
-import Button from '@/components/button'
 import { TbEdit } from 'react-icons/tb'
 import Link from 'next/link'
+import { Button, Counter } from '@cardapio/ui/components'
 
 interface CartItemProps extends React.HTMLProps<HTMLDivElement> {
   cartItem: Item
