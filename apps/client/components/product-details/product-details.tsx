@@ -1,10 +1,10 @@
 import { Product } from '@/services/products.service'
 import { Item } from '@/stores/cart'
 import Title from '@/components/title'
-import Badge from '@/components/badge'
 import { formatCurrency } from '@/utils/formatter'
 import ProductForm from '@/components/product-form'
 import React from 'react'
+import { Badge } from '@cardapio/ui/components'
 
 interface ProductDetailsProps {
   product: Product

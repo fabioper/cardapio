@@ -1,10 +1,10 @@
 'use client'
 
-import Button from '@/components/button'
 import { TbShoppingBag } from 'react-icons/tb'
 import Link from 'next/link'
 import React, { useMemo } from 'react'
 import useCart from '@/stores/cart'
+import { Button } from '@cardapio/ui/components'
 
 export default function CartButton() {
   const items = useCart(state => state.items)
