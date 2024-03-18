@@ -1,6 +1,6 @@
-import Title from '@/components/title'
 import CartItems from '@/components/cart-items'
 import { Metadata } from 'next'
+import Title from '@/components/title'
 
 export const metadata: Metadata = { title: 'Pedido' }
 

@@ -1,7 +1,7 @@
 'use client'
 
-import { PropsWithChildren } from 'react'
-import Portal from '@/components/portal'
+import React, { PropsWithChildren } from 'react'
+import Portal from '../portal'
 
 export default function ActionBar({ children }: PropsWithChildren) {
   return (
