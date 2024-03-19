@@ -3,7 +3,7 @@ import { Item } from '@/stores/cart'
 import { formatCurrency } from '@/utils/formatter'
 import ProductForm from '@/components/product-form'
 import React from 'react'
-import { Badge, Title } from '@cardapio/ui/components'
+import { Badge, Page, Title } from '@cardapio/ui/components'
 
 interface ProductDetailsProps {
   product: Product
@@ -15,7 +15,13 @@ export default function ProductDetails({
   cartItem,
 }: ProductDetailsProps) {
   return (
-    <main className="flex flex-col gap-3 items-start pb-3 lg:flex-row lg:py-10 lg:container">
+    <Page
+      className="pt-0"
+      containerProps={{
+        className:
+          'p-0 max-w-none flex flex-col gap-3 items-start pb-3 lg:flex-row lg:container',
+      }}
+    >
       {product.image && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -42,6 +48,6 @@ export default function ProductDetails({
 
         <ProductForm product={product} cartItem={cartItem} />
       </section>
-    </main>
+    </Page>
   )
 }
