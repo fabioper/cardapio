@@ -20,7 +20,7 @@ export default function CheckoutButton() {
 
   const button = (
     <div className="flex justify-center w-full">
-      <Link href="/checkout">
+      <Link href="/checkout" className={clsx({ 'w-full': isSmallScreen })}>
         <Button
           label="Finalizar pedido"
           icon={TbShoppingBagCheck}
