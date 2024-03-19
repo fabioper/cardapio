@@ -1,14 +1,11 @@
 'use client'
 
-import useCart from '@/stores/cart'
 import Link from 'next/link'
-import { TbPlus, TbShoppingBagCheck, TbShoppingBagX } from 'react-icons/tb'
-import { formatCurrency } from '@/utils/formatter'
+import { TbPlus, TbShoppingBagX } from 'react-icons/tb'
 import React from 'react'
-import { useMediaQuery } from 'usehooks-ts'
-import clsx from 'clsx'
 import CartItem from '@/components/cart-items/cart-item'
-import { ActionBar, Button } from '@cardapio/ui/components'
+import { Button } from '@cardapio/ui/components'
+import useCart from '@/stores/cart'
 
 function EmptyCart() {
   return (
@@ -19,64 +16,27 @@ function EmptyCart() {
   )
 }
 
-function FinishOrderButton(props: { value: number }) {
-  const isSmallScreen = useMediaQuery('(max-width: 500px)')
-
-  return (
-    <Button
-      label="Finalizar pedido"
-      icon={TbShoppingBagCheck}
-      className={clsx({ 'w-full': isSmallScreen })}
-      itemRight={formatCurrency(props.value)}
-    />
-  )
-}
-
 export default function CartItems() {
-  const isSmallScreen = useMediaQuery('(max-width: 500px)')
-  const { items } = useCart()
-
-  const total = items.reduce((a, b) => a + b.product.price * b.quantity, 0)
+  const items = useCart(state => state.items)
 
   if (items.length === 0) return <EmptyCart />
 
   return (
-    <div className="flex flex-col gap-5 items-center w-full max-w-2xl">
+    <div className="flex flex-col gap-5 items-center w-full">
       <div className="flex flex-col divide-y divide-surface-b w-full">
         {items.map(item => (
           <CartItem key={item.id} cartItem={item} />
         ))}
       </div>
 
-      <div
-        className={clsx('flex items-center justify-between', {
-          'w-full': !isSmallScreen,
-        })}
-      >
-        <Link href="/">
-          <Button.Text
-            icon={TbPlus}
-            label="Adicionar mais itens"
-            variant="info"
-            size="small"
-          />
-        </Link>
-
-        {isSmallScreen ? (
-          <ActionBar>
-            <div className="container">
-              <FinishOrderButton value={total} />
-            </div>
-          </ActionBar>
-        ) : (
-          <Button
-            label="Finalizar pedido"
-            icon={TbShoppingBagCheck}
-            className={clsx({ 'w-full': isSmallScreen })}
-            itemRight={formatCurrency(total)}
-          />
-        )}
-      </div>
+      <Link href="/">
+        <Button.Text
+          icon={TbPlus}
+          label="Adicionar mais itens"
+          variant="info"
+          size="small"
+        />
+      </Link>
     </div>
   )
 }
