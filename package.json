@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "turbo dev --parallel",
+    "build": "turbo build --parallel",
     "test": "turbo test --parallel",
     "test:watch": "turbo test:watch --parallel",
     "test:e2e": "turbo test:e2e --parallel"

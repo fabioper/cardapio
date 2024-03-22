@@ -103,7 +103,7 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
           icon={TbShoppingBagEdit}
           itemRight={'+ ' + formatCurrency(product.price * quantity)}
           onClick={saveCartItem}
-          variant="success"
+          status="success"
         />
       )}
     </div>
