@@ -2,30 +2,8 @@ import React from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { IconType } from 'react-icons'
 
-type ButtonProps<T extends (...args: any) => any> = Omit<
-  VariantProps<T>,
-  'iconOnly'
-> & {
-  icon?: IconType
-  label?: string
-  type?: 'submit' | 'reset' | 'button' | undefined
-  itemRight?: React.ReactNode
-} & Omit<React.HTMLProps<HTMLButtonElement>, 'size' | 'type' | 'children'>
-
-type ButtonBaseProps<T extends (...args: any) => any = typeof button> =
-  ButtonProps<T> & {
-    styles: typeof button | typeof textButton
-  }
-
 const button = tv({
-  base: `
-    text-surface-a
-    flex
-    items-center
-    whitespace-nowrap
-    gap-2
-    disabled:text-surface-d disabled:bg-surface-c
-  `,
+  base: 'text-surface-a flex items-center whitespace-nowrap gap-2 disabled:text-surface-d disabled:bg-surface-c',
   slots: {
     label: 'font-bold grow',
     icon: '',
@@ -35,23 +13,96 @@ const button = tv({
     {
       iconOnly: true,
       size: 'regular',
-      className: {
-        base: 'p-3',
-      },
+      className: { base: 'p-3' },
     },
     {
       iconOnly: true,
       className: 'rounded-full',
     },
+    {
+      variant: 'regular',
+      status: 'primary',
+      className: 'bg-primary hover:bg-primary-hover',
+    },
+    {
+      variant: 'regular',
+      status: 'secondary',
+      className: 'bg-secondary hover:bg-secondary-hover',
+    },
+    {
+      variant: 'regular',
+      status: 'warn',
+      className: 'bg-warn hover:bg-warn-hover',
+    },
+    {
+      variant: 'regular',
+      status: 'success',
+      className: 'bg-success hover:bg-success-hover',
+    },
+    {
+      variant: 'regular',
+      status: 'info',
+      className: 'bg-info hover:bg-info-hover',
+    },
+    {
+      variant: 'regular',
+      status: 'danger',
+      className: 'bg-danger hover:bg-danger-hover',
+    },
+    {
+      variant: 'text',
+      status: 'primary',
+      className: 'text-primary bg-transparent hover:bg-primary',
+    },
+    {
+      variant: 'text',
+      status: 'secondary',
+      className: 'text-foreground bg-transparent hover:bg-foreground',
+    },
+    {
+      variant: 'text',
+      status: 'success',
+      className: 'text-success bg-transparent hover:bg-success',
+    },
+    {
+      variant: 'text',
+      status: 'info',
+      className: 'text-info bg-transparent hover:bg-info',
+    },
+    {
+      variant: 'text',
+      status: 'warn',
+      className: 'text-warn bg-transparent hover:bg-warn',
+    },
+    {
+      variant: 'text',
+      status: 'danger',
+      className: 'text-danger bg-transparent hover:bg-danger',
+    },
+    {
+      variant: 'text',
+      className: 'hover:bg-opacity-5 disabled:bg-transparent active:scale-110',
+    },
+    {
+      variant: 'outlined',
+      status: 'primary',
+      className:
+        'border-primary text-primary hover:bg-primary hover:bg-opacity-5',
+    },
   ],
   variants: {
     variant: {
-      primary: 'bg-primary hover:bg-primary-hover',
-      secondary: 'bg-secondary hover:bg-secondary-hover',
-      success: 'bg-success hover:bg-success-hover',
-      info: 'bg-info hover:bg-info-hover',
-      warn: 'bg-warn hover:bg-warn-hover',
-      danger: 'bg-danger hover:bg-danger-hover',
+      regular: '',
+      text: '',
+      outlined: 'bg-transparent border',
+    },
+    status: {
+      primary: '',
+      secondary: '',
+      success: '',
+      info: '',
+      warn: '',
+      danger: '',
     },
     size: {
       regular: {
@@ -73,37 +124,30 @@ const button = tv({
     },
   },
   defaultVariants: {
-    variant: 'primary',
+    variant: 'regular',
+    status: 'primary',
     size: 'regular',
   },
 })
 
-const textButton = tv({
-  extend: button,
-  base: 'hover:bg-opacity-5 disabled:bg-transparent active:scale-110',
-  variants: {
-    variant: {
-      primary: 'text-primary bg-transparent hover:bg-primary',
-      secondary: 'text-foreground bg-transparent hover:bg-foreground',
-      success: 'text-success bg-transparent hover:bg-success',
-      info: 'text-info bg-transparent hover:bg-info',
-      warn: 'text-warn bg-transparent hover:bg-warn',
-      danger: 'text-danger bg-transparent hover:bg-danger',
-    },
-  },
-})
+type ButtonProps = Omit<VariantProps<typeof button>, 'iconOnly'> & {
+  icon?: IconType
+  label?: string
+  type?: 'submit' | 'reset' | 'button' | undefined
+  itemRight?: React.ReactNode
+} & Omit<React.HTMLProps<HTMLButtonElement>, 'size' | 'type' | 'children'>
 
-function ButtonBase({
+function Button({
   label,
   variant,
   size,
   className,
-  styles,
   icon: Icon,
   itemRight,
   rounded,
+  status,
   ...props
-}: ButtonBaseProps) {
+}: ButtonProps) {
   const iconOnly = !label
 
   const {
@@ -111,7 +155,7 @@ function ButtonBase({
     icon,
     label: labelStyles,
     rightItem,
-  } = styles({ size, variant, className, iconOnly, rounded })
+  } = button({ size, variant, status, className, iconOnly, rounded })
 
   return (
     <button {...props} className={base({ className })}>
@@ -121,15 +165,5 @@ function ButtonBase({
     </button>
   )
 }
-
-function Button(props: ButtonProps<typeof button>) {
-  return <ButtonBase {...props} styles={button} />
-}
-
-function ButtonText(props: ButtonProps<typeof textButton>) {
-  return <ButtonBase {...props} styles={textButton} />
-}
-
-Button.Text = ButtonText
 
 export default Button

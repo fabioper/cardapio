@@ -6,7 +6,8 @@ export default function CheckoutCustomerPage() {
   return (
     <Page>
       <Title className="mb-5 flex gap-3 items-center">
-        <Button.Text
+        <Button
+          variant="text"
           icon={BiChevronLeft}
           size="small"
           className="bg-primary-hover bg-opacity-5"

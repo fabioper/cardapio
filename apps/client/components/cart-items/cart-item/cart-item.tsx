@@ -43,7 +43,12 @@ export default function CartItem({ cartItem, ...props }: CartItemProps) {
               {cartItem.product.title}
 
               <Link href={`/pedido/${cartItem.id}`}>
-                <Button.Text icon={TbEdit} size="small" variant="primary" />
+                <Button
+                  variant="text"
+                  icon={TbEdit}
+                  size="small"
+                  status="primary"
+                />
               </Link>
             </h3>
 

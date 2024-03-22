@@ -64,7 +64,8 @@ export default function Counter({
       })}
     >
       {!removable || (value !== undefined && value !== 1) ? (
-        <Button.Text
+        <Button
+          variant="text"
           data-testid="decreaseButton"
           onClick={decrease}
           disabled={!value || reachedMinimum}
@@ -72,7 +73,8 @@ export default function Counter({
           size={size}
         />
       ) : (
-        <Button.Text
+        <Button
+          variant="text"
           data-testid="removeButton"
           onClick={onRemove}
           icon={FiTrash2}
@@ -91,8 +93,9 @@ export default function Counter({
         className="p-1 w-6 text-base sm:w-8 text-center"
       />
 
-      <Button.Text
+      <Button
         data-testid="increaseButton"
+        variant="text"
         onClick={increase}
         disabled={reachedMaximum}
         icon={FiPlus}

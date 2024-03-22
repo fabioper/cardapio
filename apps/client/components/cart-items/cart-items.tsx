@@ -30,10 +30,11 @@ export default function CartItems() {
       </div>
 
       <Link href="/">
-        <Button.Text
+        <Button
+          variant="text"
           icon={TbPlus}
           label="Adicionar mais itens"
-          variant="info"
+          status="info"
           size="small"
         />
       </Link>

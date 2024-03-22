@@ -16,16 +16,22 @@ export default function CartButton() {
   if (totalItems <= 0) {
     return (
       <Link href="/pedido">
-        <Button.Text icon={TbShoppingBag} variant="secondary" rounded />
+        <Button
+          icon={TbShoppingBag}
+          variant="text"
+          status="secondary"
+          rounded
+        />
       </Link>
     )
   }
 
   return (
     <Link href="/pedido">
-      <Button.Text
+      <Button
         icon={TbShoppingBag}
-        variant="primary"
+        variant="text"
+        status="primary"
         label={`${totalItems} ${totalItems === 1 ? 'item' : 'itens'}`}
         rounded
       />
