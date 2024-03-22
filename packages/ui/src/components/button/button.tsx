@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 import { IconType } from 'react-icons'
 
 const button = tv({
-  base: 'text-surface-a flex items-center whitespace-nowrap gap-2 disabled:text-surface-d disabled:bg-surface-c',
+  base: 'text-surface-a flex items-center whitespace-nowrap gap-2 disabled:text-surface-d disabled:bg-surface-c rounded',
   slots: {
     label: 'font-bold grow',
     icon: '',
@@ -19,90 +19,15 @@ const button = tv({
       iconOnly: true,
       className: 'rounded-full',
     },
-    {
-      variant: 'regular',
-      status: 'primary',
-      className: 'bg-primary hover:bg-primary-hover',
-    },
-    {
-      variant: 'regular',
-      status: 'secondary',
-      className: 'bg-secondary hover:bg-secondary-hover',
-    },
-    {
-      variant: 'regular',
-      status: 'warn',
-      className: 'bg-warn hover:bg-warn-hover',
-    },
-    {
-      variant: 'regular',
-      status: 'success',
-      className: 'bg-success hover:bg-success-hover',
-    },
-    {
-      variant: 'regular',
-      status: 'info',
-      className: 'bg-info hover:bg-info-hover',
-    },
-    {
-      variant: 'regular',
-      status: 'danger',
-      className: 'bg-danger hover:bg-danger-hover',
-    },
-    {
-      variant: 'text',
-      status: 'primary',
-      className: 'text-primary bg-transparent hover:bg-primary',
-    },
-    {
-      variant: 'text',
-      status: 'secondary',
-      className: 'text-foreground bg-transparent hover:bg-foreground',
-    },
-    {
-      variant: 'text',
-      status: 'success',
-      className: 'text-success bg-transparent hover:bg-success',
-    },
-    {
-      variant: 'text',
-      status: 'info',
-      className: 'text-info bg-transparent hover:bg-info',
-    },
-    {
-      variant: 'text',
-      status: 'warn',
-      className: 'text-warn bg-transparent hover:bg-warn',
-    },
-    {
-      variant: 'text',
-      status: 'danger',
-      className: 'text-danger bg-transparent hover:bg-danger',
-    },
-    {
-      variant: 'text',
-      className: 'hover:bg-opacity-5 disabled:bg-transparent active:scale-110',
-    },
-    {
-      variant: 'outlined',
-      status: 'primary',
-      className:
-        'border-primary text-primary hover:bg-primary hover:bg-opacity-5',
-    },
   ],
   variants: {
-    variant: {
-      regular: '',
-      text: '',
-      outlined: 'bg-transparent border',
-    },
     status: {
-      primary: '',
-      secondary: '',
-      success: '',
-      info: '',
-      warn: '',
-      danger: '',
+      primary: 'bg-primary hover:bg-primary-hover',
+      secondary: 'bg-secondary hover:bg-secondary-hover',
+      success: 'bg-success hover:bg-success-hover',
+      info: 'bg-info hover:bg-info-hover',
+      warn: 'bg-warn hover:bg-warn-hover',
+      danger: 'bg-danger hover:bg-danger-hover',
     },
     size: {
       regular: {
@@ -118,15 +43,44 @@ const button = tv({
     iconOnly: {
       true: 'aspect-square rounded-full',
     },
-    rounded: {
-      true: 'rounded-full',
-      false: 'rounded',
-    },
   },
   defaultVariants: {
-    variant: 'regular',
     status: 'primary',
     size: 'regular',
+  },
+})
+
+const textButton = tv({
+  base: 'bg-transparent hover:bg-opacity-5 disabled:bg-transparent active:scale-110',
+  extend: button,
+  variants: {
+    status: {
+      primary: 'text-primary bg-transparent hover:bg-primary',
+      secondary: 'text-foreground bg-transparent hover:bg-foreground',
+      success: 'text-success bg-transparent hover:bg-success',
+      info: 'text-info bg-transparent hover:bg-info',
+      warn: 'text-warn bg-transparent hover:bg-warn',
+      danger: 'text-danger bg-transparent hover:bg-danger',
+    },
+  },
+})
+
+const outlinedButton = tv({
+  base: 'border',
+  extend: button,
+  variants: {
+    status: {
+      primary:
+        'bg-transparent border-primary text-primary hover:bg-primary hover:bg-opacity-5',
+      secondary:
+        'bg-transparent border-secondary text-secondary hover:bg-secondary hover:bg-opacity-5',
+      success:
+        'bg-transparent border-success text-success hover:bg-success hover:bg-opacity-5',
+      info: 'bg-transparent border-info text-info hover:bg-info hover:bg-opacity-5',
+      warn: 'bg-transparent border-warn text-warn hover:bg-warn hover:bg-opacity-5',
+      danger:
+        'bg-transparent border-danger text-danger hover:bg-danger hover:bg-opacity-5',
+    },
   },
 })
 
@@ -135,27 +89,33 @@ type ButtonProps = Omit<VariantProps<typeof button>, 'iconOnly'> & {
   label?: string
   type?: 'submit' | 'reset' | 'button' | undefined
   itemRight?: React.ReactNode
+  variant?: 'regular' | 'text' | 'outlined'
 } & Omit<React.HTMLProps<HTMLButtonElement>, 'size' | 'type' | 'children'>
 
 function Button({
   label,
-  variant,
+  variant = 'regular',
   size,
   className,
   icon: Icon,
   itemRight,
-  rounded,
   status,
   ...props
 }: ButtonProps) {
   const iconOnly = !label
+
+  const styles = useMemo(() => {
+    if (variant === 'text') return textButton
+    if (variant === 'outlined') return outlinedButton
+    return button
+  }, [variant])
 
   const {
     base,
     icon,
     label: labelStyles,
     rightItem,
-  } = button({ size, variant, status, className, iconOnly, rounded })
+  } = styles({ size, status, className, iconOnly })
 
   return (
     <button {...props} className={base({ className })}>
