@@ -72,3 +72,12 @@ export const IconOnly: Story = {
     icon: BiCheck,
   },
 }
+
+export const Badge: Story = {
+  args: {
+    status: 'primary',
+    variant: 'regular',
+    icon: BiCheck,
+    badge: '1',
+  },
+}

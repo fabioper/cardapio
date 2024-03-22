@@ -13,15 +13,10 @@ export default function CartButton() {
     return items.reduce((a, b) => a + b.quantity, 0)
   }, [items])
 
-  if (totalItems <= 0) {
+  if (totalItems === 0) {
     return (
       <Link href="/pedido">
-        <Button
-          icon={TbShoppingBag}
-          variant="text"
-          status="secondary"
-          rounded
-        />
+        <Button icon={TbShoppingBag} variant="text" status="secondary" />
       </Link>
     )
   }
@@ -30,10 +25,9 @@ export default function CartButton() {
     <Link href="/pedido">
       <Button
         icon={TbShoppingBag}
-        variant="text"
+        variant="filled"
         status="primary"
-        label={`${totalItems} ${totalItems === 1 ? 'item' : 'itens'}`}
-        rounded
+        badge={totalItems}
       />
     </Link>
   )
