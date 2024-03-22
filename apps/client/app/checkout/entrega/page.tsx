@@ -1,0 +1,22 @@
+import { Button, Page, Title } from '@cardapio/ui/components'
+import DeliveryForm from '@/app/checkout/entrega/delivery-form'
+import { BiChevronLeft } from 'react-icons/bi'
+import React from 'react'
+
+export default function CheckoutDeliveryPage() {
+  return (
+    <Page>
+      <Title className="mb-5 flex gap-3 items-center">
+        <Button.Text
+          icon={BiChevronLeft}
+          size="small"
+          className="bg-primary-hover bg-opacity-5"
+        />{' '}
+        Entrega
+      </Title>
+      <div className="lg:max-w-2xl">
+        <DeliveryForm />
+      </div>
+    </Page>
+  )
+}
