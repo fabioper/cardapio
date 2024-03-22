@@ -7,6 +7,7 @@ const meta = {
   args: {
     label: 'Badge',
   },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Badge>
 
 export default meta

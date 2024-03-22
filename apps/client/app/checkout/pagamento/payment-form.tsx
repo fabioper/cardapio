@@ -1,6 +1,7 @@
 'use client'
 
-import { Button } from '@cardapio/ui/components'
+import { ActionBar, Button } from '@cardapio/ui/components'
+import React from 'react'
 
 export default function PaymentForm() {
   return (
@@ -20,9 +21,11 @@ export default function PaymentForm() {
         <label htmlFor="ticket">Ticket refeição</label>
       </div>
 
-      <div className="flex items-center justify-end">
-        <Button label="Continuar" />
-      </div>
+      <ActionBar>
+        <div className="container">
+          <Button label="Continuar" className="w-full" />
+        </div>
+      </ActionBar>
     </form>
   )
 }

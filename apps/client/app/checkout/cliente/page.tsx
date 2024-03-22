@@ -6,13 +6,7 @@ export default function CheckoutCustomerPage() {
   return (
     <Page>
       <Title className="mb-5 flex gap-3 items-center">
-        <Button
-          variant="text"
-          icon={BiChevronLeft}
-          size="small"
-          className="bg-primary-hover bg-opacity-5"
-        />{' '}
-        Cliente
+        <Button variant="filled" icon={BiChevronLeft} size="small" /> Cliente
       </Title>
       <div className="lg:max-w-2xl">
         <CustomerForm />

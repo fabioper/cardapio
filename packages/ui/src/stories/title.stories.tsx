@@ -7,6 +7,7 @@ const meta = {
   args: {
     children: 'Título',
   },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Title>
 
 export default meta

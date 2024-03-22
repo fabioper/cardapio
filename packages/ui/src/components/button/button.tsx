@@ -3,7 +3,7 @@ import { tv, VariantProps } from 'tailwind-variants'
 import { IconType } from 'react-icons'
 
 const button = tv({
-  base: 'text-surface-a flex items-center whitespace-nowrap gap-2 disabled:text-surface-d disabled:bg-surface-c rounded',
+  base: 'text-surface-a flex items-center whitespace-nowrap gap-2 disabled:text-surface-d disabled:bg-surface-c rounded hover:-translate-y-0.5 transition-all',
   slots: {
     label: 'font-bold grow',
     icon: '',
@@ -84,12 +84,27 @@ const outlinedButton = tv({
   },
 })
 
+const filledButton = tv({
+  base: '',
+  extend: button,
+  variants: {
+    status: {
+      primary: 'bg-primary bg-opacity-5 text-primary hover:bg-opacity-10',
+      secondary: 'bg-secondary bg-opacity-5 text-secondary hover:bg-opacity-10',
+      success: 'bg-success bg-opacity-5 text-success hover:bg-opacity-10',
+      info: 'bg-info bg-opacity-5 text-info hover:bg-opacity-10',
+      warn: 'bg-warn bg-opacity-5 text-warn hover:bg-opacity-10',
+      danger: 'bg-danger bg-opacity-5 text-danger hover:bg-opacity-10',
+    },
+  },
+})
+
 type ButtonProps = Omit<VariantProps<typeof button>, 'iconOnly'> & {
   icon?: IconType
   label?: string
   type?: 'submit' | 'reset' | 'button' | undefined
   itemRight?: React.ReactNode
-  variant?: 'regular' | 'text' | 'outlined'
+  variant?: 'regular' | 'text' | 'outlined' | 'filled'
 } & Omit<React.HTMLProps<HTMLButtonElement>, 'size' | 'type' | 'children'>
 
 function Button({
@@ -107,6 +122,7 @@ function Button({
   const styles = useMemo(() => {
     if (variant === 'text') return textButton
     if (variant === 'outlined') return outlinedButton
+    if (variant === 'filled') return filledButton
     return button
   }, [variant])
 

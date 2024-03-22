@@ -13,6 +13,7 @@ type CounterProps = Omit<
   onChange?: (value?: number) => void
   onRemove?: () => void
   removable?: boolean
+  defaultValue?: number
   size?: React.ComponentProps<typeof Button>['size']
 }
 

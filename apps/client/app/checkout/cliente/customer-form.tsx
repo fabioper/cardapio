@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@cardapio/ui/components'
+import { ActionBar, Button } from '@cardapio/ui/components'
 
 export default function CustomerForm() {
   return (
@@ -15,9 +15,11 @@ export default function CustomerForm() {
         <input type="tel" id="tel" />
       </div>
 
-      <div className="flex items-center justify-end">
-        <Button label="Continuar" />
-      </div>
+      <ActionBar>
+        <div className="container">
+          <Button label="Continuar" className="w-full" />
+        </div>
+      </ActionBar>
     </form>
   )
 }

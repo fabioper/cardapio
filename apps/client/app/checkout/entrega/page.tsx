@@ -7,13 +7,7 @@ export default function CheckoutDeliveryPage() {
   return (
     <Page>
       <Title className="mb-5 flex gap-3 items-center">
-        <Button
-          variant="text"
-          icon={BiChevronLeft}
-          size="small"
-          className="bg-primary-hover bg-opacity-5"
-        />{' '}
-        Entrega
+        <Button variant="filled" icon={BiChevronLeft} size="small" /> Entrega
       </Title>
       <div className="lg:max-w-2xl">
         <DeliveryForm />

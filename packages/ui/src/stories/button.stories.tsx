@@ -1,56 +1,74 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Button } from '../components'
+import { BiCheck } from 'react-icons/bi'
 
 const meta = {
   title: 'Cardápio/Button',
   component: Button,
-  args: {
-    label: 'Badge',
+  argTypes: {
+    status: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'info', 'warn', 'danger'],
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'regular'],
+    },
   },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Button>
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+export const Regular: Story = {
   args: {
-    variant: 'primary',
+    status: 'primary',
     label: 'Button',
+    variant: 'regular',
   },
 }
 
-export const Secondary: Story = {
+export const Text: Story = {
   args: {
-    variant: 'secondary',
+    status: 'primary',
     label: 'Button',
+    variant: 'text',
   },
 }
 
-export const Success: Story = {
+export const Outlined: Story = {
   args: {
-    variant: 'success',
+    status: 'primary',
     label: 'Button',
+    variant: 'outlined',
   },
 }
 
-export const Info: Story = {
+export const Filled: Story = {
   args: {
-    variant: 'info',
+    status: 'primary',
     label: 'Button',
+    variant: 'filled',
   },
 }
 
-export const Warn: Story = {
+export const Icon: Story = {
+  name: 'With icon',
   args: {
-    variant: 'warn',
+    status: 'primary',
     label: 'Button',
+    variant: 'regular',
+    icon: BiCheck,
   },
 }
 
-export const Danger: Story = {
+export const IconOnly: Story = {
+  name: 'Icon only',
   args: {
-    variant: 'danger',
-    label: 'Button',
+    status: 'primary',
+    variant: 'regular',
+    icon: BiCheck,
   },
 }
