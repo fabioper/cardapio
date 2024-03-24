@@ -105,6 +105,14 @@ const textButton = tv({
         badge: 'bg-danger text-surface-a',
       },
     },
+    size: {
+      regular: {
+        badge: '!top-1 !right-0.5 border-2 border-surface-a',
+      },
+      small: {
+        badge: '!-top-0 !-right-0.5 border-2 border-surface-a',
+      },
+    },
   },
 })
 

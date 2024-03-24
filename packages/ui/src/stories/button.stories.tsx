@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Button } from '../components'
-import { BiCheck } from 'react-icons/bi'
+import { BiCheck, BiShoppingBag } from 'react-icons/bi'
 
 const meta = {
   title: 'Cardápio/Button',
@@ -77,7 +77,7 @@ export const Badge: Story = {
   args: {
     status: 'primary',
     variant: 'regular',
-    icon: BiCheck,
+    icon: BiShoppingBag,
     badge: '1',
   },
 }

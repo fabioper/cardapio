@@ -25,7 +25,7 @@ export default function CartButton() {
     <Link href="/pedido">
       <Button
         icon={TbShoppingBag}
-        variant="filled"
+        variant="text"
         status="primary"
         badge={totalItems}
       />
