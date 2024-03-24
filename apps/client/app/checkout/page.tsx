@@ -1,9 +1,5 @@
-import { Page, Title } from '@cardapio/ui/components'
+import { redirect } from 'next/navigation'
 
 export default function CheckoutPage() {
-  return (
-    <Page>
-      <Title>Finalizar pedido</Title>
-    </Page>
-  )
+  return redirect('/checkout/cliente')
 }

@@ -2,10 +2,18 @@
 
 import { ActionBar, Button } from '@cardapio/ui/components'
 import React from 'react'
+import { useMediaQuery } from 'usehooks-ts'
+import clsx from 'clsx'
 
 export default function PaymentForm() {
+  const smallScreen = useMediaQuery('(max-width: 500px)')
+
+  const button = (
+    <Button label="Continuar" className={clsx({ 'w-full': smallScreen })} />
+  )
+
   return (
-    <form className="flex flex-col gap-5">
+    <form className="flex flex-col gap-5 items-start">
       <div className="flex items-center gap-2">
         <input type="radio" name="payment" id="cash" />
         <label htmlFor="cash">Dinheiro</label>
@@ -21,11 +29,13 @@ export default function PaymentForm() {
         <label htmlFor="ticket">Ticket refeição</label>
       </div>
 
-      <ActionBar>
-        <div className="container">
-          <Button label="Continuar" className="w-full" />
-        </div>
-      </ActionBar>
+      {smallScreen ? (
+        <ActionBar>
+          <div className="container">{button}</div>
+        </ActionBar>
+      ) : (
+        button
+      )}
     </form>
   )
 }
