@@ -13,7 +13,7 @@ export default function CheckoutDeliveryPage() {
         </Link>{' '}
         Pagamento
       </Title>
-      <div className="lg:max-w-2xl">
+      <div className="lg:max-w-4xl">
         <PaymentForm />
       </div>
     </Page>

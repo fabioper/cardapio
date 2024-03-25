@@ -12,6 +12,7 @@ export default function RadioButton({ className, ...props }: RadioButtonProps) {
         `
         appearance-none
         transition-all
+        shrink-0
         p-0 w-4 h-4
         rounded-full
         bg-surface-a
@@ -20,7 +21,7 @@ export default function RadioButton({ className, ...props }: RadioButtonProps) {
         checked:border-4
         checked:border-primary
         focus:outline-0 focus:outline-primary focus:outline-offset-0
-        hover:border-2
+        hover:border-2 hover:border-surface-d
         checked:hover:border-primary-hover
         checked:hover:border-4
         checked:bg-surface-b
