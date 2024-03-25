@@ -44,7 +44,7 @@ export default function PaymentForm() {
   ]
 
   return (
-    <form className="flex flex-col gap-10">
+    <form className="flex flex-col items-start gap-10">
       <div className="flex flex-col gap-x-2 gap-y-3 w-full md:flex-row">
         {options.map((opt, index) => {
           const { value, icon: Icon, label } = opt
@@ -54,12 +54,11 @@ export default function PaymentForm() {
               className={`
                 group cursor-pointer grow transition-all
                 flex items-center gap-2
-                border border-surface-b
+                bg-surface-b bg-opacity-25
                 w-full p-5 rounded-xl
-                hover:border-surface-d hover:-translate-y-0.5
+                hover:bg-opacity-70 hover:-translate-y-0.5
                 has-[:checked]:bg-opacity-5
                 has-[:checked]:text-primary
-                has-[:checked]:border-primary
                 has-[:checked]:bg-primary
               `}
             >
