@@ -17,40 +17,38 @@ export default function DeliveryForm() {
 
   return (
     <form className="flex flex-col gap-5">
-      <div className="grid md:grid-cols-[2fr_1fr] gap-5">
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name">Endereço</label>
-          <input type="text" id="name" />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="number">Número</label>
-          <input type="text" id="number" />
-        </div>
+      <div className="flex flex-col gap-1">
+        <label htmlFor="cep">CEP</label>
+        <input type="text" id="cep" placeholder="Ex.: 123" />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-5">
-        <div className="flex flex-col gap-1">
-          <label htmlFor="district">Bairro</label>
-          <input type="text" id="district" />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="city">Cidade</label>
-          <input type="text" id="city" />
-        </div>
+      <div className="flex flex-col gap-1">
+        <label htmlFor="name">Endereço</label>
+        <input type="text" id="name" />
       </div>
 
-      <div className="grid md:grid-cols-[1fr_2fr] gap-5">
-        <div className="flex flex-col gap-1">
-          <label htmlFor="cep">CEP</label>
-          <input type="text" id="cep" />
-        </div>
+      <div className="flex flex-col gap-1">
+        <label htmlFor="number">Número</label>
+        <input type="text" id="number" placeholder="Número ou s/n" />
+      </div>
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor="complement">Complemento</label>
-          <input type="text" id="complement" />
-        </div>
+      <div className="flex flex-col gap-1">
+        <label htmlFor="complement">Complemento</label>
+        <input
+          type="text"
+          id="complement"
+          placeholder="Apartamento, casa, conjunto, edifício, etc"
+        />
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="district">Bairro</label>
+        <input type="text" id="district" />
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="city">Cidade</label>
+        <input type="text" id="city" />
       </div>
 
       {smallScreen ? (

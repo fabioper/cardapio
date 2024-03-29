@@ -13,7 +13,7 @@ export default function CheckoutCustomerPage() {
         </Link>{' '}
         Cliente
       </Title>
-      <div className="lg:max-w-2xl">
+      <div className="lg:max-w-md">
         <CustomerForm />
       </div>
     </Page>
