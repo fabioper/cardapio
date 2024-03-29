@@ -2,7 +2,6 @@
 
 import { TbShoppingBagEdit, TbShoppingBagPlus } from 'react-icons/tb'
 import React, { ChangeEvent, useCallback, useState } from 'react'
-import { useMediaQuery } from 'usehooks-ts'
 import { formatCurrency } from '@/utils/formatter'
 import { Product } from '@/services/products.service'
 import useCart, { Item } from '@/stores/cart'
@@ -10,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import { v4 as uuid } from 'uuid'
 import _ from 'lodash'
 import { ActionBar, Button, Counter, Textarea } from '@cardapio/ui/components'
+import { useSmallScreen } from '@/hooks/use-small-screen'
 
 interface ProductFormProps {
   product: Product
@@ -19,7 +19,7 @@ interface ProductFormProps {
 export default function ProductForm({ product, cartItem }: ProductFormProps) {
   const cart = useCart()
   const router = useRouter()
-  const isSmallScreen = useMediaQuery('(max-width: 500px)')
+  const isSmallScreen = useSmallScreen()
 
   const [quantity, setQuantity] = useState<number>(cartItem?.quantity ?? 1)
   const [complement, setComplement] = useState<string>(

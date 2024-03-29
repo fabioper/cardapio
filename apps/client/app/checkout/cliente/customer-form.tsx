@@ -1,12 +1,12 @@
 'use client'
 
 import { ActionBar, Button } from '@cardapio/ui/components'
-import { useMediaQuery } from 'usehooks-ts'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { useSmallScreen } from '@/hooks/use-small-screen'
 
 export default function CustomerForm() {
-  const smallScreen = useMediaQuery('(max-width: 500px)')
+  const smallScreen = useSmallScreen()
 
   const button = (
     <Link href="/checkout/entrega">

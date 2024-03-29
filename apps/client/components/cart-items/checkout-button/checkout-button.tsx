@@ -1,6 +1,5 @@
 'use client'
 
-import { useMediaQuery } from 'usehooks-ts'
 import { TbShoppingBagCheck } from 'react-icons/tb'
 import clsx from 'clsx'
 import { formatCurrency } from '@/utils/formatter'
@@ -9,9 +8,10 @@ import { ActionBar, Button } from '@cardapio/ui/components'
 import useCart from '@/stores/cart'
 import { isEmpty } from 'lodash'
 import Link from 'next/link'
+import { useSmallScreen } from '@/hooks/use-small-screen'
 
 export default function CheckoutButton() {
-  const isSmallScreen = useMediaQuery('(max-width: 500px)')
+  const isSmallScreen = useSmallScreen()
   const items = useCart(state => state.items)
 
   const total = items.reduce((a, b) => a + b.product.price * b.quantity, 0)

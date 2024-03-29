@@ -2,12 +2,12 @@
 
 import { ActionBar, Button, RadioButton } from '@cardapio/ui/components'
 import React from 'react'
-import { useMediaQuery } from 'usehooks-ts'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { HiCash, HiCreditCard } from 'react-icons/hi'
 import { MdOutlinePix } from 'react-icons/md'
 import { IconType } from 'react-icons'
+import { useSmallScreen } from '@/hooks/use-small-screen'
 
 type PaymentOption = {
   label: string
@@ -34,7 +34,7 @@ const options: PaymentOption[] = [
 ]
 
 export default function PaymentForm() {
-  const smallScreen = useMediaQuery('(max-width: 500px)')
+  const smallScreen = useSmallScreen()
 
   const button = (
     <Link href="/checkout/resumo">
