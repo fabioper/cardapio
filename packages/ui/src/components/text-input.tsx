@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ForwardedRef, forwardRef } from 'react'
 import clsx from 'clsx'
 import { IconType } from 'react-icons'
 
@@ -8,14 +8,17 @@ interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
   message?: string
 }
 
-export default function TextInput({
-  invalid,
-  className,
-  icon: Icon,
-  type = 'text',
-  message,
-  ...props
-}: TextInputProps) {
+function TextInput(
+  {
+    invalid,
+    className,
+    icon: Icon,
+    type = 'text',
+    message,
+    ...props
+  }: TextInputProps,
+  ref?: ForwardedRef<HTMLInputElement>,
+) {
   return (
     <div className="flex flex-col">
       <div className="relative">
@@ -25,6 +28,7 @@ export default function TextInput({
 
         <input
           {...props}
+          ref={ref}
           type={type}
           className={clsx(
             'bg-[#181618] border-b border-surface-d p-2 rounded-t text-foreground text-base focus:outline-none focus:border-primary placeholder:text-surface-d w-full',
@@ -49,3 +53,5 @@ export default function TextInput({
     </div>
   )
 }
+
+export default forwardRef(TextInput)

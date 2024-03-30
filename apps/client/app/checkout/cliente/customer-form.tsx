@@ -36,12 +36,22 @@ export default function CustomerForm() {
     >
       <div className="flex flex-col gap-1 w-full">
         <label htmlFor="name">Nome</label>
-        <TextInput {...register('name')} />
+        <TextInput
+          {...register('name')}
+          invalid={!!errors.name}
+          message={errors.name?.message}
+        />
       </div>
 
       <div className="flex flex-col gap-1 w-full">
         <label htmlFor="phone">Telefone</label>
-        <TextInput type="tel" {...register('phone')} />
+        <TextInput
+          {...register('phone')}
+          type="tel"
+          maxLength={11}
+          invalid={!!errors.phone}
+          message={errors.phone?.message}
+        />
       </div>
 
       {smallScreen ? (

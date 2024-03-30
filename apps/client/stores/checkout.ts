@@ -2,8 +2,12 @@ import { create } from 'zustand'
 import { z } from 'zod'
 
 export const Customer = z.object({
-  name: z.string(),
-  phone: z.string().max(11),
+  name: z.string().min(1),
+  phone: z
+    .string()
+    .max(11)
+    .min(11)
+    .regex(/[0-9]+/),
 })
 
 export type Customer = z.infer<typeof Customer>

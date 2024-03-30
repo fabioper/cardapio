@@ -8,7 +8,7 @@ import TextInput from './text-input'
 
 type CounterProps = Omit<
   React.HTMLProps<HTMLInputElement>,
-  'type' | 'onChange' | 'value' | 'size'
+  'type' | 'onChange' | 'value' | 'size' | 'ref'
 > & {
   value?: number
   onChange?: (value?: number) => void
