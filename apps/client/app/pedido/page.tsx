@@ -1,7 +1,7 @@
 import CartItems from '@/components/cart-items'
 import { Metadata } from 'next'
 import { Page, Title } from '@cardapio/ui/components'
-import CheckoutButton from '@/components/cart-items/checkout-button'
+import CheckoutButton from '../../components/checkout-button'
 
 export const metadata: Metadata = { title: 'Pedido' }
 

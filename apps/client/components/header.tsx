@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { PiHamburgerDuotone } from 'react-icons/pi'
-import CartButton from '@/components/header/cart-button'
+import CartButton from '@/components/cart-button'
 
 function Header() {
   return (

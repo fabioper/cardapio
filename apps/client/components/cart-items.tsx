@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import { TbPlus, TbShoppingBagX } from 'react-icons/tb'
 import React from 'react'
-import CartItem from '@/components/cart-items/cart-item'
 import { Button } from '@cardapio/ui/components'
 import useCart from '@/stores/cart'
+import CartItem from '@/components/cart-item'
 
 function EmptyCart() {
   return (
