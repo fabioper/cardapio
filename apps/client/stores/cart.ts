@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { Product } from '@/services/products.service'
+import _ from 'lodash'
 
 export interface Item {
   id: string
@@ -15,10 +16,31 @@ interface CartState {
   update: (item: Item) => void
 }
 
+const itemExistOnCart = (items: Item[], newItem: Item) => {
+  return items.find(item => {
+    return (
+      item.id !== newItem.id &&
+      _.isEqual(
+        _.omit(item, ['quantity', 'id']),
+        _.omit(newItem, ['quantity', 'id']),
+      )
+    )
+  })
+}
+
 const useCart = create<CartState>((set, get) => ({
   items: [],
   add: newItem => {
-    set(state => ({ items: [...state.items, newItem] }))
+    const existing = itemExistOnCart(get().items, newItem)
+
+    if (!existing) {
+      return set(state => ({ items: [...state.items, newItem] }))
+    }
+
+    get().update({
+      ...existing,
+      quantity: existing.quantity + newItem.quantity,
+    })
   },
   remove: itemId => {
     set(state => ({
@@ -26,6 +48,23 @@ const useCart = create<CartState>((set, get) => ({
     }))
   },
   update: updatedItem => {
+    const existing = itemExistOnCart(get().items, updatedItem)
+
+    if (existing) {
+      const mergedItem = {
+        ...updatedItem,
+        quantity: existing.quantity + updatedItem.quantity,
+      }
+
+      set(state => ({
+        items: state.items.map(item =>
+          item.id !== updatedItem.id ? item : mergedItem,
+        ),
+      }))
+
+      return get().remove(existing.id)
+    }
+
     set(state => ({
       items: state.items.map(item =>
         item.id === updatedItem.id ? updatedItem : item,

@@ -7,7 +7,6 @@ import { Product } from '@/services/products.service'
 import useCart, { Item } from '@/stores/cart'
 import { useRouter } from 'next/navigation'
 import { v4 as uuid } from 'uuid'
-import _ from 'lodash'
 import { ActionBar, Button, Counter, Textarea } from '@cardapio/ui/components'
 import { useSmallScreen } from '@/hooks/use-small-screen'
 
@@ -26,59 +25,18 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
     cartItem?.complement ?? '',
   )
 
-  const itemExistOnCart = useCallback(
-    (newItem: Item) => {
-      return cart.items.find(item => {
-        return (
-          item.id !== newItem.id &&
-          _.isEqual(
-            _.omit(item, ['quantity', 'id']),
-            _.omit(newItem, ['quantity', 'id']),
-          )
-        )
-      })
-    },
-    [cart.items],
-  )
-
   const updateItem = useCallback(() => {
     if (!cartItem) return
-    const item: Item = { ...cartItem, quantity, complement, product }
 
-    const existing = itemExistOnCart(item)
-
-    if (existing) {
-      cart.update({
-        ...item,
-        quantity: existing.quantity + item.quantity,
-      })
-      cart.remove(existing.id)
-    } else {
-      cart.update(item)
-    }
+    cart.update({ ...cartItem, quantity, complement, product })
 
     router.push('/pedido')
-  }, [cart, cartItem, complement, itemExistOnCart, product, quantity, router])
+  }, [cart, cartItem, complement, product, quantity, router])
 
   const addItem = useCallback(() => {
-    if (cartItem) return
-
-    const item: Item = { id: uuid(), quantity, complement, product }
-
-    const existing = itemExistOnCart(item)
-
-    if (existing) {
-      cart.update({
-        ...existing,
-        quantity: existing.quantity + item.quantity,
-      })
-    } else {
-      cart.add(item)
-    }
+    cart.add({ id: uuid(), quantity, complement, product })
     router.push('/pedido')
-  }, [cart, cartItem, complement, itemExistOnCart, product, quantity, router])
-
-  const saveCartItem = cartItem ? updateItem : addItem
+  }, [cart, complement, product, quantity, router])
 
   const buttons = (
     <div className="flex items-center justify-between gap-2 sm:gap-5">
@@ -94,7 +52,7 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
           className="grow lg:grow-0"
           icon={TbShoppingBagPlus}
           itemRight={'+ ' + formatCurrency(product.price * quantity)}
-          onClick={saveCartItem}
+          onClick={addItem}
         />
       ) : (
         <Button
@@ -102,7 +60,7 @@ export default function ProductForm({ product, cartItem }: ProductFormProps) {
           className="grow lg:grow-0"
           icon={TbShoppingBagEdit}
           itemRight={'+ ' + formatCurrency(product.price * quantity)}
-          onClick={saveCartItem}
+          onClick={updateItem}
           status="success"
         />
       )}
