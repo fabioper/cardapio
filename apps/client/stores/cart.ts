@@ -16,7 +16,7 @@ interface CartState {
   update: (item: Item) => void
 }
 
-const itemExistOnCart = (items: Item[], newItem: Item) => {
+const findExistingItem = (items: Item[], newItem: Item) => {
   return items.find(item => {
     return (
       item.id !== newItem.id &&
@@ -31,7 +31,7 @@ const itemExistOnCart = (items: Item[], newItem: Item) => {
 const useCart = create<CartState>((set, get) => ({
   items: [],
   add: newItem => {
-    const existing = itemExistOnCart(get().items, newItem)
+    const existing = findExistingItem(get().items, newItem)
 
     if (!existing) {
       return set(state => ({ items: [...state.items, newItem] }))
@@ -48,7 +48,7 @@ const useCart = create<CartState>((set, get) => ({
     }))
   },
   update: updatedItem => {
-    const existing = itemExistOnCart(get().items, updatedItem)
+    const existing = findExistingItem(get().items, updatedItem)
 
     if (existing) {
       const mergedItem = {
