@@ -20,5 +20,10 @@
   "license": "ISC",
   "devDependencies": {
     "turbo": "^1.12.4"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "react-hook-form": "^7.51.2",
+    "zod": "^3.22.4"
   }
 }
