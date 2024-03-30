@@ -4,6 +4,7 @@ import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import { FiMinus, FiPlus, FiTrash2 } from 'react-icons/fi'
 import clsx from 'clsx'
 import Button from './button'
+import TextInput from './text-input'
 
 type CounterProps = Omit<
   React.HTMLProps<HTMLInputElement>,
@@ -83,12 +84,11 @@ export default function Counter({
         />
       )}
 
-      <input
+      <TextInput
         {...props}
         value={value}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        type="text"
         role="spinbutton"
         inputMode="numeric"
         className="p-1 w-6 text-base sm:w-8 text-center"

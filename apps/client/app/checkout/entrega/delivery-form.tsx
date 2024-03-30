@@ -1,6 +1,6 @@
 'use client'
 
-import { ActionBar, Button } from '@cardapio/ui/components'
+import { ActionBar, Button, TextInput } from '@cardapio/ui/components'
 import React from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -19,23 +19,22 @@ export default function DeliveryForm() {
     <form className="flex flex-col gap-5">
       <div className="flex flex-col gap-1">
         <label htmlFor="cep">CEP</label>
-        <input type="text" id="cep" placeholder="Ex.: 123" />
+        <TextInput id="cep" placeholder="Ex.: 123" />
       </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor="name">Endereço</label>
-        <input type="text" id="name" />
+        <TextInput id="name" />
       </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor="number">Número</label>
-        <input type="text" id="number" placeholder="Número ou s/n" />
+        <TextInput id="number" placeholder="Número ou s/n" />
       </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor="complement">Complemento</label>
-        <input
-          type="text"
+        <TextInput
           id="complement"
           placeholder="Apartamento, casa, conjunto, edifício, etc"
         />
@@ -43,12 +42,12 @@ export default function DeliveryForm() {
 
       <div className="flex flex-col gap-1">
         <label htmlFor="district">Bairro</label>
-        <input type="text" id="district" />
+        <TextInput id="district" />
       </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor="city">Cidade</label>
-        <input type="text" id="city" />
+        <TextInput id="city" />
       </div>
 
       {smallScreen ? (

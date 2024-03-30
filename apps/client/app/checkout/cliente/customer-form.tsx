@@ -1,11 +1,11 @@
 'use client'
 
-import { ActionBar, Button } from '@cardapio/ui/components'
+import { ActionBar, Button, TextInput } from '@cardapio/ui/components'
 import { useSmallScreen } from '@/hooks/use-small-screen'
 import { useForm } from 'react-hook-form'
 import { Customer, useCheckout } from '@/stores/checkout'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function CustomerForm() {
@@ -36,12 +36,12 @@ export default function CustomerForm() {
     >
       <div className="flex flex-col gap-1 w-full">
         <label htmlFor="name">Nome</label>
-        <input type="text" {...register('name')} />
+        <TextInput {...register('name')} />
       </div>
 
       <div className="flex flex-col gap-1 w-full">
         <label htmlFor="phone">Telefone</label>
-        <input type="tel" {...register('phone')} />
+        <TextInput type="tel" {...register('phone')} />
       </div>
 
       {smallScreen ? (

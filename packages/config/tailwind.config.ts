@@ -67,9 +67,9 @@ const config: Config = {
             'body': {
                 '@apply font-sans bg-surface-a text-foreground': {},
             },
-            'input,textarea': {
+            /*'input,textarea': {
                 '@apply bg-surface-c rounded p-2 focus:outline-1 focus:outline focus:outline-primary placeholder-surface-e hover:border hover:border-primary': {}
-            },
+            },*/
             'button, input, optgroup, select, textarea': {
                 '@apply text-base': {}
             }
