@@ -19,6 +19,7 @@ export default function CustomerForm() {
     formState: { errors },
   } = useForm<Customer>({
     resolver: zodResolver(Customer),
+    defaultValues: checkout.customer,
   })
 
   const saveCustomer = useCallback(
