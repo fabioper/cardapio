@@ -25,8 +25,14 @@ export const Delivery = z.object({
 
 export type Delivery = z.infer<typeof Delivery>
 
+export enum PaymentMethod {
+  Pix = 'pix',
+  Card = 'card',
+  Cash = 'cash',
+}
+
 export const Payment = z.object({
-  method: z.enum(['pix', 'card', 'cash']),
+  method: z.nativeEnum(PaymentMethod),
 })
 
 export type Payment = z.infer<typeof Payment>
@@ -54,7 +60,7 @@ export const useCheckout = create<CheckoutState>(set => ({
     complement: '',
   },
   payment: {
-    method: 'card',
+    method: PaymentMethod.Pix,
   },
   setCustomer: customer => set(state => ({ ...state, customer })),
   setDelivery: delivery => set(state => ({ ...state, delivery })),

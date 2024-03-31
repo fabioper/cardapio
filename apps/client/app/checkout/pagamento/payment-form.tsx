@@ -6,32 +6,29 @@ import { HiCash, HiCreditCard } from 'react-icons/hi'
 import { MdOutlinePix } from 'react-icons/md'
 import { IconType } from 'react-icons'
 import { useSmallScreen } from '@/hooks/use-small-screen'
-import { Payment, useCheckout } from '@/stores/checkout'
+import { Payment, PaymentMethod, useCheckout } from '@/stores/checkout'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
+import { formatPaymentMethod } from '@/utils/formatter'
 
 type PaymentOption = {
-  label: string
   icon: IconType
-  value: string
+  value: PaymentMethod
 }
 
 const options: PaymentOption[] = [
   {
-    label: 'Pix',
     icon: MdOutlinePix,
-    value: 'pix',
+    value: PaymentMethod.Pix,
   },
   {
-    label: 'Dinheiro',
     icon: HiCash,
-    value: 'cash',
+    value: PaymentMethod.Cash,
   },
   {
-    label: 'Cartão de crédito/débito',
     icon: HiCreditCard,
-    value: 'card',
+    value: PaymentMethod.Card,
   },
 ]
 
@@ -60,7 +57,9 @@ export default function PaymentForm() {
     >
       <div className="flex flex-col gap-x-2 gap-y-3 w-full">
         {options.map((opt, index) => {
-          const { value, icon: Icon, label } = opt
+          const { value, icon: Icon } = opt
+          const label = formatPaymentMethod(value)
+
           return (
             <label
               key={index}
