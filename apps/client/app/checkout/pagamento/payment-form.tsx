@@ -1,13 +1,15 @@
 'use client'
 
 import { ActionBar, Button, RadioButton } from '@cardapio/ui/components'
-import React from 'react'
-import clsx from 'clsx'
-import Link from 'next/link'
+import React, { useCallback } from 'react'
 import { HiCash, HiCreditCard } from 'react-icons/hi'
 import { MdOutlinePix } from 'react-icons/md'
 import { IconType } from 'react-icons'
 import { useSmallScreen } from '@/hooks/use-small-screen'
+import { Payment, useCheckout } from '@/stores/checkout'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 
 type PaymentOption = {
   label: string
@@ -35,18 +37,27 @@ const options: PaymentOption[] = [
 
 export default function PaymentForm() {
   const smallScreen = useSmallScreen()
+  const checkout = useCheckout()
+  const router = useRouter()
 
-  const button = (
-    <Link href="/checkout/resumo">
-      <Button
-        label="Revisar pedido"
-        className={clsx({ 'w-full': smallScreen })}
-      />
-    </Link>
+  const { register, handleSubmit } = useForm<Payment>({
+    defaultValues: checkout.payment,
+    resolver: zodResolver(Payment),
+  })
+
+  const savePayment = useCallback(
+    (values: Payment) => {
+      checkout.setPayment(values)
+      router.push('/checkout/resumo')
+    },
+    [checkout, router],
   )
 
   return (
-    <form className="flex flex-col items-start gap-10">
+    <form
+      className="flex flex-col items-start gap-10"
+      onSubmit={handleSubmit(savePayment)}
+    >
       <div className="flex flex-col gap-x-2 gap-y-3 w-full">
         {options.map((opt, index) => {
           const { value, icon: Icon, label } = opt
@@ -66,7 +77,7 @@ export default function PaymentForm() {
                 has-[:checked]:border-primary
               `}
             >
-              <RadioButton name="payment" value={value} />
+              <RadioButton value={value} {...register('method')} />
               <span className="flex items-center gap-2">
                 <Icon className="text-xl opacity-45 shrink-0 group-has-[:checked]:text-primary" />{' '}
                 {label}
@@ -78,10 +89,12 @@ export default function PaymentForm() {
 
       {smallScreen ? (
         <ActionBar>
-          <div className="container">{button}</div>
+          <div className="container">
+            <Button label="Revisar pedido" className="w-full" />
+          </div>
         </ActionBar>
       ) : (
-        button
+        <Button label="Revisar pedido" />
       )}
     </form>
   )

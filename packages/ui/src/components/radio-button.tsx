@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { ForwardedRef, forwardRef } from 'react'
 import clsx from 'clsx'
 
 type RadioButtonProps = Omit<React.HTMLProps<HTMLInputElement>, 'type'>
 
-export default function RadioButton({ className, ...props }: RadioButtonProps) {
+function RadioButton(
+  { className, ...props }: RadioButtonProps,
+  ref?: ForwardedRef<HTMLInputElement>,
+) {
   return (
     <input
       {...props}
+      ref={ref}
       type="radio"
       className={clsx(
         `
@@ -31,3 +35,5 @@ export default function RadioButton({ className, ...props }: RadioButtonProps) {
     />
   )
 }
+
+export default forwardRef(RadioButton)

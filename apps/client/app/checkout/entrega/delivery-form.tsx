@@ -40,6 +40,7 @@ export default function DeliveryForm() {
         <TextInput
           placeholder="Ex.: 123"
           {...register('postalCode')}
+          maxLength={8}
           invalid={!!errors.postalCode}
           message={errors.postalCode?.message}
         />

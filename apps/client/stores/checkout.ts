@@ -5,19 +5,21 @@ export const Customer = z.object({
   name: z.string().min(1),
   phone: z
     .string()
-    .max(11)
-    .min(11)
-    .regex(/[0-9]+/),
+    .length(11)
+    .regex(/^[0-9]*$/),
 })
 
 export type Customer = z.infer<typeof Customer>
 
 export const Delivery = z.object({
-  address: z.string(),
-  postalCode: z.string().max(8),
-  addressNumber: z.string(),
-  district: z.string(),
-  city: z.string(),
+  address: z.string().min(1),
+  postalCode: z
+    .string()
+    .length(8)
+    .regex(/^[0-9]*$/),
+  addressNumber: z.string().min(1),
+  district: z.string().min(1),
+  city: z.string().min(1),
   complement: z.string().optional(),
 })
 
