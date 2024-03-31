@@ -60,7 +60,7 @@ export const useCheckout = create<CheckoutState>(set => ({
     complement: '',
   },
   payment: {
-    method: PaymentMethod.Pix,
+    method: PaymentMethod.Card,
   },
   setCustomer: customer => set(state => ({ ...state, customer })),
   setDelivery: delivery => set(state => ({ ...state, delivery })),

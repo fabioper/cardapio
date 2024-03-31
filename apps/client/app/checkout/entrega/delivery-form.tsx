@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { Delivery, useCheckout } from '@/stores/checkout'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
+import { TbProgressCheck } from 'react-icons/tb'
 
 export default function DeliveryForm() {
   const checkout = useCheckout()
@@ -41,6 +42,7 @@ export default function DeliveryForm() {
           maxLength={8}
           invalid={!!errors.postalCode}
           message={errors.postalCode?.message}
+          autoFocus
         />
       </div>
 
@@ -92,7 +94,13 @@ export default function DeliveryForm() {
         />
       </div>
 
-      <Button label="Continuar" type="submit" className="w-full md:w-auto" />
+      <Button
+        label="Continuar"
+        type="submit"
+        className="w-full md:w-auto"
+        itemRight="2/4"
+        icon={TbProgressCheck}
+      />
     </form>
   )
 }

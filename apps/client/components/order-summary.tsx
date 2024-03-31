@@ -1,7 +1,7 @@
 'use client'
 
 import { ActionBar, Button } from '@cardapio/ui/components'
-import { TbEdit } from 'react-icons/tb'
+import { TbCircleCheck, TbEdit } from 'react-icons/tb'
 import { useSmallScreen } from '@/hooks/use-small-screen'
 import Link from 'next/link'
 import { useCheckout } from '@/stores/checkout'
@@ -52,7 +52,11 @@ export default function OrderSummary() {
       {smallScreen ? (
         <ActionBar>
           <div className="container">
-            <Button label="Confirmar pedido" className="w-full" />
+            <Button
+              label="Confirmar pedido"
+              className="w-full"
+              icon={TbCircleCheck}
+            />
           </div>
         </ActionBar>
       ) : (

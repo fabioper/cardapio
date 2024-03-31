@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { formatPaymentMethod } from '@/utils/formatter'
+import { TbProgressCheck } from 'react-icons/tb'
 
 type PaymentOption = {
   icon: IconType
@@ -18,16 +19,16 @@ type PaymentOption = {
 
 const options: PaymentOption[] = [
   {
-    icon: MdOutlinePix,
-    value: PaymentMethod.Pix,
+    icon: HiCreditCard,
+    value: PaymentMethod.Card,
   },
   {
     icon: HiCash,
     value: PaymentMethod.Cash,
   },
   {
-    icon: HiCreditCard,
-    value: PaymentMethod.Card,
+    icon: MdOutlinePix,
+    value: PaymentMethod.Pix,
   },
 ]
 
@@ -84,7 +85,12 @@ export default function PaymentForm() {
         })}
       </div>
 
-      <Button label="Revisar pedido" className="w-full md:w-auto" />
+      <Button
+        label="Revisar pedido"
+        className="w-full md:w-auto"
+        itemRight="3/4"
+        icon={TbProgressCheck}
+      />
     </form>
   )
 }

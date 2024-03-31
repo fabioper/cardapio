@@ -6,6 +6,7 @@ import { Customer, useCheckout } from '@/stores/checkout'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import { TbProgressCheck } from 'react-icons/tb'
 
 export default function CustomerForm() {
   const router = useRouter()
@@ -39,6 +40,7 @@ export default function CustomerForm() {
           {...register('name')}
           invalid={!!errors.name}
           message={errors.name?.message}
+          autoFocus
         />
       </div>
 
@@ -53,7 +55,13 @@ export default function CustomerForm() {
         />
       </div>
 
-      <Button type="submit" label="Continuar" className="w-full md:w-auto" />
+      <Button
+        type="submit"
+        label="Continuar"
+        className="w-full md:w-auto"
+        itemRight="1/4"
+        icon={TbProgressCheck}
+      />
     </form>
   )
 }
