@@ -1,15 +1,13 @@
 'use client'
 
-import { ActionBar, Button, TextInput } from '@cardapio/ui/components'
+import { Button, TextInput } from '@cardapio/ui/components'
 import React, { useCallback } from 'react'
-import { useSmallScreen } from '@/hooks/use-small-screen'
 import { useForm } from 'react-hook-form'
 import { Delivery, useCheckout } from '@/stores/checkout'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 
 export default function DeliveryForm() {
-  const smallScreen = useSmallScreen()
   const checkout = useCheckout()
   const router = useRouter()
 
@@ -94,15 +92,7 @@ export default function DeliveryForm() {
         />
       </div>
 
-      {smallScreen ? (
-        <ActionBar>
-          <div className="container">
-            <Button label="Continuar" className="w-full" type="submit" />
-          </div>
-        </ActionBar>
-      ) : (
-        <Button label="Continuar" type="submit" />
-      )}
+      <Button label="Continuar" type="submit" className="w-full md:w-auto" />
     </form>
   )
 }

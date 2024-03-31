@@ -1,11 +1,10 @@
 'use client'
 
-import { ActionBar, Button, RadioButton } from '@cardapio/ui/components'
+import { Button, RadioButton } from '@cardapio/ui/components'
 import React, { useCallback } from 'react'
 import { HiCash, HiCreditCard } from 'react-icons/hi'
 import { MdOutlinePix } from 'react-icons/md'
 import { IconType } from 'react-icons'
-import { useSmallScreen } from '@/hooks/use-small-screen'
 import { Payment, PaymentMethod, useCheckout } from '@/stores/checkout'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -33,7 +32,6 @@ const options: PaymentOption[] = [
 ]
 
 export default function PaymentForm() {
-  const smallScreen = useSmallScreen()
   const checkout = useCheckout()
   const router = useRouter()
 
@@ -86,15 +84,7 @@ export default function PaymentForm() {
         })}
       </div>
 
-      {smallScreen ? (
-        <ActionBar>
-          <div className="container">
-            <Button label="Revisar pedido" className="w-full" />
-          </div>
-        </ActionBar>
-      ) : (
-        <Button label="Revisar pedido" />
-      )}
+      <Button label="Revisar pedido" className="w-full md:w-auto" />
     </form>
   )
 }

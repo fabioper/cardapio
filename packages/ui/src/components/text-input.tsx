@@ -20,8 +20,8 @@ function TextInput(
   ref?: ForwardedRef<HTMLInputElement>,
 ) {
   return (
-    <div className="flex flex-col">
-      <div className="relative">
+    <span className="inline-flex flex-col">
+      <span className="relative">
         {Icon && (
           <Icon className="absolute box-content w-5 px-2 text-4xl top-1/2 -translate-y-1/2 left-0 text-surface-e" />
         )}
@@ -39,7 +39,7 @@ function TextInput(
             className,
           )}
         />
-      </div>
+      </span>
 
       {message && (
         <span
@@ -50,7 +50,7 @@ function TextInput(
           {message}
         </span>
       )}
-    </div>
+    </span>
   )
 }
 
