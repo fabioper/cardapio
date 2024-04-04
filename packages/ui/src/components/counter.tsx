@@ -91,7 +91,7 @@ export default function Counter({
         onKeyDown={handleKeyDown}
         role="spinbutton"
         inputMode="numeric"
-        className="text-center w-8"
+        className="text-center !w-8"
       />
 
       <Button

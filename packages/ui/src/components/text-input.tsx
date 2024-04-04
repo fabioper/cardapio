@@ -46,6 +46,7 @@ function TextInput(
           className={clsx('text-sm mt-1', {
             'text-danger': invalid,
           })}
+          aria-live="polite"
         >
           {message}
         </span>
