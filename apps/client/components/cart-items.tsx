@@ -22,7 +22,7 @@ export default function CartItems() {
   if (items.length === 0) return <EmptyCart />
 
   return (
-    <div className="flex flex-col gap-5 items-center w-full">
+    <div className="flex flex-col items-center w-full">
       <div className="flex flex-col divide-y divide-surface-b w-full">
         {items.map(item => (
           <CartItem key={item.id} cartItem={item} />
