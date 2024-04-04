@@ -1,14 +1,16 @@
 'use client'
 
-import { Button, TextInput } from '@cardapio/ui/components'
+import { ActionBar, Button, TextInput } from '@cardapio/ui/components'
 import React, { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { Delivery, useCheckout } from '@/stores/checkout'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { TbProgressCheck } from 'react-icons/tb'
+import { useSmallScreen } from '@/hooks/use-small-screen'
 
 export default function DeliveryForm() {
+  const smallScreen = useSmallScreen()
   const checkout = useCheckout()
   const router = useRouter()
 
@@ -33,6 +35,7 @@ export default function DeliveryForm() {
     <form
       className="flex flex-col items-start gap-5"
       onSubmit={handleSubmit(saveDelivery)}
+      id="form"
     >
       <div className="flex flex-col gap-1 w-full">
         <label htmlFor="postalCode">CEP</label>
@@ -94,13 +97,28 @@ export default function DeliveryForm() {
         />
       </div>
 
-      <Button
-        label="Continuar"
-        type="submit"
-        className="w-full md:w-auto"
-        itemRight="2/4"
-        icon={TbProgressCheck}
-      />
+      {smallScreen ? (
+        <ActionBar>
+          <div className="container">
+            <Button
+              label="Continuar"
+              type="submit"
+              className="w-full md:w-auto"
+              itemRight="2/4"
+              form="form"
+              icon={TbProgressCheck}
+            />
+          </div>
+        </ActionBar>
+      ) : (
+        <Button
+          label="Continuar"
+          type="submit"
+          className="w-full md:w-auto"
+          itemRight="2/4"
+          icon={TbProgressCheck}
+        />
+      )}
     </form>
   )
 }

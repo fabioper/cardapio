@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, RadioButton } from '@cardapio/ui/components'
+import { ActionBar, Button, RadioButton } from '@cardapio/ui/components'
 import React, { useCallback } from 'react'
 import { HiCash, HiCreditCard } from 'react-icons/hi'
 import { MdOutlinePix } from 'react-icons/md'
@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { formatPaymentMethod } from '@/utils/formatter'
 import { TbProgressCheck } from 'react-icons/tb'
+import { useSmallScreen } from '@/hooks/use-small-screen'
 
 type PaymentOption = {
   icon: IconType
@@ -33,6 +34,7 @@ const options: PaymentOption[] = [
 ]
 
 export default function PaymentForm() {
+  const smallScreen = useSmallScreen()
   const checkout = useCheckout()
   const router = useRouter()
 
@@ -53,6 +55,7 @@ export default function PaymentForm() {
     <form
       className="flex flex-col items-start gap-10"
       onSubmit={handleSubmit(savePayment)}
+      id="form"
     >
       <div className="flex flex-col gap-x-2 gap-y-3 w-full">
         {options.map((opt, index) => {
@@ -85,12 +88,26 @@ export default function PaymentForm() {
         })}
       </div>
 
-      <Button
-        label="Revisar pedido"
-        className="w-full md:w-auto"
-        itemRight="3/4"
-        icon={TbProgressCheck}
-      />
+      {smallScreen ? (
+        <ActionBar>
+          <div className="container">
+            <Button
+              label="Revisar pedido"
+              className="w-full md:w-auto"
+              itemRight="3/4"
+              form="form"
+              icon={TbProgressCheck}
+            />
+          </div>
+        </ActionBar>
+      ) : (
+        <Button
+          label="Revisar pedido"
+          className="w-full md:w-auto"
+          itemRight="3/4"
+          icon={TbProgressCheck}
+        />
+      )}
     </form>
   )
 }
