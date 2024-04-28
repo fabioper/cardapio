@@ -1,0 +1,149 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  api
+
+  Sample SAM Template for api
+
+Globals:
+  Function:
+    Timeout: 10
+
+Resources:
+  ProductsTable:
+    Type: AWS::Serverless::SimpleTable
+
+  AddProductFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers/add-product.handler
+      Runtime: nodejs20.x
+      Environment:
+        Variables:
+          PRODUCTS_TABLE_NAME: !Ref ProductsTable
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /products
+            Method: post
+      Policies: AmazonDynamoDBFullAccess
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+        - handlers/add-product.ts
+
+  GetProductsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers/get-products.handler
+      Runtime: nodejs20.x
+      Environment:
+        Variables:
+          PRODUCTS_TABLE_NAME: !Ref ProductsTable
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /products
+            Method: get
+      Policies: AmazonDynamoDBFullAccess
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+          - handlers/get-products.ts
+
+  GetProductFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers/get-product.handler
+      Runtime: nodejs20.x
+      Environment:
+        Variables:
+          PRODUCTS_TABLE_NAME: !Ref ProductsTable
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /products/{productId}
+            Method: get
+      Policies: AmazonDynamoDBFullAccess
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+          - handlers/get-product.ts
+
+  UpdateProductFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers/update-product.handler
+      Runtime: nodejs20.x
+      Environment:
+        Variables:
+          PRODUCTS_TABLE_NAME: !Ref ProductsTable
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /products/{productId}
+            Method: put
+      Policies: AmazonDynamoDBFullAccess
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+          - handlers/update-product.ts
+
+  DeleteProductFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers/delete-product.handler
+      Runtime: nodejs20.x
+      Environment:
+        Variables:
+          PRODUCTS_TABLE_NAME: !Ref ProductsTable
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /products/{productId}
+            Method: delete
+      Policies: AmazonDynamoDBFullAccess
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+          - handlers/delete-product.ts
+
+Outputs:
+  HelloWorldApi:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
