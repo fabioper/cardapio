@@ -1,7 +1,6 @@
 {
-  "root": true,
+  "root": false,
   "extends": [
-    "@cardapio/custom/next",
     "plugin:storybook/recommended"
   ]
 }

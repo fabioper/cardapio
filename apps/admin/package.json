@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "@cardapio/config": "*",
-    "@cardapio/eslint-config-custom": "*",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.12",

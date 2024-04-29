@@ -17,7 +17,6 @@
   "private": true,
   "devDependencies": {
     "@cardapio/config": "*",
-    "@cardapio/eslint-config-custom": "*",
     "@chromatic-com/storybook": "^1.2.22",
     "@jest/globals": "^29.7.0",
     "@storybook/addon-essentials": "^8.0.0",
