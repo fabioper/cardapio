@@ -11,23 +11,51 @@ import {
   formatPaymentMethod,
 } from '@/utils/formatter'
 import useCart from '@/stores/cart'
-import { useMemo } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import CartItems from '@/components/cart-items'
 import OrderTotalSummary from '@/components/order-total-summary'
+import { addOrder, AddOrderDto } from '@/services/orders.service'
+import { useRouter } from 'next/navigation'
 
 export default function OrderSummary() {
   const smallScreen = useSmallScreen()
-  const { customer, delivery, payment } = useCheckout()
+  const { customer, delivery, payment, clearCheckout } = useCheckout()
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
-  const items = useCart(cart => cart.items)
+  const { items } = useCart()
 
-  const { total, deliveryFee, subtotal } = useMemo(() => {
+  const { total, deliveryFee } = useMemo(() => {
     const subtotal = items.reduce((a, b) => a + b.product.price * b.quantity, 0)
     const deliveryFee = 3
     const total = subtotal + deliveryFee
 
     return { subtotal, deliveryFee, total }
   }, [items])
+
+  const sendOrder = useCallback(async () => {
+    setLoading(true)
+    try {
+      const newOrder = {
+        items: items.map(item => ({
+          quantity: item.quantity,
+          complement: item.complement,
+          productId: item.product.id,
+        })),
+        payment: payment,
+        customer: customer,
+      } satisfies AddOrderDto
+
+      await addOrder(newOrder)
+
+      router.push('/sucesso')
+      router.refresh()
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setLoading(false)
+    }
+  }, [customer, items, payment, router])
 
   return (
     <div className="flex flex-col gap-5 items-start max-w-xl">
@@ -81,15 +109,23 @@ export default function OrderSummary() {
         <ActionBar>
           <div className="container">
             <Button
-              label="Confirmar pedido"
+              label={!loading ? 'Confirmar pedido' : 'Enviando...'}
               className="w-full"
               icon={TbCircleCheck}
               itemRight={formatCurrency(total)}
+              onClick={sendOrder}
+              type="button"
             />
           </div>
         </ActionBar>
       ) : (
-        <Button label="Confirmar pedido" />
+        <Button
+          label={!loading ? 'Confirmar pedido' : 'Enviando...'}
+          icon={TbCircleCheck}
+          itemRight={formatCurrency(total)}
+          onClick={sendOrder}
+          type="button"
+        />
       )}
     </div>
   )

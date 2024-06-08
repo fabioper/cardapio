@@ -5,7 +5,7 @@ import { marshall } from '@aws-sdk/util-dynamodb'
 import { v4 as uuid } from 'uuid'
 import { z } from 'zod'
 
-const productSchema = z.object({
+const addProductSchema = z.object({
   title: z.string(),
   description: z.string(),
   price: z.number(),
@@ -13,7 +13,10 @@ const productSchema = z.object({
   combo: z.boolean().optional(),
 })
 
-type NewProductDto = z.infer<typeof productSchema> & { id: string }
+type NewProductDto = z.infer<typeof addProductSchema> & {
+  id: string
+  createdAt: string
+}
 
 const PRODUCTS_TABLE_NAME = process.env.PRODUCTS_TABLE_NAME
 
@@ -22,7 +25,7 @@ const db = new DynamoDBClient({})
 export const handler = async (
   event: APIGatewayProxyEvent,
 ): Promise<APIGatewayProxyResult> => {
-  const newProduct = productSchema.safeParse(JSON.parse(event.body || ''))
+  const newProduct = addProductSchema.safeParse(JSON.parse(event.body || ''))
 
   if (newProduct.error) {
     return {
@@ -40,7 +43,11 @@ export const handler = async (
     }
   }
 
-  const product: NewProductDto = { id: uuid(), ...newProduct.data }
+  const product: NewProductDto = {
+    id: uuid(),
+    ...newProduct.data,
+    createdAt: new Date().toISOString(),
+  }
 
   const command = new PutItemCommand({
     TableName: PRODUCTS_TABLE_NAME,

@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { z } from 'zod'
+import { PaymentMethod } from '@/services/orders.service'
 
 export const Customer = z.object({
   name: z.string().min(1),
@@ -25,12 +26,6 @@ export const Delivery = z.object({
 
 export type Delivery = z.infer<typeof Delivery>
 
-export enum PaymentMethod {
-  Pix = 'pix',
-  Card = 'card',
-  Cash = 'cash',
-}
-
 export const Payment = z.object({
   method: z.nativeEnum(PaymentMethod),
 })
@@ -44,25 +39,35 @@ interface CheckoutState {
   setCustomer: (customer: Customer) => void
   setDelivery: (delivery: Delivery) => void
   setPayment: (payment: Payment) => void
+  clearCheckout: () => void
+}
+
+const defaultCustomer = {
+  name: '',
+  phone: '',
+}
+const defaultDelivery = {
+  address: '',
+  city: '',
+  addressNumber: '',
+  district: '',
+  postalCode: '',
+  complement: '',
+}
+const defaultPayment = {
+  method: PaymentMethod.Card,
+}
+
+const emptyCheckout = {
+  customer: defaultCustomer,
+  delivery: defaultDelivery,
+  payment: defaultPayment,
 }
 
 export const useCheckout = create<CheckoutState>(set => ({
-  customer: {
-    name: '',
-    phone: '',
-  },
-  delivery: {
-    address: '',
-    city: '',
-    addressNumber: '',
-    district: '',
-    postalCode: '',
-    complement: '',
-  },
-  payment: {
-    method: PaymentMethod.Card,
-  },
+  ...emptyCheckout,
   setCustomer: customer => set(state => ({ ...state, customer })),
   setDelivery: delivery => set(state => ({ ...state, delivery })),
   setPayment: payment => set(state => ({ ...state, payment })),
+  clearCheckout: () => set(() => emptyCheckout),
 }))

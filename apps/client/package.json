@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@cardapio/ui": "*",
+    "axios": "^1.6.8",
     "clsx": "^2.1.0",
     "lodash": "^4.17.21",
     "next": "14.1.0",
@@ -26,7 +27,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@cardapio/config": "*",
+    "@cardapio/tailwind-preset": "*",
     "@playwright/test": "^1.42.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",

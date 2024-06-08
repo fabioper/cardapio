@@ -14,6 +14,7 @@ interface CartState {
   add: (item: Item) => void
   remove: (itemId: string) => void
   update: (item: Item) => void
+  clearCart: () => void
 }
 
 const findExistingItem = (items: Item[], newItem: Item) => {
@@ -71,6 +72,10 @@ const useCart = create<CartState>((set, get) => ({
       ),
     }))
   },
+  clearCart: () =>
+    set(() => ({
+      items: [],
+    })),
 }))
 
 export default useCart

@@ -1,4 +1,5 @@
-import { Delivery, PaymentMethod } from '@/stores/checkout'
+import { Delivery } from '@/stores/checkout'
+import { PaymentMethod } from '@/services/orders.service'
 
 export function formatCurrency(value: number, currency: string = 'BRL') {
   let currencyFormatter = new Intl.NumberFormat('pt-BR', {

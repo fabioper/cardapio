@@ -8,10 +8,45 @@ Description: >
 Globals:
   Function:
     Timeout: 10
+  Api:
+    Cors:
+      AllowMethods: "'GET,POST,OPTIONS'"
+      AllowHeaders: "'content-type'"
+      AllowOrigin: "'*'"
 
 Resources:
   ProductsTable:
     Type: AWS::Serverless::SimpleTable
+
+  OrdersTable:
+    Type: AWS::Serverless::SimpleTable
+
+  AddOrderFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers/add-order.handler
+      Runtime: nodejs20.x
+      Environment:
+        Variables:
+          ORDERS_TABLE_NAME: !Ref OrdersTable
+          PRODUCTS_TABLE_NAME: !Ref ProductsTable
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /orders
+            Method: post
+      Policies: AmazonDynamoDBFullAccess
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+          - handlers/add-order.ts
 
   AddProductFunction:
     Type: AWS::Serverless::Function

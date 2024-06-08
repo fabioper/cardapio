@@ -5,13 +5,14 @@ import React, { useCallback } from 'react'
 import { HiCash, HiCreditCard } from 'react-icons/hi'
 import { MdOutlinePix } from 'react-icons/md'
 import { IconType } from 'react-icons'
-import { Payment, PaymentMethod, useCheckout } from '@/stores/checkout'
+import { Payment, useCheckout } from '@/stores/checkout'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { formatPaymentMethod } from '@/utils/formatter'
 import { TbProgressCheck } from 'react-icons/tb'
 import { useSmallScreen } from '@/hooks/use-small-screen'
+import { PaymentMethod } from '@/services/orders.service'
 
 type PaymentOption = {
   icon: IconType

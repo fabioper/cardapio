@@ -1,7 +1,11 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import * as process from 'process'
-import { DynamoDBClient, PutItemCommand } from '@aws-sdk/client-dynamodb'
-import { marshall } from '@aws-sdk/util-dynamodb'
+import {
+  DynamoDBClient,
+  GetItemCommand,
+  PutItemCommand,
+} from '@aws-sdk/client-dynamodb'
+import { marshall, unmarshall } from '@aws-sdk/util-dynamodb'
 import { z } from 'zod'
 
 const productSchema = z.object({
@@ -24,7 +28,10 @@ export const handler = async (
   const productId = event.pathParameters?.['productId']
 
   if (!productId) {
-    return { statusCode: 400, body: 'No Product ID provided' }
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'No Product ID provided' }),
+    }
   }
 
   const newProduct = productSchema.safeParse(JSON.parse(event.body || ''))
@@ -45,13 +52,32 @@ export const handler = async (
     }
   }
 
-  const product: UpdateProductDto = { id: productId, ...newProduct.data }
+  const getItemCommand = new GetItemCommand({
+    TableName: PRODUCTS_TABLE_NAME,
+    Key: marshall({ id: productId }),
+  })
 
-  const command = new PutItemCommand({
+  const originalProduct = await db.send(getItemCommand)
+
+  if (!originalProduct.Item) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify({ message: 'Product not found' }),
+    }
+  }
+
+  const product: UpdateProductDto = {
+    id: productId,
+    ...unmarshall(originalProduct.Item),
+    ...newProduct.data,
+  }
+
+  const updateItemCommand = new PutItemCommand({
     TableName: PRODUCTS_TABLE_NAME,
     Item: marshall(product),
   })
 
-  await db.send(command)
+  await db.send(updateItemCommand)
+
   return { statusCode: 200, body: JSON.stringify(product) }
 }
